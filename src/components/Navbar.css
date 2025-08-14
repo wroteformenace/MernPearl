@@ -16,8 +16,8 @@
 .navbar-wrap {
   position: absolute; /* instead of sticky for inside-hero */
   top: 1rem;
-  left: 0;
-  right: 0;
+  left: 3rem;
+  right: 3rem;
   z-index: 50;
   padding-inline: clamp(12px, 2vw, 32px);
 }
