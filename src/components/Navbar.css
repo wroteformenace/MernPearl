@@ -80,7 +80,7 @@
   color: var(--text-high);
   text-decoration: none;
   font-weight: 600;
-  font-size: 0.96rem;
+  font-size: 1.1rem;
   opacity: .92;
   transition: opacity .2s ease, transform .2s ease, text-shadow .2s ease, color .2s ease;
 }
