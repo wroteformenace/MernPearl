@@ -1,2 +1,2 @@
 # MernPearl
-MNC website 
+Making a website for a MNC.
