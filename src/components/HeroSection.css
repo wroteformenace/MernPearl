@@ -1,0 +1,179 @@
+/*  🌐 Import Inter font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap');
+
+:root {
+  --hero-max: 1152px;
+  --text-high: #ffffff;
+  --text-dim: #e4dff7;
+  --cta-grad-1: #9D4EDD;
+  --cta-grad-2: #7B2CBF;
+  --glass-border: 255, 255, 255;
+}
+
+/* ✨ Reset */
+/* ✨ Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: #0e041a;
+  overflow-x: hidden;
+}
+
+/* 🌟 Hero Section */
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: clamp(640px, 100vh, 980px);
+  display: grid;
+  place-items: center start;
+  padding: clamp(20px, 4vw, 48px);
+  overflow: hidden;
+  background:
+  url('/sick.png') center/cover no-repeat fixed;
+}
+
+.hero .navbar {
+  background: transparent;
+  box-shadow: none;
+}
+
+
+.hero-inner {
+  width: min(100%, var(--hero-max));
+  z-index: 1;
+}
+
+/* 📝 Headline styles */
+.hero-title {
+  color: var(--text-high);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.3px;
+  font-size: clamp(2rem, 4.8vw, 4.5rem);
+  max-width: 14ch;
+  text-wrap: balance;
+  text-shadow: 0 2px 22px rgba(0,0,0,.4);
+}
+
+.hero-sub {
+  margin-top: clamp(12px, 1.8vw, 20px);
+  max-width: 58ch;
+  font-size: clamp(1rem, 1.2vw + .6rem, 1.3rem);
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+
+/* 🎯 CTA Button */
+.cta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: clamp(24px, 3.2vw, 36px);
+  padding: 14px 32px;
+  border-radius: 14px;
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  color: #fff;
+  isolation: isolate;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.glass-cta {
+  background: linear-gradient(90deg, var(--cta-grad-1), var(--cta-grad-2));
+  box-shadow: 0 10px 25px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.16);
+  border: 1px solid rgba(var(--glass-border), .16);
+  backdrop-filter: blur(12px) saturate(120%);
+  -webkit-backdrop-filter: blur(12px) saturate(120%);
+  transition: transform .18s ease, box-shadow .25s ease, filter .2s ease;
+}
+
+.glass-cta:hover {
+  transform: translateY(-2px);
+  filter: saturate(1.08);
+  box-shadow: 0 14px 42px rgba(109,25,202,.45);
+}
+
+.glass-cta:active {
+  transform: translateY(0);
+}
+
+/* ✨ Shimmer effect */
+.cta-shimmer {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  overflow: hidden;
+}
+
+.cta-shimmer::before {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  transform: translateX(-120%);
+  background: linear-gradient(115deg, transparent 30%, rgba(255,255,255,.55) 50%, transparent 70%);
+  filter: blur(6px);
+  animation: shimmer 2.6s ease-in-out infinite;
+}
+
+@keyframes shimmer { 
+  to { transform: translateX(120%);} 
+}
+
+/* 🌀 Liquid distortion overlay */
+.liquid-overlay {
+  position: absolute;
+  inset: -15%;
+  z-index: 0;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  opacity: .14;
+}
+
+.liquid-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, rgba(181,99,255,.0), rgba(181,99,255,.35), rgba(181,99,255,.0) 60%);
+  filter: blur(60px) saturate(140%);
+  animation: swirl 28s linear infinite;
+}
+
+@keyframes swirl {
+  to { transform: rotate(360deg); }
+}
+
+/* ♿ Accessibility — Reduced Motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .liquid-overlay::before { animation: none; }
+  .cta-shimmer::before { animation: none; }
+}
+
+/* 📱 Responsive */
+@media (max-width: 900px) {
+  .hero {
+    place-items: center;
+    text-align: center;
+  }
+  .hero-title {
+    max-width: 90%;
+  }
+  .hero-sub {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

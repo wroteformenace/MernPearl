@@ -1,0 +1,163 @@
+/* Import Inter font (if not already loaded) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap');
+
+:root {
+  --bg-dark: #5105B3;
+  --glass-bg: 14, 14, 30;
+  --glass-border: 255, 255, 255;
+  --text-high: #ffffff;
+  --text-dim: #e9d7ff;
+  --accent-1: #a86bff;
+  --accent-2: #7b2cbf;
+  --radius-2xl: 18px;
+}
+
+/* Container wrapper to allow soft sticky effect */
+.navbar-wrap {
+  position: absolute; /* instead of sticky for inside-hero */
+  top: 1rem;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  padding-inline: clamp(12px, 2vw, 32px);
+}
+
+
+.navbar-wrap.navbar--scrolled {
+  filter: saturate(1.05) brightness(1.02);
+  transform: translateY(-2px);
+}
+
+/* Core Navbar */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 20px;
+  border-radius: var(--radius-2xl);
+  background: rgba(var(--glass-bg), 0.26);
+  backdrop-filter: blur(18px) saturate(120%);
+  -webkit-backdrop-filter: blur(18px) saturate(120%);
+  box-shadow: 0 6px 24px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.06);
+  border: 1px solid rgba(var(--glass-border), .12);
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.brand-name {
+  color: var(--text-high);
+  font-weight: 800;
+  font-size: 1.05rem;
+  letter-spacing: .3px;
+}
+
+.brand-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+  box-shadow: 0 0 16px rgba(168,107,255,.6);
+}
+
+/* Desktop Nav Links */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: clamp(18px, 3vw, 36px);
+}
+
+.nav-links a {
+  color: var(--text-high);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.96rem;
+  opacity: .92;
+  transition: opacity .2s ease, transform .2s ease, text-shadow .2s ease, color .2s ease;
+}
+
+.nav-links a:hover {
+  opacity: 1;
+  text-shadow: 0 0 12px rgba(168,107,255,.35);
+  transform: translateY(-1px);
+  color: var(--accent-1);
+}
+
+/* Hamburger Menu Button */
+.hamburger {
+  display: none;
+  background: transparent;
+  border: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  position: relative;
+  cursor: pointer;
+}
+
+.hamburger span {
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  height: 2px;
+  background: #fff;
+  border-radius: 2px;
+  transition: transform .25s ease, top .25s ease, opacity .2s ease;
+}
+.hamburger span:nth-child(1) { top: 12px; }
+.hamburger span:nth-child(2) { top: 18px; }
+.hamburger span:nth-child(3) { top: 24px; }
+
+/* Animate to X when active */
+.hamburger.is-active span:nth-child(1) {
+  top: 18px;
+  transform: rotate(45deg);
+}
+.hamburger.is-active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.is-active span:nth-child(3) {
+  top: 18px;
+  transform: rotate(-45deg);
+}
+
+/* Mobile Styles */
+@media (max-width: 900px) {
+  .hamburger { display: block; }
+
+  .nav-links {
+    position: absolute;
+    right: 24px;
+    top: calc(100% + 12px);
+    flex-direction: column;
+    gap: 10px;
+    background: rgba(var(--glass-bg), .42);
+    border: 1px solid rgba(255,255,255,.1);
+    backdrop-filter: blur(14px) saturate(120%);
+    border-radius: 14px;
+    padding: 14px;
+    transform: translateY(-8px) scale(.96);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .25s ease, transform .25s ease;
+  }
+
+  .nav-links.is-open {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+  }
+}
+
+/* Reduced Motion Preference */
+@media (prefers-reduced-motion: reduce) {
+  .nav-links a, .hamburger span, .navbar-wrap {
+    transition: none;
+  }
+}
