@@ -164,6 +164,7 @@ body {
 }
 
 /* 🎯 CTA Button */
+/* Base button styling (same as before) */
 .cta {
   position: relative;
   display: inline-flex;
@@ -176,50 +177,56 @@ body {
   font-size: 1rem;
   text-decoration: none;
   color: #fff;
-  isolation: isolate;
   cursor: pointer;
   white-space: nowrap;
+  isolation: isolate;
+  transition: transform 0.25s ease, box-shadow 0.4s ease, background 0.4s ease;
 }
 
 .glass-cta {
   background: linear-gradient(90deg, var(--cta-grad-1), var(--cta-grad-2));
-  box-shadow: 0 10px 25px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.16);
+  box-shadow: 0 8px 20px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.15);
   border: 1px solid rgba(var(--glass-border), .16);
   backdrop-filter: blur(12px) saturate(120%);
-  -webkit-backdrop-filter: blur(12px) saturate(120%);
-  transition: transform .18s ease, box-shadow .25s ease, filter .2s ease;
 }
 
+/* 🌟 Bouncy hover effect */
 .glass-cta:hover {
-  transform: translateY(-2px);
-  filter: saturate(1.08);
-  box-shadow: 0 14px 42px rgba(109,25,202,.45);
+  animation: jumpHover 0.6s ease-out ;
+  box-shadow: 0 12px 26px rgba(157,78,221,0.55), 0 0 15px rgba(123,44,191,0.4);
+  background: linear-gradient(90deg, var(--cta-grad-2), var(--cta-grad-1));
 }
 
+@keyframes jumpHover {
+  0%   { transform: translateY(0) scale(1); }
+  50%  { transform: translateY(-6px) scale(1.05); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+/* Active state so click feels instant */
 .glass-cta:active {
-  transform: translateY(0);
+  animation: none; /* stop bounce when clicking */
+  transform: translateY(2px) scale(0.97);
 }
 
-/* ✨ Shimmer effect */
+/* Shimmer stays as before */
 .cta-shimmer {
   position: absolute;
   inset: 0;
   border-radius: inherit;
   overflow: hidden;
 }
-
 .cta-shimmer::before {
   content: "";
   position: absolute;
   inset: -40%;
   transform: translateX(-120%);
-  background: linear-gradient(115deg, transparent 30%, rgba(255,255,255,.55) 50%, transparent 70%);
+  background: linear-gradient(115deg, transparent 30%, rgba(255,255,255,0.7) 50%, transparent 70%);
   filter: blur(6px);
-  animation: shimmer 2.6s ease-in-out infinite;
+  animation: shimmer 2.4s ease-in-out infinite;
 }
-
-@keyframes shimmer { 
-  to { transform: translateX(120%);} 
+@keyframes shimmer {
+  to { transform: translateX(120%); }
 }
 
 /* 🌀 Liquid distortion overlay */
