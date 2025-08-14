@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import "./HeroSection.css";
 
 // Helper: Generate particle positions forming the text
-function generateTextParticles(text, fontSize = 80, gap = 6) {
+function generateTextParticles(text, fontSize = 60, gap = 6) {
   // Create offscreen canvas for text measurement
   const canvas = document.createElement("canvas");
   const ctx = canvas.getContext("2d");
@@ -69,7 +69,7 @@ export default function ParticleTextReveal({ text }) {
             initial={{ x: initialX, y: initialY, opacity: 0 }}
             animate={{ x, y, opacity: 1 }}
             transition={{
-              delay: 0.5 + i * 0.005,
+              delay: 0.8 + i * 0.0001,
               type: "spring",
               stiffness: 120,
               damping: 12,
