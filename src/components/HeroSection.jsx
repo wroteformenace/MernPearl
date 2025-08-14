@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import "./HeroSection.css";
 import Navbar from "./Navbar";
+import ParticleTextReveal from "./Particle";
 
 export default function HeroSection() {
   const cosmosRef = useRef(null);
@@ -118,15 +119,8 @@ export default function HeroSection() {
         transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
         className="hero-inner"
       >
-        <motion.h1
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.6 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="hero-title"
-        >
-          Creating Thoughtful Digital Products
-        </motion.h1>
+        <ParticleTextReveal text="Creating Thoughtful Digital Products" />
+
 
         <motion.p
           initial={{ opacity: 0, y: 8 }}
@@ -154,4 +148,3 @@ export default function HeroSection() {
     </section>
   );
 }
-

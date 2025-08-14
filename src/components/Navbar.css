@@ -58,7 +58,7 @@
   letter-spacing: .3px;
 } */
 .brand img{
-  width: 9rem;
+  width: 6rem;
   height: auto;
 }
 /* .brand-dot {
@@ -80,7 +80,7 @@
   color: var(--text-high);
   text-decoration: none;
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   opacity: .92;
   transition: opacity .2s ease, transform .2s ease, text-shadow .2s ease, color .2s ease;
 }
@@ -91,6 +91,13 @@
   transform: translateY(-1px);
   color: var(--accent-1);
 }
+
+.cta-btn:hover {
+  box-shadow: 0 0 20px rgba(178, 62, 255, 0.8);
+  background: linear-gradient(135deg, #b23eff, #5105b3);
+  transform: translateY(-2px);
+}
+
 
 /* Hamburger Menu Button */
 .hamburger {
