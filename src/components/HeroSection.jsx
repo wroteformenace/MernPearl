@@ -1,18 +1,117 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import "./HeroSection.css";
 import Navbar from "./Navbar";
 
 export default function HeroSection() {
+  const cosmosRef = useRef(null);
+  const starContainerRef = useRef(null);
+  const stars = useRef([]);
+
+  useEffect(() => {
+    let targetX = window.innerWidth / 2;
+    let targetY = window.innerHeight / 2;
+    let currentX = targetX;
+    let currentY = targetY;
+
+    const mouseMove = (e) => {
+      targetX = e.clientX;
+      targetY = e.clientY;
+
+      // Spawn stars near cursor on movement
+      spawnStar(e.clientX, e.clientY);
+    };
+
+    window.addEventListener("mousemove", mouseMove);
+
+    // Spawn a star particle
+    function spawnStar(x, y) {
+      const star = document.createElement("div");
+      star.className = "star-particle";
+
+      // Position star at cursor, random slight offset
+      star.style.left = x + (Math.random() * 30 - 15) + "px";
+      star.style.top = y + (Math.random() * 30 - 15) + "px";
+      star.style.opacity = "1";
+      star.style.transform = `scale(${(Math.random() * 0.6) + 0.4})`;
+
+      starContainerRef.current.appendChild(star);
+
+      stars.current.push({
+        element: star,
+        x: x,
+        y: y,
+        velocityX: (Math.random() * 1 - 0.5) * 0.6,
+        velocityY: - (Math.random() * 1 + 0.5), // float upwards
+        life: 0,
+        maxLife: 80 + Math.random() * 30
+      });
+    }
+
+    // Animate loop for smooth cosmic glow + stars
+    const animate = () => {
+      // Smooth follow for cosmos glow
+      currentX += (targetX - currentX) * 0.1;
+      currentY += (targetY - currentY) * 0.1;
+      if (cosmosRef.current) {
+        cosmosRef.current.style.left = `${currentX}px`;
+        cosmosRef.current.style.top = `${currentY}px`;
+      }
+
+      // Animate stars
+      for (let i = stars.current.length - 1; i >= 0; i--) {
+        const star = stars.current[i];
+        star.x += star.velocityX;
+        star.y += star.velocityY;
+        star.life++;
+
+        const lifeRatio = 1 - star.life / star.maxLife;
+
+        star.element.style.left = star.x + "px";
+        star.element.style.top = star.y + "px";
+        star.element.style.opacity = lifeRatio;
+        star.element.style.transform = `scale(${lifeRatio * 0.7 + 0.3})`;
+
+        if (star.life >= star.maxLife) {
+          starContainerRef.current.removeChild(star.element);
+          stars.current.splice(i, 1);
+        }
+      }
+
+      requestAnimationFrame(animate);
+    };
+
+    animate();
+
+    return () => {
+      window.removeEventListener("mousemove", mouseMove);
+      // Cleanup stars if any remain on unmount
+      stars.current.forEach((star) => {
+        if (starContainerRef.current && star.element) {
+          starContainerRef.current.removeChild(star.element);
+        }
+      });
+      stars.current = [];
+    };
+  }, []);
+
   return (
-    <div>
-    <div className="navbar-wrap">
-      <Navbar />
-      </div>
     <section id="home" className="hero">
-      {/* Liquid overlay (decorative only) */}
+      {/* Cosmic Mouse Glow */}
+      <div className="mouse-cosmos" ref={cosmosRef} />
+
+      {/* Star Particles Container */}
+      <div className="star-particles" ref={starContainerRef} />
+
+      {/* Navigation */}
+      <div className="navbar-wrap">
+        <Navbar />
+      </div>
+
+      {/* Liquid overlay */}
       <div className="liquid-overlay" aria-hidden="true" />
 
+      {/* Hero Content */}
       <motion.div
         initial={{ opacity: 0, y: 18 }}
         animate={{ opacity: 1, y: 0 }}
@@ -53,6 +152,6 @@ export default function HeroSection() {
         </motion.a>
       </motion.div>
     </section>
-    </div>
   );
 }
+

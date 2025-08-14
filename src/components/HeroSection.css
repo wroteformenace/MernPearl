@@ -30,6 +30,68 @@ body {
   overflow-x: hidden;
 }
 
+.star-particles {
+  position: fixed;
+  pointer-events: none;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: visible;
+  z-index: 9999;
+}
+
+.star-particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: radial-gradient(circle, #fff 60%, transparent 100%);
+  border-radius: 50%;  
+  filter: drop-shadow(0 0 4px #a86bffaa);
+  will-change: transform, opacity, left, top;
+  /* Optional subtle twinkle */
+  animation: twinkle 3s infinite alternate ease-in-out;
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.7);
+  }
+}
+
+.mouse-cosmos {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 200px;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  border-radius: 50%;
+  mix-blend-mode: screen;
+
+  /* Multi-layer cosmic gradients */
+  background:
+    radial-gradient(circle at 30% 30%, rgba(180, 70, 255, 0.4), transparent 60%),
+    radial-gradient(circle at 70% 70%, rgba(70, 200, 255, 0.25), transparent 60%),
+    radial-gradient(circle at 50% 50%, rgba(255, 90, 200, 0.25), transparent 65%);
+  
+  filter: blur(40px) saturate(140%);
+  animation: cosmic-pulse 6s ease-in-out infinite alternate;
+}
+
+@keyframes cosmic-pulse {
+  0% { transform: translate(-50%, -50%) scale(1); filter: blur(40px) saturate(140%); }
+  50% { transform: translate(-50%, -50%) scale(1.15); filter: blur(50px) saturate(180%); }
+  100% { transform: translate(-50%, -50%) scale(1); filter: blur(40px) saturate(140%); }
+}
+
 /* 🌟 Hero Section */
 .hero {
   position: relative;
@@ -64,6 +126,7 @@ body {
   max-width: 14ch;
   text-wrap: balance;
   text-shadow: 0 2px 22px rgba(0,0,0,.4);
+  pointer-events: none;
 }
 
 .hero-sub {
@@ -72,6 +135,7 @@ body {
   font-size: clamp(1rem, 1.2vw + .6rem, 1.3rem);
   color: var(--text-dim);
   line-height: 1.6;
+  pointer-events: none;
 }
 
 /* 🎯 CTA Button */
