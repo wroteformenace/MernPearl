@@ -69,7 +69,7 @@ export default function ParticleTextReveal({ text }) {
             initial={{ x: initialX, y: initialY, opacity: 0 }}
             animate={{ x, y, opacity: 1 }}
             transition={{
-              delay: 0.8 + i * 0.0001,
+delay: 0.09 + i * 0.0005,
               type: "spring",
               stiffness: 120,
               damping: 12,
