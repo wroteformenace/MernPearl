@@ -27,7 +27,7 @@ export default function Navbar() {
         <a className="brand" href="#home" aria-label="Home">
           {/* Replace with your logo */}
           <span className="brand-dot" aria-hidden="true" />
-          <span className="brand-name">Logo</span>
+          <span className="brand"><img src="logo.png" alt="Logo" /></span>
         </a>
 
         {/* Hamburger Menu Toggle */}

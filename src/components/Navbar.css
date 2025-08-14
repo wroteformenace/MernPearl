@@ -51,20 +51,23 @@
   text-decoration: none;
 }
 
-.brand-name {
+/* .brand-name {
   color: var(--text-high);
   font-weight: 800;
   font-size: 1.05rem;
   letter-spacing: .3px;
+} */
+.brand img{
+  width: 5rem;
+  height: auto;
 }
-
-.brand-dot {
+/* .brand-dot {
   width: 12px;
   height: 12px;
   border-radius: 50%;
   background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
   box-shadow: 0 0 16px rgba(168,107,255,.6);
-}
+} */
 
 /* Desktop Nav Links */
 .nav-links {
