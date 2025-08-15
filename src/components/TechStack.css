@@ -3,7 +3,7 @@
   position: relative;
   width: 100vw;
   overflow: hidden;
-  padding: 26px 0 16px 0;
+  padding: 26px 0 18px 0;
   z-index: 1;
   animation: tunnel-pulse 6s ease-in-out infinite;
   background-position: center center;
@@ -67,8 +67,8 @@
 /* Glass effect intensifies, stretches, and slightly grows on hover/focus */
 .tech-item:hover,
 .tech-item:focus-visible {
-  padding-right: 30px;
-  min-width: 110px; /* slightly wider for label */
+  padding-right: 60px;
+  min-width: 140px; /* slightly wider for label */
   background: rgba(140, 100, 255, 0.32);
   border-color: #dfc9ffbb;
   box-shadow:
