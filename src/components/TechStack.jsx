@@ -36,10 +36,10 @@ export default function CosmicTechStack() {
         {[...techs, ...techs].map(({ Icon, name }, idx) => (
           <div
             key={`${name}-${idx}`}
-            className="tech-item"
+            className={`tech-item ${hovered === idx ? "hovered" : ""}`}
             onMouseEnter={() => onMouseEnter(idx)}
             onMouseLeave={onMouseLeave}
-            onFocus={() => onMouseEnter(idx)}      // Supports keyboard focus
+            onFocus={() => onMouseEnter(idx)}       // Supports keyboard focus
             onBlur={onMouseLeave}
             tabIndex={0}                           // Keyboard accessible
             role="listitem"

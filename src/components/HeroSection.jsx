@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import "./HeroSection.css";
-import Navbar from "./Navbar";
+import TechStack from "./TechStack";
 import ParticleTextReveal from "./Particle";
 
 export default function HeroSection() {
@@ -99,16 +99,12 @@ export default function HeroSection() {
   return (
     <>
     <section id="home" className="hero">
+
       {/* Cosmic Mouse Glow */}
       <div className="mouse-cosmos" ref={cosmosRef} />
 
       {/* Star Particles Container */}
       <div className="star-particles" ref={starContainerRef} />
-
-      {/* Navigation */}
-      <div className="navbar-wrap">
-        <Navbar />
-      </div>
 
       {/* Liquid overlay */}
       <div className="liquid-overlay" aria-hidden="true" />
@@ -146,6 +142,7 @@ export default function HeroSection() {
           Let’s connect
         </motion.a>
       </motion.div>
+      <TechStack />
     </section>
     </>
   );
