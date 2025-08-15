@@ -39,15 +39,14 @@
   }
 }
 
-/* Tech item container */
+/* Tech item container - more rectangular with increased padding and less border-radius */
 .tech-item {
   display: flex;
   align-items: center;
-  min-width: 42px;
-  padding: 0 10px;
-  padding-top: 7px;
-  padding-left: 10px; /* slightly more padding for shape */
-  border-radius: 14px; /* reduced corner radius */
+  justify-content: center;       /* center horizontally */
+  min-width: 60px;               /* increased minimum width */
+  padding: 12px 24px;            /* more vertical and horizontal padding */
+  border-radius: 8px;            /* less rounded corners for rectangular look */
   background: rgba(60, 50, 100, 0.18);
   border: 1.5px solid rgba(170, 140, 230, 0.19);
   box-shadow:
@@ -64,42 +63,43 @@
   overflow: hidden;
 }
 
-/* Glass effect intensifies, stretches, and slightly grows on hover/focus */
+/* Glass effect intensifies, stretches, and grows slightly on hover/focus */
 .tech-item:hover,
 .tech-item:focus-visible {
-  padding-right: 60px;
-  min-width: 140px; /* slightly wider for label */
+  padding-right: 70px;             /* more padding to reveal label */
+  min-width: 170px;                /* wider minimum width */
   background: rgba(140, 100, 255, 0.32);
   border-color: #dfc9ffbb;
   box-shadow:
     0 10px 36px 4px rgba(160, 130, 255, 0.32),
     0 0 0 3px #ffd32daa inset;
-  transform: scale(1.1); /* subtle grow */
+  transform: scale(1.1);           /* subtle scale up */
 }
 
 /* Icon stays visually centered but grows and glows more on hover */
 .tech-icon-alone {
-  font-size: 1.65rem;
+  font-size: 1.85rem;              /* slightly bigger icon */
   color: #fff;
   opacity: 0.92;
   filter: drop-shadow(0 0 3px #7a51e8bb);
   transition: filter 0.25s, color 0.22s, font-size 0.25s;
+  flex-shrink: 0;                  /* prevents shrinking */
 }
 
 .tech-item:hover .tech-icon-alone,
 .tech-item:focus-visible .tech-icon-alone {
   color: #ffd32d;
   filter: drop-shadow(0 0 10px #ffd32dac) drop-shadow(0 0 2px #fff8);
-  font-size: 1.85rem;
+  font-size: 2rem;                 /* larger icon on hover */
 }
 
 /* Slide label in */
 .tech-name-slide {
   font-family: 'Orbitron', sans-serif;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   font-weight: 600;
   color: #ffdb8f;
-  margin-left: 10px;
+  margin-left: 16px;
   opacity: 0;
   transform: translateX(10px);
   transition: opacity 0.32s ease, transform 0.32s ease;
@@ -117,13 +117,13 @@
 /* Responsive adjustments */
 @media (max-width: 700px) {
   .cosmic-tech-stack-speed { gap: 36px; }
-  .tech-item { min-width: 35px; padding: 0 8px; border-radius: 12px; }
-  .tech-icon-alone { font-size: 1.25rem; }
+  .tech-item { min-width: 48px; padding: 10px 16px; border-radius: 8px; }
+  .tech-icon-alone { font-size: 1.5rem; }
   .tech-item:hover,
   .tech-item:focus-visible {
     transform: scale(1.07);
-    min-width: 90px;
-    padding-right: 24px;
+    min-width: 110px;
+    padding-right: 40px;
   }
   .tech-name-slide { font-size: 0.9rem; }
 }
