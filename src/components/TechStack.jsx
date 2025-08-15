@@ -3,7 +3,7 @@ import {
   SiReact, SiMongodb, SiNextdotjs, SiNodedotjs, SiTypescript,
   SiTailwindcss, SiGraphql, SiDocker, SiRedux, SiVercel
 } from "react-icons/si";
-import './Techstack.css';
+import './TechStack.css';
 
 const techs = [
   { Icon: SiReact, name: "React" },
@@ -60,4 +60,3 @@ export default function CosmicTechStack() {
     </div>
   );
 }
-

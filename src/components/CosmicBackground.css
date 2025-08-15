@@ -1,0 +1,17 @@
+.cosmic-bg {
+  width: 100vw;
+  height: 240vh; /* cover 2x screen height for smooth scroll effect */
+  pointer-events: none;
+  transition: background 0.4s cubic-bezier(.4,1,.6,1);
+}
+
+@keyframes cosmic-bg-animation {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    filter: blur(0) saturate(100%);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.05);
+    filter: blur(60px) saturate(160%);
+  }
+}

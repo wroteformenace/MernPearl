@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap');
+
+.cosmic-timeline-section {
+  position: relative;
+  min-height: 340px;
+  background: radial-gradient(ellipse at 55% 20%, #a991ff33 0%, #180a2e 100%);
+  padding: 80px 0 60px 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  user-select: none;
+}
+
+/* Enhanced Multi-layer Starfield Background */
+.cosmic-timeline-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 15% 33%, #fff9 1.2px, transparent 1.6px),
+    radial-gradient(circle at 70% 40%, #f9f6 1.1px, transparent 1.8px),
+    radial-gradient(circle at 30% 22%, #b08aff55 1.6px, transparent 2.5px),
+    radial-gradient(circle at 65% 65%, #9773ff44 1px, transparent 1.8px);
+  background-size: 210% 210%, 180% 180%, 150% 150%, 220% 220%;
+  background-repeat: repeat;
+  background-position: 0 0, 30% 10%, 20% 30%, 10% 0;
+  animation:
+    stars-move 12s linear infinite,
+    stars-slow-flicker 4s ease-in-out infinite alternate;
+  opacity: 0.3;
+  z-index: 0;
+}
+
+@keyframes stars-move {
+  from { background-position: 0 0, 30% 10%, 20% 30%, 10% 0; }
+  to { background-position: -250px -150px, 50% 40%, 45% 65%, 35% 25%; }
+}
+
+@keyframes stars-slow-flicker {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.42; }
+}
+
+/* Timeline Path */
+.timeline-path {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 140px; /* Increased gap for breathing room */
+  width: max-content;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  padding: 0 48px;
+}
+
+/* Timeline Steps */
+.timeline-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  min-width: 130px;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Floating subtle animation on icons */
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.cosmic-icon {
+  font-size: 2.9rem;
+  background: linear-gradient(140deg, #b799ffaa 15%, #381272aa 85%);
+  border-radius: 50%;
+  padding: 20px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  filter:
+    drop-shadow(0 0 5px #a783ffd0)
+    drop-shadow(0 0 14px #7b50ffa0);
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease, filter 0.3s ease;
+  animation: floatSlow 6s ease-in-out infinite;
+  user-select: none;
+  cursor: default;
+}
+
+.timeline-step:hover .cosmic-icon {
+  box-shadow:
+    0 0 28px #d4bbffaa,
+    0 0 60px #b384ffbb,
+    0 0 48px #bb82fff9;
+  filter:
+    drop-shadow(0 0 8px #ffedbbdd)
+    drop-shadow(0 0 18px #ffd56ef0);
+  transform: scale(1.18);
+  animation-play-state: paused;
+}
+
+/* Labels */
+.timeline-label {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.28rem;
+  font-weight: 700;
+  color: #fff9db;
+  letter-spacing: 1.3px;
+  margin-bottom: 5px;
+  text-shadow: 0 0 8px #a27dffbb, 0 0 18px #6f47ffa0;
+}
+
+/* Description */
+.timeline-desc {
+  font-size: 1rem;
+  color: #d7caf8;
+  text-align: center;
+  opacity: 0.9;
+  font-weight: 400;
+  margin-bottom: 2px;
+  max-width: 140px;
+  user-select: text;
+}
+
+/* Connectors with refined glow effect */
+.timeline-connector {
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  width: 130px;
+  height: 6px;
+  background: linear-gradient(90deg, #b399ffcc 15%, #fffaffcc 85%);
+  transform: translateY(-50%);
+  border-radius: 3px;
+  filter: blur(0.7px);
+  z-index: 0;
+  overflow: hidden;
+}
+
+.timeline-connector::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, #fff9, transparent);
+  animation: flow 1.8s linear infinite;
+}
+
+@keyframes flow {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(100%); }
+}
+
+/* Responsive tweaks */
+@media (max-width: 700px) {
+  .timeline-path {
+    gap: 90px;
+    padding: 0 24px;
+  }
+  .timeline-step {
+    min-width: 90px;
+  }
+  .cosmic-icon {
+    font-size: 2rem;
+    padding: 14px;
+    margin-bottom: 6px;
+  }
+  .timeline-label {
+    font-size: 1.05rem;
+    letter-spacing: 1.1px;
+  }
+  .timeline-desc {
+    max-width: 100px;
+    font-size: 0.9rem;
+  }
+  .timeline-connector {
+    width: 90px;
+    height: 4px;
+  }
+}
