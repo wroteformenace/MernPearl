@@ -2,6 +2,19 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import "./Navbar.css";
 
+window.addEventListener("scroll", () => {
+  const navbar = document.querySelector(".navbar-wrap");
+  const heroSection = document.querySelector(".hero-section"); // adjust selector
+  
+  const heroBottom = heroSection.offsetHeight;
+
+  if (window.scrollY > heroBottom - 80) { 
+    navbar.classList.add("navbar--scrolled");
+  } else {
+    navbar.classList.remove("navbar--scrolled");
+  }
+});
+
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);

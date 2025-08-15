@@ -13,19 +13,29 @@
 }
 
 /* Container wrapper to allow soft sticky effect */
+/* Initial hero state (inside hero, unchanged design) */
 .navbar-wrap {
-  position: absolute; /* instead of sticky for inside-hero */
+  position: absolute;
   top: 1rem;
   left: 3rem;
   right: 3rem;
   z-index: 50;
   padding-inline: clamp(12px, 2vw, 32px);
+  transition: all 0.3s ease; /* smooth change */
 }
 
-
 .navbar-wrap.navbar--scrolled {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  background: rgba(var(--glass-bg), 0.26);
+  backdrop-filter: blur(18px) saturate(120%);
+  -webkit-backdrop-filter: blur(18px) saturate(120%);
+  border-bottom: 1px solid rgba(var(--glass-border), 0.12);
+  box-shadow: 0 6px 24px rgba(0,0,0,.25);
   filter: saturate(1.05) brightness(1.02);
-  transform: translateY(-2px);
 }
 
 /* Core Navbar */
