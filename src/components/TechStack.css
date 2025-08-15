@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap');
+
+/* Universe light speed background container */
+.tech-stack-universe-bg {
+  position: relative;
+  width: 100vw;
+  overflow: hidden;
+  padding: 26px 0 16px 0;
+  z-index: 1;
+  animation: tunnel-pulse 6s ease-in-out infinite;
+  background-position: center center;
+}
+
+/* Pulsing warp tunnel energy */
+@keyframes tunnel-pulse {
+  0%, 100% {
+    background-size: 100% 100%;
+  }
+  50% {
+    background-size: 105% 105%;
+  }
+}
+
+/* Scrolling tech stack */
+.cosmic-tech-stack-speed {
+  display: flex;
+  align-items: center;
+  gap: 80px; /* increased gap for hover space */
+  white-space: nowrap;
+  animation: tunnel-float 40s linear infinite; /* slower float for relaxed vibe */
+  will-change: transform;
+}
+
+/* Smooth infinite floating */
+@keyframes tunnel-float {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Hide star bubbles for cleaner bg */
+.tech-stack-universe-bg::before,
+.tech-stack-universe-bg::after {
+  display: none;
+}
+
+/* Tech item container */
+.tech-item {
+  display: flex;
+  align-items: center;
+  padding: 0 6px;
+  min-width: 38px;
+  position: relative;
+  background: none;
+  border-radius: 8px;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+  cursor: default;
+}
+
+/* Icon style */
+.tech-icon-alone {
+  font-size: 1.65rem;
+  color: #fff;
+  opacity: 0.87;
+  filter: drop-shadow(0 0 2px #6f48b6cc);
+  transition: filter 0.23s, opacity 0.23s;
+}
+
+/* Hover/focus icon glow */
+.tech-item:hover .tech-icon-alone,
+.tech-item:focus-visible .tech-icon-alone {
+  color: #ffd32d;
+  opacity: 1;
+  filter: drop-shadow(0 0 4px #ffed90cc);
+  outline: none;
+}
+
+/* Name slide-in */
+.tech-name-slide {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #ffdb8f;
+  margin-left: 8px;
+  opacity: 0;
+  transform: translateX(10px);
+  transition: opacity 0.29s ease, transform 0.29s ease;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Show name on hover/focus */
+.tech-item:hover .tech-name-slide,
+.tech-item:focus-visible .tech-name-slide {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Responsive tweaks */
+@media (max-width: 700px) {
+  .cosmic-tech-stack-speed {
+    gap: 40px; /* reduced slightly on mobile */
+  }
+  .tech-icon-alone {
+    font-size: 1.3rem;
+  }
+  .tech-name-slide {
+    font-size: 0.89rem;
+  }
+}
+

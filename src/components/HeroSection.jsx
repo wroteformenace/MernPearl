@@ -97,6 +97,7 @@ export default function HeroSection() {
   }, []);
 
   return (
+    <>
     <section id="home" className="hero">
       {/* Cosmic Mouse Glow */}
       <div className="mouse-cosmos" ref={cosmosRef} />
@@ -146,5 +147,6 @@ export default function HeroSection() {
         </motion.a>
       </motion.div>
     </section>
+    </>
   );
 }
