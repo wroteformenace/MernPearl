@@ -16,7 +16,7 @@
 /* Initial hero state (inside hero, unchanged design) */
 .navbar-wrap {
   position: absolute;
-  top: 1rem;
+  top: 0.4rem;
   left: 3rem;
   right: 3rem;
   z-index: 50;

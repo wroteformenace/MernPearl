@@ -1,129 +1,56 @@
-/* Universe light speed background container */
+/* Background wrapper */
 .tech-stack-universe-bg {
   position: relative;
   width: 100vw;
   overflow: hidden;
-  padding: 26px 0 18px 0;
-  z-index: 1;
-  animation: tunnel-pulse 6s ease-in-out infinite;
-  background-position: center center;
+  padding: 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Pulsing warp tunnel energy */
-@keyframes tunnel-pulse {
-  0%, 100% {
-    background-size: 100% 100%;
-  }
-  50% {
-    background-size: 105% 105%;
-  }
+
+.cosmic-stack-wrapper {
+  display: flex;
+  gap: 24px;
+  min-width: max-content;
 }
 
-/* Scrolling tech stack */
-.cosmic-tech-stack-speed {
+/* 🔮 Glass Tile */
+.glass-tile {
   display: flex;
   align-items: center;
-  gap: 80px; /* increased gap for hover space */
-  white-space: nowrap;
-  animation: tunnel-float 40s linear infinite; /* slower float for relaxed vibe */
-  will-change: transform;
-}
-
-/* Smooth infinite floating */
-@keyframes tunnel-float {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-/* Tech item container - more rectangular with increased padding and less border-radius */
-.tech-item {
-  display: flex;
-  align-items: center;
-  justify-content: center;       /* center horizontally */
-  min-width: 60px;               /* increased minimum width */
-  padding: 12px 24px;            /* more vertical and horizontal padding */
-  border-radius: 8px;            /* less rounded corners for rectangular look */
-  background: rgba(60, 50, 100, 0.18);
-  border: 1.5px solid rgba(170, 140, 230, 0.19);
-  box-shadow:
-    0 4px 20px 0 rgba(80, 60, 160, 0.18),
-    0 0 0 1px rgba(225, 215, 255, 0.12) inset;
-  transition: 
-    padding 0.28s cubic-bezier(0.22, 0.61, 0.36, 1),
-    min-width 0.28s cubic-bezier(0.22, 0.61, 0.36, 1),
-    background 0.32s, 
-    box-shadow 0.32s, 
-    border-color 0.25s,
-    transform 0.32s cubic-bezier(0.22, 0.61, 0.36, 1);
+  gap: 10px;
+  padding: 12px 16px;
+  border-radius: 14px;
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
   cursor: pointer;
+  color: #fff;
+  font-size: 1.6rem;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  width: 60px;           /* 👉 initially small rectangle (icon only) */
   overflow: hidden;
 }
 
-/* Glass effect intensifies, stretches, and grows slightly on hover/focus */
-.tech-item:hover,
-.tech-item:focus-visible {
-  padding-right: 70px;             /* more padding to reveal label */
-  min-width: 170px;                /* wider minimum width */
-  background: rgba(140, 100, 255, 0.32);
-  border-color: #dfc9ffbb;
-  box-shadow:
-    0 10px 36px 4px rgba(160, 130, 255, 0.32),
-    0 0 0 3px #ffd32daa inset;
-  transform: scale(1.1);           /* subtle scale up */
+/* Smooth expansion on hover */
+.glass-tile:hover {
+  width: 160px;          /* 👉 expands to reveal name */
 }
 
-/* Icon stays visually centered but grows and glows more on hover */
-.tech-icon-alone {
-  font-size: 1.85rem;              /* slightly bigger icon */
-  color: #fff;
-  opacity: 0.92;
-  filter: drop-shadow(0 0 3px #7a51e8bb);
-  transition: filter 0.25s, color 0.22s, font-size 0.25s;
-  flex-shrink: 0;                  /* prevents shrinking */
-}
-
-.tech-item:hover .tech-icon-alone,
-.tech-item:focus-visible .tech-icon-alone {
-  color: #ffd32d;
-  filter: drop-shadow(0 0 10px #ffd32dac) drop-shadow(0 0 2px #fff8);
-  font-size: 2rem;                 /* larger icon on hover */
-}
-
-/* Slide label in */
-.tech-name-slide {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #ffdb8f;
-  margin-left: 16px;
+/* Hide label initially */
+.glass-tile .label {
+  font-size: 1rem;
   opacity: 0;
-  transform: translateX(10px);
-  transition: opacity 0.32s ease, transform 0.32s ease;
-  pointer-events: none;
-  user-select: none;
-  white-space: nowrap;
+  transform: translateX(15px);
+  transition: all 0.3s ease;
 }
 
-.tech-item:hover .tech-name-slide,
-.tech-item:focus-visible .tech-name-slide {
+/* Show label on hover */
+.glass-tile:hover .label {
   opacity: 1;
   transform: translateX(0);
-}
-
-/* Responsive adjustments */
-@media (max-width: 700px) {
-  .cosmic-tech-stack-speed { gap: 36px; }
-  .tech-item { min-width: 48px; padding: 10px 16px; border-radius: 8px; }
-  .tech-icon-alone { font-size: 1.5rem; }
-  .tech-item:hover,
-  .tech-item:focus-visible {
-    transform: scale(1.07);
-    min-width: 110px;
-    padding-right: 40px;
-  }
-  .tech-name-slide { font-size: 0.9rem; }
 }

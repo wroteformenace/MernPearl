@@ -1,62 +1,70 @@
-import React, { useState, useCallback } from "react";
+import React from "react";
+import { motion } from "framer-motion";
 import {
-  SiReact, SiMongodb, SiNextdotjs, SiNodedotjs, SiTypescript,
-  SiTailwindcss, SiGraphql, SiDocker, SiRedux, SiVercel
-} from "react-icons/si";
-import './TechStack.css';
+  FaReact,
+  FaNodeJs,
+  FaPython,
+  FaJava,
+  FaHtml5,
+  FaCss3Alt,
+  FaJs,
+  FaGitAlt,
+  FaDatabase,
+  FaDocker,
+  FaAws,
+} from "react-icons/fa";
+import { SiMongodb, SiExpress, SiTypescript, SiCplusplus } from "react-icons/si";
+import "./TechStack.css";
 
-const techs = [
-  { Icon: SiReact, name: "React" },
-  { Icon: SiMongodb, name: "MongoDB" },
-  { Icon: SiNextdotjs, name: "Next.js" },
-  { Icon: SiNodedotjs, name: "Node.js" },
-  { Icon: SiTypescript, name: "TypeScript" },
-  { Icon: SiTailwindcss, name: "Tailwind" },
-  { Icon: SiGraphql, name: "GraphQL" },
-  { Icon: SiDocker, name: "Docker" },
-  { Icon: SiRedux, name: "Redux" },
-  { Icon: SiVercel, name: "Vercel" },
+const techStack = [
+  { icon: <FaReact />, name: "React" },
+  { icon: <FaNodeJs />, name: "Node.js" },
+  { icon: <SiExpress />, name: "Express.js" },
+  { icon: <FaPython />, name: "Python" },
+  { icon: <FaJava />, name: "Java" },
+  { icon: <FaHtml5 />, name: "HTML5" },
+  { icon: <FaCss3Alt />, name: "CSS3" },
+  { icon: <FaJs />, name: "JavaScript" },
+  { icon: <SiTypescript />, name: "TypeScript" },
+  { icon: <SiCplusplus />, name: "C++" },
+  { icon: <SiMongodb />, name: "MongoDB" },
+  { icon: <FaDatabase />, name: "SQL" },
+  { icon: <FaDocker />, name: "Docker" },
+  { icon: <FaAws />, name: "AWS" },
+  { icon: <FaGitAlt />, name: "Git" },
 ];
 
-export default function CosmicTechStack() {
-  const [hovered, setHovered] = useState(-1);
-
-  // Handlers wrapped with useCallback for stable references
-  const onMouseEnter = useCallback((idx) => {
-    setHovered(idx);
-  }, []);
-
-  const onMouseLeave = useCallback(() => {
-    setHovered(-1);
-  }, []);
-
+export default function TechStack() {
   return (
-    <div className="tech-stack-universe-bg" aria-label="Our Technology Stack">
-      <div className="cosmic-tech-stack-speed" role="list">
-        {[...techs, ...techs].map(({ Icon, name }, idx) => (
-          <div
-            key={`${name}-${idx}`}
-            className={`tech-item ${hovered === idx ? "hovered" : ""}`}
-            onMouseEnter={() => onMouseEnter(idx)}
-            onMouseLeave={onMouseLeave}
-            onFocus={() => onMouseEnter(idx)}       // Supports keyboard focus
-            onBlur={onMouseLeave}
-            tabIndex={0}                           // Keyboard accessible
-            role="listitem"
-            aria-describedby={`tech-name-${idx}`} // Accessibility: connect icon and name
-          >
-            <span className="tech-icon-alone" aria-hidden="true">
-              <Icon />
-            </span>
-            <span
-              id={`tech-name-${idx}`}
-              className={`tech-name-slide ${hovered === idx ? "show" : ""}`}
-            >
-              {name}
-            </span>
+    <div className="tech-stack-universe-bg">
+      {/* We render TWO rows for perfect seamless looping */}
+      <motion.div
+        className="cosmic-stack-wrapper"
+        animate={{ x: ["0%", "-100%"] }}
+        transition={{ repeat: Infinity, duration: 40, ease: "linear" }}
+      >
+        {/* Duplicate set twice to fill space */}
+        {[...techStack, ...techStack, ...techStack].map((tech, index) => (
+          <div key={index} className="glass-tile">
+            <span className="icon">{tech.icon}</span>
+            <span className="label">{tech.name}</span>
           </div>
         ))}
-      </div>
+      </motion.div>
+
+      <motion.div
+        className="cosmic-stack-wrapper"
+        animate={{ x: ["0%", "-100%"] }}
+        transition={{ repeat: Infinity, duration: 40, ease: "linear" }}
+      >
+        {[...techStack, ...techStack, ...techStack].map((tech, index) => (
+          <div key={`row2-${index}`} className="glass-tile">
+            <span className="icon">{tech.icon}</span>
+            <span className="label">{tech.name}</span>
+          </div>
+        ))}
+      </motion.div>
     </div>
   );
 }
+
