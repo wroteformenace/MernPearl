@@ -108,10 +108,10 @@ export default function HeroSection() {
 
       {/* Liquid overlay */}
       <div className="liquid-overlay" aria-hidden="true" />
-{/* <div className="loader-fullscreen-wrapper">
+<div className="loader-fullscreen-wrapper">
   <div className="loader-wrapper">
     <div className="loader"></div>
-    <span className="loader-letter">L</span>
+    {/* <span className="loader-letter">L</span>
     <span className="loader-letter">o</span>
     <span className="loader-letter">a</span>
     <span className="loader-letter">d</span>
@@ -120,10 +120,9 @@ export default function HeroSection() {
     <span className="loader-letter">g</span>
     <span className="loader-letter">.</span>
     <span className="loader-letter">.</span>
-    <span className="loader-letter">.</span>
+    <span className="loader-letter">.</span> */}
   </div>
-</div> */}
-
+</div>
 
 
       {/* Hero Content */}
