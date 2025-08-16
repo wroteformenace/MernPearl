@@ -34,33 +34,66 @@ const techStack = [
   { icon: <FaGitAlt />, name: "Git" },
 ];
 
-export default function TechStack() {
+const services = [
+  "SEO Optimization",
+  "Web Development",
+  "App Development",
+  "UI/UX Design",
+  "Performance Tuning",
+  "API Integration",
+  "Cloud Hosting",
+  "Cyber Security",
+];
+
+function MarqueeRow({ items, direction = "left", type = "tech" }) {
+  const isTech = type === "tech";
+  const baseClass = isTech ? "glass-tile" : "service-tile";
+
   return (
-    <div className="tech-stack-universe-bg">
-      {/* We render TWO rows for perfect seamless looping */}
+    <div className="marquee">
       <motion.div
-        className="cosmic-stack-wrapper"
-        animate={{ x: ["0%", "-100%"] }}
-        transition={{ repeat: Infinity, duration: 40, ease: "linear" }}
+        className="marquee__group"
+        animate={{ x: direction === "left" ? ["0%", "-100%"] : ["-100%", "0%"] }}
+        transition={{
+          duration: direction === "left" ? 30 : 35, // speed control
+          ease: "linear",
+          repeat: Infinity,
+        }}
       >
-        {/* Duplicate set twice to fill space */}
-        {[...techStack, ...techStack, ...techStack].map((tech, index) => (
-          <div key={index} className="glass-tile">
-            <span className="icon">{tech.icon}</span>
-            <span className="label">{tech.name}</span>
+        {items.map((item, idx) => (
+          <div key={idx} className={baseClass}>
+            {isTech ? (
+              <>
+                <span className="icon">{item.icon}</span>
+                <span className="label">{item.name}</span>
+              </>
+            ) : (
+              <>{item}</>
+            )}
           </div>
         ))}
       </motion.div>
 
+      {/* Second copy immediately follows */}
       <motion.div
-        className="cosmic-stack-wrapper"
-        animate={{ x: ["0%", "-100%"] }}
-        transition={{ repeat: Infinity, duration: 40, ease: "linear" }}
+        className="marquee__group"
+        animate={{ x: direction === "left" ? ["0%", "-100%"] : ["-100%", "0%"] }}
+        transition={{
+          duration: direction === "left" ? 30 : 35,
+          ease: "linear",
+          repeat: Infinity,
+        }}
       >
-        {[...techStack, ...techStack, ...techStack].map((tech, index) => (
-          <div key={`row2-${index}`} className="glass-tile">
-            <span className="icon">{tech.icon}</span>
-            <span className="label">{tech.name}</span>
+        {items.map((item, idx) => (
+          <div key={`dup-${idx}`} className={baseClass}>
+            {isTech ? (
+              <>
+                <span className="icon">{item.icon}</span>
+                <span className="label">{item.name}</span>
+              </>
+            ) : (
+              <>{item}</>
+            )}
           </div>
         ))}
       </motion.div>
@@ -68,3 +101,14 @@ export default function TechStack() {
   );
 }
 
+export default function TechStack() {
+  return (
+    <div className="tech-stack-universe-bg" aria-label="Technology Stack Floating List">
+      {/* Tech row - moves left */}
+      <MarqueeRow items={techStack} direction="left" type="tech" />
+
+      {/* Services row - moves right */}
+      <MarqueeRow items={services} direction="right" type="service" />
+    </div>
+  );
+}
