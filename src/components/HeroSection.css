@@ -10,9 +10,6 @@
   --glass-border: 255, 255, 255;
 }
 
-/* From Uiverse.io by dexter-st */ 
-
-
 /* ✨ Reset */
 * {
   margin: 0;
@@ -172,7 +169,7 @@ body {
   align-items: center;
   justify-content: center;
   background: transparent; /* Or semi-transparent if you want overlay effect */
-  z-index: 999999;      /* ensure above other elements */
+  z-index: 0;      /* ensure above other elements */
   pointer-events: none; /* let clicks pass through except on loader */
 }
 
@@ -181,8 +178,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 180px;
-  height: 180px;
+  width: 2000px;
+  height: 700px;
   font-family: "Inter", sans-serif;
   font-size: 1.2em;
   font-weight: 300;
@@ -200,7 +197,7 @@ body {
   aspect-ratio: 1 / 1;
   border-radius: 50%;
   background-color: transparent;
-  animation: loader-rotate 2s linear infinite;
+  animation: loader-rotate 5s linear infinite;
   z-index: 0;
 }
 
@@ -224,7 +221,7 @@ body {
     box-shadow:
       0 10px 20px 0 #fff inset,
       0 20px 30px 0 #ad5fff inset,
-      0 60px 60px 0 #471eec inset;
+      0 50px 30px 0 #471eec inset;
   }
 }
 
