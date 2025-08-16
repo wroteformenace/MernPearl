@@ -15,6 +15,7 @@
 /* Reuse your existing glass-tile and service-tile CSS */
 .tech-stack-universe-bg {
   position: relative;
+  margin-top: 7rem;
   width: 100vw;
   overflow: hidden;
   padding: 20px;
@@ -37,7 +38,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 12px 16px;
+  padding: 12px 18px;
   border-radius: 14px;
   backdrop-filter: blur(14px);
   background: rgba(255, 255, 255, 0.568);
