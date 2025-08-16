@@ -20,7 +20,7 @@
   padding: 20px;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 10px;
   justify-content: center;
   align-items: center;
 }
@@ -40,7 +40,7 @@
   padding: 12px 16px;
   border-radius: 14px;
   backdrop-filter: blur(14px);
-  background: rgba(80, 20, 120, 0.25);
+  background: rgba(255, 255, 255, 0.568);
   border: 1px solid rgba(180, 90, 255, 0.5);
   cursor: pointer;
   color: #fff;
@@ -70,7 +70,7 @@
 
 .glass-tile i,
 .glass-tile svg {
-  color: #d48cff;
+  color: #510080;
 }
 
 /* Service tiles */
