@@ -5,19 +5,26 @@ export default function UniverseCards() {
   const phases = [
     {
       title: "AI Driven Solutions",
-      hoverImage: "./design.png",
+      hoverImage: "/assets/design.png",
     },
     {
       title: "UI/UX Designing",
-      hoverImage: "./2.png",
+      hoverImage: "/assets/2.png",
     },
     {
-      title: "Website and Mobile App Development",
-      hoverImage: "./build.png",
+      // ✨ Use <br/> for clean line breaks
+      title: (
+        <>
+          Website &<br />
+          Mobile App<br />
+          Development
+        </>
+      ),
+      hoverImage: "/assets/build.png",
     },
     {
       title: "DevOps",
-      hoverImage: "./scale.png",
+      hoverImage: "/assets/scale.png",
     },
   ];
 
@@ -25,28 +32,28 @@ export default function UniverseCards() {
 
   return (
     <section className="cosmic-bg-section">
+      {/* SERVICES TITLE */}
+      <h2 className="services-title">Services</h2>
+
       <div className="card" role="list" aria-label="Project phases with images">
         {phases.map(({ title, hoverImage }, idx) => {
           const isHovered = hoveredIndex === idx;
 
           return (
-            
             <p
               key={idx}
               role="listitem"
               tabIndex={0}
-              aria-label={title}
+              aria-label={typeof title === "string" ? title : "Website & Mobile App Development"}
               onMouseEnter={() => setHoveredIndex(idx)}
               onMouseLeave={() => setHoveredIndex(null)}
-              style={{
-                backgroundImage: isHovered
-                  ? `url(${hoverImage})`
-                  : "none",
-              }}
             >
-              {/* <div className="card-image-wrapper">
-                <img src={hoverImage} alt={title} />
-              </div> */}
+              {/* Overlayed hover image */}
+              {isHovered && (
+                <div className="card-image-overlay">
+                  <img src={hoverImage} alt={typeof title === "string" ? title : "Website & Mobile App Development"} />
+                </div>
+              )}
               <span>{title}</span>
             </p>
           );
