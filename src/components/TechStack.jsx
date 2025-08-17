@@ -17,21 +17,21 @@ import { SiMongodb, SiExpress, SiTypescript, SiCplusplus } from "react-icons/si"
 import "./TechStack.css";
 
 const techStack = [
-  { icon: <FaReact />, name: "React" },
-  { icon: <FaNodeJs />, name: "Node.js" },
-  { icon: <SiExpress />, name: "Express.js" },
-  { icon: <FaPython />, name: "Python" },
-  { icon: <FaJava />, name: "Java" },
-  { icon: <FaHtml5 />, name: "HTML5" },
-  { icon: <FaCss3Alt />, name: "CSS3" },
-  { icon: <FaJs />, name: "JavaScript" },
-  { icon: <SiTypescript />, name: "TypeScript" },
-  { icon: <SiCplusplus />, name: "C++" },
-  { icon: <SiMongodb />, name: "MongoDB" },
-  { icon: <FaDatabase />, name: "SQL" },
-  { icon: <FaDocker />, name: "Docker" },
-  { icon: <FaAws />, name: "AWS" },
-  { icon: <FaGitAlt />, name: "Git" },
+  { icon: <FaReact /> },
+  { icon: <FaNodeJs /> },
+  { icon: <SiExpress /> },
+  { icon: <FaPython /> },
+  { icon: <FaJava /> },
+  { icon: <FaHtml5 /> },
+  { icon: <FaCss3Alt /> },
+  { icon: <FaJs /> },
+  { icon: <SiTypescript /> },
+  { icon: <SiCplusplus /> },
+  { icon: <SiMongodb /> },
+  { icon: <FaDatabase /> },
+  { icon: <FaDocker /> },
+  { icon: <FaAws /> },
+  { icon: <FaGitAlt /> },
 ];
 
 const services = [
@@ -47,63 +47,40 @@ const services = [
 
 function MarqueeRow({ items, direction = "left", type = "tech" }) {
   const isTech = type === "tech";
-  const baseClass = isTech ? "glass-tile" : "service-tile";
+  const baseClass = isTech ? "icon-tile" : "service-tile";
 
   return (
     <div className="marquee">
-      <motion.div
-        className="marquee__group"
-        animate={{ x: direction === "left" ? ["0%", "-100%"] : ["-100%", "0%"] }}
-        transition={{
-          duration: direction === "left" ? 30 : 35, // speed control
-          ease: "linear",
-          repeat: Infinity,
-        }}
-      >
-        {items.map((item, idx) => (
-          <div key={idx} className={baseClass}>
-            {isTech ? (
-              <>
-                <span className="icon">{item.icon}</span>
-                <span className="label">{item.name}</span>
-              </>
-            ) : (
-              <>{item}</>
-            )}
-          </div>
-        ))}
-      </motion.div>
-
-      {/* Second copy immediately follows */}
-      <motion.div
-        className="marquee__group"
-        animate={{ x: direction === "left" ? ["0%", "-100%"] : ["-100%", "0%"] }}
-        transition={{
-          duration: direction === "left" ? 30 : 35,
-          ease: "linear",
-          repeat: Infinity,
-        }}
-      >
-        {items.map((item, idx) => (
-          <div key={`dup-${idx}`} className={baseClass}>
-            {isTech ? (
-              <>
-                <span className="icon">{item.icon}</span>
-                <span className="label">{item.name}</span>
-              </>
-            ) : (
-              <>{item}</>
-            )}
-          </div>
-        ))}
-      </motion.div>
+      {[...Array(2)].map((_, i) => (
+        <motion.div
+          key={i}
+          className="marquee__group"
+          animate={{
+            x: direction === "left" ? ["0%", "-100%"] : ["-100%", "0%"],
+          }}
+          transition={{
+            duration: direction === "left" ? 30 : 35,
+            ease: "linear",
+            repeat: Infinity,
+          }}
+        >
+          {items.map((item, idx) => (
+            <div key={`${i}-${idx}`} className={baseClass}>
+              {isTech ? <span className="icon">{item.icon}</span> : item}
+            </div>
+          ))}
+        </motion.div>
+      ))}
     </div>
   );
 }
 
 export default function TechStack() {
   return (
-    <div className="tech-stack-universe-bg" aria-label="Technology Stack Floating List">
+    <div
+      className="tech-stack-universe-bg"
+      aria-label="Technology Stack Floating List"
+    >
       {/* Tech row - moves left */}
       <MarqueeRow items={techStack} direction="left" type="tech" />
 
