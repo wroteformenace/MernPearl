@@ -10,10 +10,6 @@
   --glass-border: 255, 255, 255;
 }
 
-.hero-content {
-  transform: translateY(-8vh);
-}
-
 /* ✨ Reset */
 * {
   margin: 0;
@@ -99,24 +95,28 @@ body {
 .hero {
   position: relative;
   width: 100%;
-  min-height: clamp(640px, 100vh, 680px);
-  display: grid;
-  place-items: center start;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center;
   padding: clamp(20px, 4vw, 24px);
   overflow: hidden;
-  background:
-  url('/sick.png') center/cover no-repeat fixed;
+  background: url('/sick.png') center/cover no-repeat fixed;
 }
 
-.hero .navbar {
-  background: transparent;
-  box-shadow: none;
+/* This wrapper is what we nudge upwards */
+.hero-content {
+  transform: translateY(-8vh); /* only content moves, bg stays */
+  text-align: center;
+  z-index: 5; /* make sure it's above particles */
 }
-
 
 .hero-inner {
-  width: min(100%, var(--hero-max));
-  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  align-items: center;
 }
 
 .particle-text-container {
