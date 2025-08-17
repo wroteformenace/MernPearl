@@ -95,11 +95,12 @@ body {
 .hero {
   position: relative;
   width: 100%;
-  min-height: clamp(640px, 100vh, 980px);
+  min-height: clamp(640px, 100vh, 680px);
   display: grid;
   place-items: center start;
-  padding: clamp(20px, 4vw, 48px);
+  padding: clamp(20px, 4vw, 24px);
   overflow: hidden;
+  padding-bottom: 14vh;
   background:
   url('/sick.png') center/cover no-repeat fixed;
 }

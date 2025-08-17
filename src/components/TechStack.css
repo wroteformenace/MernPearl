@@ -41,7 +41,7 @@
   background: rgba(255, 255, 255, 0.22); 
   border: 1px solid rgba(255, 255, 255, 0.3);
  margin-top: 1rem;
- margin-bottom: 1rem;
+ margin-bottom: 0.3rem;
   transition: transform 0.3s ease, background 0.3s ease;
 }
 .icon-tile:hover {
