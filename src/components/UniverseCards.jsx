@@ -4,19 +4,19 @@ import "./UniverseCards.css";
 export default function UniverseCards() {
   const phases = [
     {
-      title: "Discover Define",
+      title: "AI Driven Solutions",
       hoverImage: "./design.png",
     },
     {
-      title: "Design",
+      title: "UI/UX Designing",
       hoverImage: "./2.png",
     },
     {
-      title: "Build",
+      title: "Website and Mobile App Development",
       hoverImage: "./build.png",
     },
     {
-      title: "Iterate and Scale",
+      title: "DevOps",
       hoverImage: "./scale.png",
     },
   ];
@@ -30,6 +30,7 @@ export default function UniverseCards() {
           const isHovered = hoveredIndex === idx;
 
           return (
+            
             <p
               key={idx}
               role="listitem"
