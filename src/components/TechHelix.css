@@ -1,0 +1,110 @@
+/* SECTION WRAPPER */
+.helix-section {
+  width: 100%;
+  min-height: 70vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background: linear-gradient(135deg, #12091a, #1b0f2f, #1e1035);
+  overflow: hidden;
+  color: #fff;
+  position: relative;
+  padding: 3rem 2rem;
+}
+
+/* HEADING */
+.helix-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(2rem, 3vw, 3.5rem);
+  margin-bottom: 2rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #efe6ff; /* Statuesque, refined */
+  font-weight: 700;
+  text-align: center;
+
+  /* Subtle glow, not cartoon */
+  text-shadow: 0 0 20px rgba(170, 100, 255, 0.25);
+  z-index: 2;
+}
+
+/* DNA CONTAINER */
+.helix {
+  position: relative;
+  width: 100vw;
+  height: 280px;
+  perspective: 1600px;
+  overflow: hidden;
+}
+
+/* DNA NODES */
+.helix-node {
+  position: absolute;
+  top: 50%;
+  transform-style: preserve-3d;
+
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  padding: 10px 18px;
+  border-radius: 12px;
+  white-space: nowrap;
+
+  /* Glassmorphism — calm, neutral */
+  background: rgba(35, 20, 50, 0.6);
+  border: 1px solid rgba(200, 150, 255, 0.35);
+  backdrop-filter: blur(6px) saturate(140%);
+
+  /* PREMIUM SHADOW */
+  box-shadow:
+    0 4px 10px rgba(0, 0, 0, 0.4),
+    0 0 25px rgba(160, 90, 255, 0.25);
+
+  color: #efe6ff;
+
+  /* Smooth flow */
+  animation: dnaFlow 14s linear infinite;
+  animation-delay: calc(var(--i) * -0.8s);
+  opacity: 0;
+}
+
+/* HORIZONTAL DNA MOTION */
+@keyframes dnaFlow {
+  0% {
+    transform: translateX(-20vw) 
+               translateY(calc(sin(var(--i) * 36deg) * 60px))
+               translateZ(calc(cos(var(--i) * 36deg) * 150px))
+               scale(0.9);
+    opacity: 0;
+  }
+  15% { opacity: 1; }
+  85% { opacity: 1; }
+  100% {
+    transform: translateX(120vw) 
+               translateY(calc(sin(var(--i) * 36deg + 360deg) * 60px))
+               translateZ(calc(cos(var(--i) * 36deg + 360deg) * 150px))
+               scale(0.9);
+    opacity: 0;
+  }
+}
+
+/* BACKGROUND AURA — subtle */
+.helix-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(170, 70, 255, 0.12), transparent 70%),
+    radial-gradient(circle at 80% 20%, rgba(120, 200, 255, 0.1), transparent 70%);
+  z-index: 1;
+}
+
+.helix, .helix-title {
+  position: relative;
+  z-index: 2;
+}
+

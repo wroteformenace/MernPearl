@@ -108,7 +108,7 @@ body {
 /* This wrapper is what we nudge upwards */
 .hero-content {
   transform: translateY(-8vh); /* only content moves, bg stays */
-  text-align: center;
+  /* text-align: center; */
   z-index: 5; /* make sure it's above particles */
 }
 
@@ -116,7 +116,8 @@ body {
   display: flex;
   flex-direction: column;
   gap: 1.6rem;
-  align-items: center;
+  align-items: flex-start;
+  padding-left: 4rem;
 }
 
 .particle-text-container {
