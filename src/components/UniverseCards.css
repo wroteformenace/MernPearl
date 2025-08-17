@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400&display=swap');
 /* Ensure section stacks top → bottom */
 .cosmic-bg-section {
   min-height: 100vh;
@@ -20,14 +21,16 @@
 }
 
 /* Title styling — always at top, centered */
+
 .services-title {
+  font-family: 'Montserrat', sans-serif;
   font-size: clamp(2rem, 4vw, 3.5rem);
-  font-weight: 800;
+  font-weight: 400; /* slim weight */
   text-transform: uppercase;
   text-align: center;
-  margin-bottom: 2rem; /* space between title and cards */
+  margin-bottom: 2rem;
   color: #fff;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em; /* slightly tighter spacing */
   z-index: 3;
   position: relative;
 }

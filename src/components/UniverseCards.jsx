@@ -15,9 +15,7 @@ export default function UniverseCards() {
       // ✨ Use <br/> for clean line breaks
       title: (
         <>
-          Website &<br />
-          Mobile App<br />
-          Development
+          Website & Mobile<br />App Development
         </>
       ),
       hoverImage: "/assets/build.png",
