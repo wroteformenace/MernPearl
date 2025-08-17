@@ -124,7 +124,7 @@ export default function HeroSection() {
   </div>
 </div>
 
-
+      <div className="hero-content">
       {/* Hero Content */}
       <motion.div
         initial={{ opacity: 0, y: 18 }}
@@ -157,7 +157,7 @@ export default function HeroSection() {
           <span className="cta-shimmer" aria-hidden="true" />
           Let’s connect
         </motion.a>
-      </motion.div>
+      </motion.div></div>
       <TechStack />
     </section>
     </>

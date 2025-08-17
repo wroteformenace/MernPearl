@@ -10,6 +10,10 @@
   --glass-border: 255, 255, 255;
 }
 
+.hero-content {
+  transform: translateY(-8vh);
+}
+
 /* ✨ Reset */
 * {
   margin: 0;
@@ -100,7 +104,6 @@ body {
   place-items: center start;
   padding: clamp(20px, 4vw, 24px);
   overflow: hidden;
-  padding-bottom: 14vh;
   background:
   url('/sick.png') center/cover no-repeat fixed;
 }
