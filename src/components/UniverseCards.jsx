@@ -5,11 +5,11 @@ export default function UniverseCards() {
   const phases = [
     {
       title: "AI Driven Solutions",
-      hoverImage: "/assets/design.png",
+      hoverImage: "./Ai.png",
     },
     {
       title: "UI/UX Designing",
-      hoverImage: "/assets/2.png",
+      hoverImage: "./Ui.png",
     },
     {
       // ✨ Use <br/> for clean line breaks
@@ -18,11 +18,11 @@ export default function UniverseCards() {
           Website & Mobile<br />App Development
         </>
       ),
-      hoverImage: "/assets/build.png",
+      hoverImage: "./App.png",
     },
     {
       title: "DevOps",
-      hoverImage: "/assets/scale.png",
+      hoverImage: "./devops.png",
     },
   ];
 
