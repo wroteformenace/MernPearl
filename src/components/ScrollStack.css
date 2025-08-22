@@ -1,0 +1,32 @@
+.stack-scroller {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  perspective: 1000px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.stack-inner {
+  position: relative;
+  min-height: 200vh; /* or enough height to scroll */
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+.stack-card {
+  /* card styles here */
+  margin-bottom: 0; /* We handle margin with JS */
+  transition: transform 0.3s, filter 0.3s;
+  will-change: transform, filter;
+  backface-visibility: hidden;
+  perspective: 1000px;
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000px;
+}
+
+.stack-end {
+  height: 400px; /* spacer height to release pinned scroll */
+  pointer-events: none;
+}

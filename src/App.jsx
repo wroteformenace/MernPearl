@@ -4,6 +4,7 @@ import CompassDock from "./components/Compass";
 import Navbar from "./components/Navbar";
 import UniverseCards from "./components/UniverseCards";
 import MagicBento from "./components/MagicBento";
+import ScrollStack, { ScrollStackItem } from './components/ScrollStack'
 
 const items = [
   {
@@ -45,6 +46,7 @@ export default function App() {
       <main>
         <HeroSection />
         <UniverseCards />
+        <div><h2 className="services-title">Why Us?</h2></div>
         <MagicBento
           textAutoHide={true}
           enableStars={true}
@@ -53,7 +55,7 @@ export default function App() {
           enableTilt={true}
           enableMagnetism={true}
           clickEffect={true}
-          spotlightRadius={300}
+          spotlightRadius={400}
           particleCount={12}
           glowColor="132, 0, 255"
         />
@@ -99,6 +101,20 @@ export default function App() {
         />
       </div> 
       */}
+      <div><ScrollStack>
+  <ScrollStackItem>
+    <h2>Card 1</h2>
+    <p>This is the first card in the stack</p>
+  </ScrollStackItem>
+  <ScrollStackItem>
+    <h2>Card 2</h2>
+    <p>This is the second card in the stack</p>
+  </ScrollStackItem>
+  <ScrollStackItem>
+    <h2>Card 3</h2>
+    <p>This is the third card in the stack</p>
+  </ScrollStackItem>
+</ScrollStack></div>
 
       <CompassDock />
     </div>
