@@ -105,7 +105,7 @@ export default function HeroSection() {
       <div className="mouse-cosmos" ref={cosmosRef} />
 
       {/* Star Particles Container */}
-      <div className="star-particles" ref={starContainerRef} />
+      {/* <div className="star-particles" ref={starContainerRef} /> */}
 
       {/* Liquid overlay */}
       <div className="liquid-overlay" aria-hidden="true" />
