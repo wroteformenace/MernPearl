@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import "./HeroSection.css";
 import TechStack from "./TechStack";
 import ParticleTextReveal from "./Particle";
+// import Zap from "./Zap";
 
 export default function HeroSection() {
   const cosmosRef = useRef(null);
@@ -101,10 +102,10 @@ export default function HeroSection() {
     <section id="home" className="hero">
 
       {/* Cosmic Mouse Glow */}
-      {/* <div className="mouse-cosmos" ref={cosmosRef} /> */}
+      <div className="mouse-cosmos" ref={cosmosRef} />
 
       {/* Star Particles Container */}
-      {/* <div className="star-particles" ref={starContainerRef} /> */}
+      <div className="star-particles" ref={starContainerRef} />
 
       {/* Liquid overlay */}
       <div className="liquid-overlay" aria-hidden="true" />
@@ -158,6 +159,7 @@ export default function HeroSection() {
           Let’s connect
         </motion.a>
       </motion.div></div>
+          {/* <Zap /> */}
       <TechStack />
     </section>
     </>

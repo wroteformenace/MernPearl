@@ -4,19 +4,19 @@ import CompassDock from "./components/Compass";
 import Navbar from "./components/Navbar";
 import UniverseCards from "./components/UniverseCards";
 // import { ParallaxProvider } from "react-scroll-parallax";
-import TechPortals from "./components/TechPortals";
-import SplashCursor from "./components/Splashcursor";
+// import TechPortals from "./components/TechPortals";
+// import SplashCursor from "./components/Splashcursor";
 
 export default function App(){
   return (
     <div>
-      <SplashCursor />
+      {/* <SplashCursor /> */}
       <div className="navbar-wrap">
         <Navbar />
       </div>
       <HeroSection />
       <UniverseCards />
-      <TechPortals />
+      {/* <TechPortals /> */}
       <CompassDock />
       {/* rest of your sections… */}
     </div>
