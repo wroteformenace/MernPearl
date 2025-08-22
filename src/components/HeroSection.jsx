@@ -102,7 +102,7 @@ export default function HeroSection() {
     <section id="home" className="hero">
 
       {/* Cosmic Mouse Glow */}
-      <div className="mouse-cosmos" ref={cosmosRef} />
+      {/* <div className="mouse-cosmos" ref={cosmosRef} /> */}
 
       {/* Star Particles Container */}
       {/* <div className="star-particles" ref={starContainerRef} /> */}
