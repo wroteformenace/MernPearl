@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import UniverseCards from "./components/UniverseCards";
 import MagicBento from "./components/MagicBento";
 import ScrollStack, { ScrollStackItem } from './components/ScrollStack'
+import ProfileCard from "./components/ProfileCard";
 
 const items = [
   {
@@ -115,6 +116,19 @@ export default function App() {
     <p>This is the third card in the stack</p>
   </ScrollStackItem>
 </ScrollStack></div>
+
+<ProfileCard
+  name="Javi A. Torres"
+  title="Software Engineer"
+  handle="javicodes"
+  status="Online"
+  contactText="Contact Me"
+  avatarUrl="/path/to/avatar.jpg"
+  showUserInfo={true}
+  enableTilt={true}
+  enableMobileTilt={false}
+  onContactClick={() => console.log('Contact clicked')}
+/>
 
       <CompassDock />
     </div>
