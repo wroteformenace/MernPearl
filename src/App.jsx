@@ -5,12 +5,10 @@ import Navbar from "./components/Navbar";
 import UniverseCards from "./components/UniverseCards";
 // import { ParallaxProvider } from "react-scroll-parallax";
 // import TechPortals from "./components/TechPortals";
-import SplashCursor from "./components/Splashcursor";
 
 export default function App(){
   return (
     <div>
-      <SplashCursor />
       <div className="navbar-wrap">
         <Navbar />
       </div>

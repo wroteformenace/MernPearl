@@ -50,7 +50,7 @@
 }
 
 /* 🎇 Services text tiles */
-/* .service-tile {
+.service-tile {
   font-size: 1.1rem;
   font-weight: 600;
   padding: 12px 28px; 
@@ -67,27 +67,4 @@
 .service-tile:hover {
   transform: translateY(-4px) scale(1.06);
   background: rgba(255, 255, 255, 0.32); 
-} */
-
-.service-tile {
-  display: flex;
-  color: #f4f4f4;
-  white-space: nowrap;
-  text-align: center;
-  font-family: sans-serif;
-  font-size: 0.25rem;
-  font-weight: bold;
-  letter-spacing: -0.02em;
-  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.1));
-}
-
-.service-tile span {
-  flex-shrink: 0;
-}
-
-@media (min-width: 768px) {
-  .service-tile {
-    font-size: 1.2rem;
-    line-height: 5rem;
-  }
 }
