@@ -383,7 +383,7 @@ const GlobalSpotlight = ({
     const handleMouseMove = (e) => {
       if (!spotlightRef.current || !gridRef.current) return;
 
-      const section = gridRef.current.closest(".bento-section");
+      const section = gridRef.current.closest(".cosmic-bg-section");
       const rect = section?.getBoundingClientRect();
       const mouseInside =
         rect &&
@@ -492,7 +492,7 @@ const BentoCardGrid = ({
   children,
   gridRef
 }) => (
-  <div className="card-grid bento-section" ref={gridRef}>
+  <div className="card-grid cosmic-bg-section" ref={gridRef}>
     {children}
   </div>
 );

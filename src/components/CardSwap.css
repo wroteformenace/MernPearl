@@ -1,0 +1,77 @@
+.cardd-swap-container {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  transform: translate(5%, 20%);
+  transform-origin: bottom right;
+
+  perspective: 900px;
+  overflow: visible;
+}
+
+.cardd {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 12px;
+  border: 1px solid #fff;
+  background: #000;
+
+  /* Added padding to prevent image clipping */
+  padding: 10px;
+
+  transform-style: preserve-3d;
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+
+  /* Set max size to keep cards consistent */
+  max-width: 320px;
+  max-height: 280px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.cardd h3 {
+  margin: 0 0 12px;
+  color: #ff8cff;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  text-align: center;
+}
+
+.cardd p {
+  margin: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Image styling in cards */
+.cardd p img {
+  max-width: 100%;
+  max-height: 180px;
+  object-fit: contain;
+  border-radius: 10px;
+  user-select: none;
+  pointer-events: none;
+  box-shadow: 0 0 15px rgba(132, 0, 255, 0.7);
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  .cardd-swap-container {
+    transform: scale(0.75) translate(25%, 25%);
+  }
+}
+
+@media (max-width: 480px) {
+  .cardd-swap-container {
+    transform: scale(0.55) translate(25%, 25%);
+  }
+}
