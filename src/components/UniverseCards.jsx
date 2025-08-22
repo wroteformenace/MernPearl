@@ -33,7 +33,7 @@ export default function UniverseCards() {
       {/* SERVICES TITLE */}
       <h2 className="services-title">Services</h2>
 
-      <div className="card" role="list" aria-label="Project phases with images">
+      <div className="cards" role="list" aria-label="Project phases with images">
         {phases.map(({ title, hoverImage }, idx) => {
           const isHovered = hoveredIndex === idx;
 
@@ -48,7 +48,7 @@ export default function UniverseCards() {
             >
               {/* Overlayed hover image */}
               {isHovered && (
-                <div className="card-image-overlay">
+                <div className="cards-image-overlay">
                   <img src={hoverImage} alt={typeof title === "string" ? title : "Website & Mobile App Development"} />
                 </div>
               )}

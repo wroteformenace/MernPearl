@@ -1,0 +1,43 @@
+.techportals-container {
+  display: flex;               /* Horizontal row layout */
+  gap: 40px;
+  width: max-content;         /* Container width fits all portals */
+  overflow-x: visible;
+  margin: 0 auto;
+  padding: 50px 0;
+}
+
+.wrapper {
+  height: 100vh;              /* Full viewport height for vertical scroll */
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  padding: 0 20px;
+}
+
+.portal-card {
+  flex: 0 0 300px;            /* Fixed width per portal */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.portal-image {
+  width: 100%;
+  border-radius: 15px;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease;
+}
+
+.portal-content {
+  text-align: center;
+}
+
+.stack-item {
+  display: inline-block;
+  background-color: #222;
+  color: white;
+  border-radius: 10px;
+  padding: 7px 12px;
+  margin: 0 6px;
+  font-size: 1rem;
+}

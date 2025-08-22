@@ -65,7 +65,7 @@
 /* ======================
    CARD CONTAINER
 ====================== */
-.card {
+.cards {
   width: 90vw;
   max-width: 1400px;
   height: 80vh;
@@ -83,9 +83,9 @@
 }
 
 /* ======================
-   CARD PANELS
+   cards PANELS
 ====================== */
-.card p {
+.cards p {
   height: 100%;
   flex: 1; /* evenly spaced by default */
   overflow: hidden;
@@ -110,7 +110,7 @@
 }
 
 /* IDLE TEXT (sideways) */
-.card p span {
+.cards p span {
   display: inline-block;
   transform: rotate(-90deg);
   transition: transform 0.6s ease, color 0.3s ease, font-size 0.4s ease;
@@ -123,7 +123,7 @@
 }
 
 /* HOVER — STRETCH PANEL */
-.card p:hover {
+.cards p:hover {
   flex: 4; /* stretches wider */
   background: linear-gradient(135deg, rgba(255, 138, 230, 0.9), rgba(170, 70, 255, 0.85));
   box-shadow:
@@ -133,7 +133,7 @@
 }
 
 /* HOVER TEXT (straight upright) */
-.card p:hover span {
+.cards p:hover span {
   transform: rotate(0deg);
   font-size: clamp(1.8rem, 2.5vw, 3.5rem);
   color: #fff;
@@ -143,7 +143,7 @@
 /* ======================
    HOVER IMAGE OVERLAY
 ====================== */
-.card-image-overlay {
+.cards-image-overlay {
   position: absolute;
   inset: 0;
   border-radius: 14px;
@@ -151,14 +151,14 @@
   z-index: 1;
 }
 
-.card-image-overlay img {
+.cards-image-overlay img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   filter: brightness(0.8);
 }
 
-.card p span {
+.cards p span {
   position: relative;
   z-index: 2;
 }
