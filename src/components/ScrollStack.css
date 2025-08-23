@@ -9,7 +9,7 @@
   cursor: pointer;
 
   /* Use CSS variables for colors/images */
-  background-color: var(--bg-color, #444); /* fallback grey */
+  background-color: var(--bg-color, #f5f5f5); /* fallback grey */
   color: #fff;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
 

@@ -23,22 +23,22 @@ export default function App() {
           <HeroSection />
                     <ScrollStack>
   <ScrollStackItem backgroundColor="#407AFF" backgroundImage={Dev}>
-    <h2>Card 1</h2>
+    <h2>DevOps</h2>
     <p>This card has blue color with an image.</p>
   </ScrollStackItem>
 
   <ScrollStackItem  backgroundColor="#BA71F5" backgroundImage={Mob}>
-    <h2>Card 2</h2>
+    <h2>Mobile App Development</h2>
     <p>This card only has a solid color background.</p>
   </ScrollStackItem>
 
   <ScrollStackItem backgroundColor="#BA71F5" backgroundImage={AI}>
-    <h2>Card 3</h2>
+    <h2>AI Driven Solutions</h2>
     <p>This card has purple color with an image.</p>
   </ScrollStackItem>
 
   <ScrollStackItem backgroundColor="#ffffffff" backgroundImage={Ui}>
-    <h2>Card 4</h2>
+    <h2>User Interface Design</h2>
     <p>This card has a yellow color with a local image.</p>
   </ScrollStackItem>
 </ScrollStack>
