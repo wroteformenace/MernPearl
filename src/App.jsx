@@ -7,6 +7,7 @@ import MagicBento from "./components/MagicBento";
 import ScrollStack, { ScrollStackItem } from './components/ScrollStack'
 import ProfileCard from "./components/ProfileCard";
 import "./App.css";
+import localImg from './assets/react.svg'; 
 
 export default function App() {
   return (
@@ -39,40 +40,19 @@ export default function App() {
         </div>
 
           <ScrollStack>
-  <ScrollStackItem>
-    <div
-      className="scroll-stack-card"
-      style={{ "--bg-image": `url('https://picsum.photos/800/600?1')` }}
-    >
-      <div className="scroll-stack-card-content">
-        <h2>Card 1</h2>
-        <p>This is the first card in the stack</p>
-      </div>
-    </div>
+  <ScrollStackItem backgroundColor="#407AFF" backgroundImage="https://picsum.photos/id/1018/400/300">
+    <h2>Card 1</h2>
+    <p>This card has blue color with an image.</p>
   </ScrollStackItem>
 
-  <ScrollStackItem>
-    <div
-      className="scroll-stack-card"
-      style={{ "--bg-image": `url('https://picsum.photos/800/600?2')` }}
-    >
-      <div className="scroll-stack-card-content">
-        <h2>Card 2</h2>
-        <p>This is the second card in the stack</p>
-      </div>
-    </div>
+  <ScrollStackItem backgroundColor="#DD3E58">
+    <h2>Card 2</h2>
+    <p>This card only has a solid color background.</p>
   </ScrollStackItem>
 
-  <ScrollStackItem>
-    <div
-      className="scroll-stack-card"
-      style={{ "--bg-image": `url('/assets/localImage.jpg')` }} // 👈 local image example
-    >
-      <div className="scroll-stack-card-content">
-        <h2>Card 3</h2>
-        <p>This is the third card in the stack</p>
-      </div>
-    </div>
+  <ScrollStackItem backgroundColor="#BA71F5" backgroundImage="https://picsum.photos/id/1021/400/300">
+    <h2>Card 3</h2>
+    <p>This card has purple color with an image.</p>
   </ScrollStackItem>
 </ScrollStack>
 

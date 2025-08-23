@@ -2,9 +2,26 @@ import { useLayoutEffect, useRef, useCallback } from "react";
 import Lenis from "lenis";
 import "./ScrollStack.css";
 
-export const ScrollStackItem = ({ children, itemClassName = "" }) => (
-  <div className={`scroll-stack-card ${itemClassName}`.trim()}>{children}</div>
-);
+export const ScrollStackItem = ({
+  children,
+  backgroundColor = "",
+  backgroundImage = "",
+  itemClassName = "",
+}) => {
+  const style = {
+    ...(backgroundColor && { "--bg-color": backgroundColor }),
+    ...(backgroundImage && { "--bg-image": `url(${backgroundImage})` }),
+  };
+
+  return (
+    <div
+      className={`scroll-stack-card ${itemClassName}`.trim()}
+      style={style}
+    >
+      {children}
+    </div>
+  );
+};
 
 const ScrollStack = ({
   children,
