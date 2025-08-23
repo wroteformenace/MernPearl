@@ -18,6 +18,13 @@
   transform-origin: center;
   isolation: isolate;
 }
+.scroll-stack-card h2,
+.scroll-stack-card p,
+.scroll-stack-card span,
+.scroll-stack-card div {
+  color: #000000;
+}
+
 
 /* Background image overlay, optional */
 .scroll-stack-card::before {
