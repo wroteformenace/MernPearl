@@ -20,8 +20,11 @@ export default function App() {
 
           <UniverseCards />
 
-          <h2 className="services-title">Why Us?</h2>
-          <MagicBento
+                <div>
+                                    <h2 className="why-title" style={{ color: 'white', fontSize: '2rem', marginBottom: '1rem' }}>
+  Why Us?
+</h2>
+                <MagicBento
             textAutoHide={true}
             enableStars={true}
             enableSpotlight={true}
@@ -31,8 +34,9 @@ export default function App() {
             clickEffect={true}
             spotlightRadius={400}
             particleCount={12}
-            glowColor="132, 0, 255"
+            glowColor="200, 2, 255"
           />
+        </div>
 
           <ScrollStack>
   <ScrollStackItem>

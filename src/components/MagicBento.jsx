@@ -688,15 +688,23 @@ const MagicBento = ({
                 el.addEventListener("click", handleClick);
               }}
             >
-              <h2 className="services-title">Services</h2>
-              <div className="card__header">
-                <div className="card__label">{card.label}</div>
-              </div>
-              <div className="card__content">
-                <h2 className="card__title">{card.title}</h2>
-                <p className="card__description">{card.description}</p>
-              </div>
-            </div>
+  <div className="card-grid-container">
+  <div className="card-grid">
+    {card.map((card) => (
+      <div key={card.id} className="card">
+        <div className="card__header">
+          <div className="card__label">{card.label}</div>
+        </div>
+        <div className="card__content">
+          <h2 className="card__title">{card.title}</h2>
+          <p className="card__description">{card.description}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+
+  </div>
           );
         })}
       </BentoCardGrid>
