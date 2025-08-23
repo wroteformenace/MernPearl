@@ -107,3 +107,9 @@
     padding: 1.5rem;
   }
 }
+.scroll-stack-container {
+  max-width: 1200px;    /* or any max width that suits your layout */
+  margin: 0 auto;       /* center horizontally */
+  padding: 0 1rem;      /* horizontal padding for breathing space */
+  box-sizing: border-box;
+}
