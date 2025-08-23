@@ -62,7 +62,7 @@ export default function App() {
   <ScrollStackItem>
     <div
       className="scroll-stack-card"
-      style={{ "--bg-image": `url('https://picsum.photos/800/600?3')` }}
+      style={{ "--bg-image": `url('/assets/localImage.jpg')` }} // 👈 local image example
     >
       <div className="scroll-stack-card-content">
         <h2>Card 3</h2>
@@ -72,7 +72,7 @@ export default function App() {
   </ScrollStackItem>
 </ScrollStack>
 
-          
+    
 
           <ProfileCard
             name="Javi A. Torres"
