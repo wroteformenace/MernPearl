@@ -183,10 +183,14 @@ const ScrollStack = ({
   }, [updateTransforms, itemDistance]);
 
   return (
-    <div className="scroll-stack-inner">
-      {children}
-      <div className="scroll-stack-end" />
-    </div>
+    <>
+    <div>
+      <h2 className="why-title">Services</h2></div>
+      <div className="scroll-stack-inner">
+        {children}
+        <div className="scroll-stack-end" />
+      </div>
+    </>
   );
 };
 

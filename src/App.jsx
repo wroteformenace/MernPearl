@@ -2,12 +2,15 @@ import React from "react";
 import HeroSection from "./components/HeroSection";
 import CompassDock from "./components/Compass";
 import Navbar from "./components/Navbar";
-import UniverseCards from "./components/UniverseCards";
+// import UniverseCards from "./components/UniverseCards";
 import MagicBento from "./components/MagicBento";
 import ScrollStack, { ScrollStackItem } from './components/ScrollStack'
 import ProfileCard from "./components/ProfileCard";
 import "./App.css";
-import localImg from './assets/react.svg'; 
+import Ui from './assets/Ui.png'; 
+import AI from './assets/Ai.png';
+import Dev from './assets/devops.png';
+import Mob from './assets/Mob.png';
 
 export default function App() {
   return (
@@ -18,11 +21,33 @@ export default function App() {
 
       <main className="cosmic-section">
           <HeroSection />
+                    <ScrollStack>
+  <ScrollStackItem backgroundColor="#407AFF" backgroundImage={Dev}>
+    <h2>Card 1</h2>
+    <p>This card has blue color with an image.</p>
+  </ScrollStackItem>
 
-          <UniverseCards />
+  <ScrollStackItem  backgroundColor="#BA71F5" backgroundImage={Mob}>
+    <h2>Card 2</h2>
+    <p>This card only has a solid color background.</p>
+  </ScrollStackItem>
+
+  <ScrollStackItem backgroundColor="#BA71F5" backgroundImage={AI}>
+    <h2>Card 3</h2>
+    <p>This card has purple color with an image.</p>
+  </ScrollStackItem>
+
+  <ScrollStackItem backgroundColor="#ffffffff" backgroundImage={Ui}>
+    <h2>Card 4</h2>
+    <p>This card has a yellow color with a local image.</p>
+  </ScrollStackItem>
+</ScrollStack>
+
+
+          {/* <UniverseCards /> */}
 
                 <div>
-                                    <h2 className="why-title" style={{ color: 'white', fontSize: '2rem', marginBottom: '1rem' }}>
+<h2 className="why-title" style={{ color: 'white', fontSize: '2rem', marginBottom: '1rem' }}>
   Why Us?
 </h2>
                 <MagicBento
@@ -38,23 +63,6 @@ export default function App() {
             glowColor="200, 2, 255"
           />
         </div>
-
-          <ScrollStack>
-  <ScrollStackItem backgroundColor="#407AFF" backgroundImage="https://picsum.photos/id/1018/400/300">
-    <h2>Card 1</h2>
-    <p>This card has blue color with an image.</p>
-  </ScrollStackItem>
-
-  <ScrollStackItem backgroundColor="#DD3E58">
-    <h2>Card 2</h2>
-    <p>This card only has a solid color background.</p>
-  </ScrollStackItem>
-
-  <ScrollStackItem backgroundColor="#BA71F5" backgroundImage="https://picsum.photos/id/1021/400/300">
-    <h2>Card 3</h2>
-    <p>This card has purple color with an image.</p>
-  </ScrollStackItem>
-</ScrollStack>
 
     
 

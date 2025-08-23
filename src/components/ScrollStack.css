@@ -82,3 +82,21 @@
   opacity: 0.75;
   filter: brightness(1.05) contrast(1.1);
 }
+.scroll-stack-card:active {
+  transform: scale(0.97);
+  transition: transform 0.15s ease;
+}
+
+@media (max-width: 768px) {
+  .scroll-stack-card {
+    height: auto; /* Allow card height to adapt for smaller screens */
+    min-height: 20rem;
+    margin: 20px 0; /* Less margin for better vertical fit */
+    border-radius: 20px;
+    font-size: 0.9rem; /* Slightly smaller text */
+  }
+
+  .scroll-stack-card-content {
+    padding: 1.5rem;
+  }
+}
