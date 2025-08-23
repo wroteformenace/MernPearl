@@ -1,0 +1,29 @@
+.cosmic-section {
+  min-height: 100vh;
+  width: 100vw;
+  position: relative;
+  overflow: visible;
+
+  /* Ultra dark cosmic gradient with extra depth at bottom */
+  background: linear-gradient(
+    180deg,
+    #12011a 0%,
+    #1E0732 15%,
+    #310a54 50%,
+    #21073c 70%,
+    #110026 100%
+  );
+}
+
+.cosmic-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(circle at 55% 78%, rgba(160, 60, 230, 0.096), transparent 75%),
+    radial-gradient(circle at 25% 12%, rgba(95, 30, 120, 0.12), transparent 70%);
+  /* Subtle cosmic glow overlays */
+  opacity: 1;
+}

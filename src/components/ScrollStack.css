@@ -1,32 +1,75 @@
-.stack-scroller {
+.scroll-stack-card {
   position: relative;
+  height: 24rem;
   width: 100%;
-  height: 100vh;
-  overflow-y: scroll;
-  scroll-behavior: smooth;
-  perspective: 1000px;
-  -webkit-overflow-scrolling: touch;
-}
-
-.stack-inner {
-  position: relative;
-  min-height: 200vh; /* or enough height to scroll */
-  padding: 2rem;
-  box-sizing: border-box;
-}
-
-.stack-card {
-  /* card styles here */
-  margin-bottom: 0; /* We handle margin with JS */
-  transition: transform 0.3s, filter 0.3s;
+  margin: 40px 0;
+  border-radius: 32px;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+  transform-origin: top center;
   will-change: transform, filter;
   backface-visibility: hidden;
-  perspective: 1000px;
-  -webkit-backface-visibility: hidden;
-  -webkit-perspective: 1000px;
+  transform-style: preserve-3d;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  cursor: pointer;
 }
 
-.stack-end {
-  height: 400px; /* spacer height to release pinned scroll */
-  pointer-events: none;
+/* Use custom bg */
+.scroll-stack-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--bg-image);
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.9);
+  transition: transform 0.6s ease;
+  z-index: 0;
+}
+
+/* Overlay for readability */
+.scroll-stack-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0));
+  z-index: 1;
+}
+
+.scroll-stack-card-content {
+  position: relative;
+  z-index: 2;
+  color: white;
+  padding: 2rem;
+  font-family: "Inter", sans-serif;
+}
+
+.scroll-stack-card h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.scroll-stack-card p {
+  font-size: 1rem;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+/* Hover effect for premium feel */
+.scroll-stack-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+}
+
+.scroll-stack-card:hover::before {
+  transform: scale(1.05);
+}
+.glass-card {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(15px) saturate(180%);
+  -webkit-backdrop-filter: blur(15px) saturate(180%);
+  color: #fff;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
 }

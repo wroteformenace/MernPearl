@@ -8,13 +8,7 @@
   justify-content: flex-start; /* push content from top */
   align-items: center;
   padding: 4rem 0; /* more breathing space */
-  background: 
-    linear-gradient(
-      180deg,
-      rgba(26, 9, 39, 0.92) 0%,
-      rgba(65, 16, 65, 0.15) 60%,
-      rgba(25, 14, 69, 0.93) 100%
-    );
+
   position: relative;
   overflow: hidden;
   font-family: 'Poppins', 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -45,7 +39,7 @@
   margin: 0 auto;
 }
 
-.cosmic-bg-section::before {
+/* .cosmic-bg-section::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -55,7 +49,7 @@
     radial-gradient(circle at 40% 20%, rgba(70, 200, 255, 0.15), transparent 58%);
   z-index: 1;
   backdrop-filter: blur(8px);
-}
+} */
 
 .cosmic-bg-section > * {
   position: relative;
@@ -70,7 +64,7 @@
   max-width: 1400px;
   height: 80vh;
   border-radius: 20px;
-  background: linear-gradient(135deg, #4e1a85, #831fb9, #4e1a85);
+  background: linear-gradient(135deg, #4e1a85, #450568, #4e1a85);
   display: flex;
   gap: 15px;
   padding: 1em 2em;

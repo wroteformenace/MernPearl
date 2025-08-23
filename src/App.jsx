@@ -6,36 +6,7 @@ import UniverseCards from "./components/UniverseCards";
 import MagicBento from "./components/MagicBento";
 import ScrollStack, { ScrollStackItem } from './components/ScrollStack'
 import ProfileCard from "./components/ProfileCard";
-
-const items = [
-  {
-    image: "https://i.pravatar.cc/300?img=1",
-    title: "Sarah Johnson",
-    subtitle: "Frontend Developer",
-    handle: "@sarahjohnson",
-    borderColor: "#3B82F6",
-    gradient: "linear-gradient(145deg, #3B82F6, #000)",
-    url: "https://github.com/sarahjohnson",
-  },
-  {
-    image: "https://i.pravatar.cc/300?img=2",
-    title: "Mike Chen",
-    subtitle: "Backend Engineer",
-    handle: "@mikechen",
-    borderColor: "#10B981",
-    gradient: "linear-gradient(180deg, #10B981, #000)",
-    url: "https://linkedin.com/in/mikechen",
-  },
-  {
-    image: "https://i.pravatar.cc/300?img=2",
-    title: "Mike Chen",
-    subtitle: "Backend Engineer",
-    handle: "@mikechen",
-    borderColor: "#b910abff",
-    gradient: "linear-gradient(180deg, #b910abff, #000)",
-    url: "https://linkedin.com/in/mikechen",
-  },
-];
+import "./App.css";
 
 export default function App() {
   return (
@@ -44,91 +15,78 @@ export default function App() {
         <Navbar />
       </div>
 
-      <main>
-        <HeroSection />
-        <UniverseCards />
-        <div><h2 className="services-title">Why Us?</h2></div>
-        <MagicBento
-          textAutoHide={true}
-          enableStars={true}
-          enableSpotlight={true}
-          enableBorderGlow={true}
-          enableTilt={true}
-          enableMagnetism={true}
-          clickEffect={true}
-          spotlightRadius={400}
-          particleCount={12}
-          glowColor="132, 0, 255"
-        />
-      </main>
+      <main className="cosmic-section">
+          <HeroSection />
 
-      {/* Uncomment and use these only if needed */}
-      {/* 
-      <div style={{ height: '600px', position: 'relative' }}>
-        <CardSwap
-          cardDistance={60}
-          verticalDistance={70}
-          delay={5000}
-          pauseOnHover={true}
-        >
-          <Card>
-            <h3>Card 1</h3>
-            <p>
-              <img src="./sick.png" alt="AI Driven Solutions" style={{ width: '100%', height: 'auto', borderRadius: '10px' }} />
-            </p>
-          </Card>
-          <Card>
-            <h3>Card 2</h3>
-            <p>
-              <img src="./vite.jpg" alt="Vite" style={{ width: '100%', height: 'auto', borderRadius: '10px' }} />
-            </p>
-          </Card>
-          <Card>
-            <h3>Card 3</h3>
-            <p>
-              <img src="./logo.png" alt="Logo" style={{ width: '100%', height: 'auto', borderRadius: '10px' }} />
-            </p>
-          </Card>
-        </CardSwap>
+          <UniverseCards />
+
+          <h2 className="services-title">Why Us?</h2>
+          <MagicBento
+            textAutoHide={true}
+            enableStars={true}
+            enableSpotlight={true}
+            enableBorderGlow={true}
+            enableTilt={true}
+            enableMagnetism={true}
+            clickEffect={true}
+            spotlightRadius={400}
+            particleCount={12}
+            glowColor="132, 0, 255"
+          />
+
+          <ScrollStack>
+  <ScrollStackItem>
+    <div
+      className="scroll-stack-card"
+      style={{ "--bg-image": `url('https://picsum.photos/800/600?1')` }}
+    >
+      <div className="scroll-stack-card-content">
+        <h2>Card 1</h2>
+        <p>This is the first card in the stack</p>
       </div>
+    </div>
+  </ScrollStackItem>
 
-      <div style={{ height: '600px', position: 'relative' }}>
-        <ChromaGrid
-          items={items}
-          radius={300}
-          damping={0.45}
-          fadeOut={0.6}
-          ease="power3.out"
-        />
-      </div> 
-      */}
-      <div><ScrollStack>
   <ScrollStackItem>
-    <h2>Card 1</h2>
-    <p>This is the first card in the stack</p>
+    <div
+      className="scroll-stack-card"
+      style={{ "--bg-image": `url('https://picsum.photos/800/600?2')` }}
+    >
+      <div className="scroll-stack-card-content">
+        <h2>Card 2</h2>
+        <p>This is the second card in the stack</p>
+      </div>
+    </div>
   </ScrollStackItem>
-  <ScrollStackItem>
-    <h2>Card 2</h2>
-    <p>This is the second card in the stack</p>
-  </ScrollStackItem>
-  <ScrollStackItem>
-    <h2>Card 3</h2>
-    <p>This is the third card in the stack</p>
-  </ScrollStackItem>
-</ScrollStack></div>
 
-<ProfileCard
-  name="Javi A. Torres"
-  title="Software Engineer"
-  handle="javicodes"
-  status="Online"
-  contactText="Contact Me"
-  avatarUrl="/path/to/avatar.jpg"
-  showUserInfo={true}
-  enableTilt={true}
-  enableMobileTilt={false}
-  onContactClick={() => console.log('Contact clicked')}
-/>
+  <ScrollStackItem>
+    <div
+      className="scroll-stack-card"
+      style={{ "--bg-image": `url('https://picsum.photos/800/600?3')` }}
+    >
+      <div className="scroll-stack-card-content">
+        <h2>Card 3</h2>
+        <p>This is the third card in the stack</p>
+      </div>
+    </div>
+  </ScrollStackItem>
+</ScrollStack>
+
+          
+
+          <ProfileCard
+            name="Javi A. Torres"
+            title="Software Engineer"
+            handle="javicodes"
+            status="Online"
+            contactText="Contact Me"
+            avatarUrl="/path/to/avatar.jpg"
+            showUserInfo={true}
+            enableTilt={true}
+            enableMobileTilt={false}
+            onContactClick={() => console.log('Contact clicked')}
+          />
+      </main>
 
       <CompassDock />
     </div>
