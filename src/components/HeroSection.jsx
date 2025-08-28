@@ -4,6 +4,7 @@ import "./HeroSection.css";
 import TechStack from "./TechStack";
 import ParticleTextReveal from "./Particle";
 // import Zap from "./Zap";
+import TextType from './TextType';
 
 export default function HeroSection() {
   const cosmosRef = useRef(null);
@@ -136,7 +137,7 @@ export default function HeroSection() {
         <ParticleTextReveal text="Creating Thoughtful Digital Products" />
 
 
-        <motion.p
+        {/* <motion.p
           initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.6 }}
@@ -144,7 +145,17 @@ export default function HeroSection() {
           className="hero-sub"
         >
           Designing and building scalable, user‑centered solutions for the modern tech stack.
-        </motion.p>
+        </motion.p> */}
+
+
+
+       <TextType 
+  text={["Text typing effect", "for your websites", "Happy coding!"]}
+  typingSpeed={75}
+  pauseDuration={1500}
+  showCursor={true}
+  cursorCharacter="|"
+/>
 
         <motion.a
           href="#contact"
