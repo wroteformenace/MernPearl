@@ -150,7 +150,7 @@ export default function HeroSection() {
 
 
        <TextType 
-  text={["Text typing effect", "for your websites", "Happy coding!"]}
+  text={[" Designing and building scalable", " user‑centered solutions for the modern tech stack."]}
   typingSpeed={75}
   pauseDuration={1500}
   showCursor={true}
