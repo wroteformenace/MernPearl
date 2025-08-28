@@ -11,6 +11,7 @@ import Ui from './assets/Ui.png';
 import AI from './assets/Ai.png';
 import Dev from './assets/devops.png';
 import Mob from './assets/Mob.png';
+import Footer from './components/Footer';
 
 export default function App() {
   return (
@@ -81,6 +82,7 @@ export default function App() {
       </main>
 
       <CompassDock />
+      <Footer />
     </div>
   );
 }
