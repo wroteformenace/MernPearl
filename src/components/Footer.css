@@ -6,6 +6,7 @@
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   position: relative;
   overflow: hidden;
+  margin-top: 10rem;
 }
 
 /* Subtle cosmic gradient overlay */
