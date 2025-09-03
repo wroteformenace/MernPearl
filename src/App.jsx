@@ -23,22 +23,22 @@ export default function App() {
       <main className="cosmic-section">
           <HeroSection />
                     <ScrollStack>
-  <ScrollStackItem backgroundColor="#407AFF" backgroundImage={Dev}>
+  <ScrollStackItem  backgroundImage={Dev}>
     <h2>DevOps</h2>
     <p>This card has blue color with an image.</p>
   </ScrollStackItem>
 
-  <ScrollStackItem  backgroundColor="#BA71F5" backgroundImage={Mob}>
+  <ScrollStackItem   backgroundImage={Mob}>
     <h2>Mobile App Development</h2>
     <p>This card only has a solid color background.</p>
   </ScrollStackItem>
 
-  <ScrollStackItem backgroundColor="#BA71F5" backgroundImage={AI}>
+  <ScrollStackItem backgroundImage={AI}>
     <h2>AI Driven Solutions</h2>
     <p>This card has purple color with an image.</p>
   </ScrollStackItem>
 
-  <ScrollStackItem backgroundColor="#ffffffff" backgroundImage={Ui}>
+  <ScrollStackItem  backgroundImage={Ui}>
     <h2>User Interface Design</h2>
     <p>This card has a yellow color with a local image.</p>
   </ScrollStackItem>
