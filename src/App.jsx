@@ -22,7 +22,7 @@ export default function App() {
 
       <main className="cosmic-section">
           <HeroSection />
-                    <ScrollStack>
+                    {/* <ScrollStack>
   <ScrollStackItem  backgroundImage={Dev}>
     <h2>DevOps</h2>
     <p>This card has blue color with an image.</p>
@@ -42,7 +42,7 @@ export default function App() {
     <h2>User Interface Design</h2>
     <p>This card has a yellow color with a local image.</p>
   </ScrollStackItem>
-</ScrollStack>
+</ScrollStack> */}
 
 
           {/* <UniverseCards /> */}
@@ -51,7 +51,7 @@ export default function App() {
 <h2 className="why-title" style={{ color: 'white', fontSize: '2rem', marginBottom: '1rem' }}>
   Why Us?
 </h2>
-                <MagicBento
+                {/* <MagicBento
             textAutoHide={true}
             enableStars={true}
             enableSpotlight={true}
@@ -62,12 +62,12 @@ export default function App() {
             spotlightRadius={400}
             particleCount={12}
             glowColor="200, 2, 255"
-          />
+          /> */}
         </div>
 
     
 
-          <ProfileCard
+          {/* <ProfileCard
             name="Javi A. Torres"
             title="Software Engineer"
             handle="javicodes"
@@ -78,7 +78,7 @@ export default function App() {
             enableTilt={true}
             enableMobileTilt={false}
             onContactClick={() => console.log('Contact clicked')}
-          />
+          /> */}
       </main>
 
       <CompassDock />
