@@ -12,6 +12,8 @@ import AI from './assets/Ai.png';
 import Dev from './assets/devops.png';
 import Mob from './assets/Mob.png';
 import Footer from './components/Footer';
+import Services from "./components/Services";
+import Testimonials from "./components/Testimonials";
 
 export default function App() {
   return (
@@ -48,9 +50,12 @@ export default function App() {
           {/* <UniverseCards /> */}
 
                 <div>
-<h2 className="why-title" style={{ color: 'white', fontSize: '2rem', marginBottom: '1rem' }}>
+{/* <h2 className="why-title" style={{ color: 'white', fontSize: '2rem', marginBottom: '1rem' }}>
   Why Us?
-</h2>
+</h2> */}
+
+<Services />
+<Testimonials />
                 {/* <MagicBento
             textAutoHide={true}
             enableStars={true}
