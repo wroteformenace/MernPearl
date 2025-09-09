@@ -8,7 +8,7 @@
 
   --color-glass-bg: rgba(18, 16, 36, 0.65);
   --color-glass-border: rgba(255, 255, 255, 0.15);
-  --color-glass-border-hover: rgba(168, 107, 255, 0.55);
+  --color-glass-border-hover: rgba(150, 75, 255, 0.55);
 
   --border-radius: 18px;
   --border-radius-sm: 12px;
@@ -125,6 +125,22 @@
   transform: scale(1.2) rotate(3deg);
   box-shadow: 0 0 14px rgba(168, 107, 255, 0.9), 0 0 40px rgba(123, 44, 191, 0.5);
 }
+.services-showcase__glass-container {
+  background: rgba(18, 16, 36, 0.7);
+  border-radius: 24px;
+  padding: 3.5rem 3rem 3rem 3rem;
+  max-width: 1600px;
+  margin: 0 auto 0rem auto;
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  box-shadow:
+    0 0 40px rgba(81, 5, 179, 0.35),
+    inset 0 0 45px rgba(168, 107, 255, 0.25);
+  border: 1.4px solid rgba(255, 255, 255, 0.13);
+  color: var(--color-white);
+}
+
+/* Ensure grid fits well inside container with spacing */
 
 /* Content */
 .service-card__title {

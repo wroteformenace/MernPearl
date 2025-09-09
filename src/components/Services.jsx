@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useCallback, useState, useMemo } from "react";
-import { Globe2, Smartphone, ServerCog, Brush } from "lucide-react"; // replaced with stronger icons
+import { Globe2, Smartphone, ServerCog, Brush, Cpu, TrendingUp } from "lucide-react"; // Added Cpu and TrendingUp for new services
 import "./Services.css";
 
 const SERVICES_CONFIG = [
@@ -35,6 +35,22 @@ const SERVICES_CONFIG = [
     Icon: Brush,
     delay: 0.6
   },
+  {
+    id: "ai-solutions",
+    name: "AI Driven Solutions",
+    desc: "Leverage artificial intelligence to automate and optimize business processes.",
+    direction: "left",
+    Icon: Cpu,
+    delay: 0.8
+  },
+  {
+    id: "seo-optimization",
+    name: "SEO Optimization",
+    desc: "Boost your online presence and traffic with expert SEO strategies.",
+    direction: "right",
+    Icon: TrendingUp,
+    delay: 1
+  }
 ];
 
 const ServiceCard = React.memo(({ service, isVisible, onVisibilityChange }) => {
@@ -45,11 +61,13 @@ const ServiceCard = React.memo(({ service, isVisible, onVisibilityChange }) => {
   const calculateTilt = useCallback((e) => {
     const card = cardRef.current;
     if (!card || !isHovered) return;
+    
     const rect = card.getBoundingClientRect();
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
     const mouseX = e.clientX - centerX;
     const mouseY = e.clientY - centerY;
+    
     const rotateX = (mouseY / (rect.height / 2)) * -8;
     const rotateY = (mouseX / (rect.width / 2)) * 8;
     setTiltTransform(
@@ -60,6 +78,7 @@ const ServiceCard = React.memo(({ service, isVisible, onVisibilityChange }) => {
   useEffect(() => {
     const card = cardRef.current;
     if (!card) return;
+    
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && !isVisible) {
@@ -70,6 +89,7 @@ const ServiceCard = React.memo(({ service, isVisible, onVisibilityChange }) => {
       },
       { threshold: 0.3, rootMargin: "-50px 0px" }
     );
+
     observer.observe(card);
     return () => observer.unobserve(card);
   }, [service.id, service.delay, isVisible, onVisibilityChange]);
@@ -82,8 +102,7 @@ const ServiceCard = React.memo(({ service, isVisible, onVisibilityChange }) => {
 
   const serviceUrl = useMemo(() => 
     `/services/${service.name.toLowerCase().replace(/\s+/g, "-")}`,
-    [service.name]
-  );
+  [service.name]);
 
   const cardClasses = [
     "service-card",
@@ -108,12 +127,10 @@ const ServiceCard = React.memo(({ service, isVisible, onVisibilityChange }) => {
         <service.Icon size={32} strokeWidth={1.6} />
       </div>
       <div className="service-card__content">
-        <h3 id={`service-${service.id}`} className="service-card__title">
-          {service.name}
-        </h3>
+        <h3 id={`service-${service.id}`} className="service-card__title">{service.name}</h3>
         <p className="service-card__description">{service.desc}</p>
       </div>
-      <a 
+      <a
         href={serviceUrl}
         className="service-card__cta"
         aria-label={`Learn more about ${service.name}`}
@@ -139,23 +156,23 @@ const ServicesShowcase = () => {
 
   return (
     <section className="services-showcase" aria-labelledby="services-title">
-      <div className="services-showcase__header">
-        <h2 id="services-title" className="services-showcase__title">
-          Our Services
-        </h2>
-        <p className="services-showcase__subtitle">
-          From concept to launch — we design, build, and scale digital experiences that inspire and perform.
-        </p>
-      </div>
-      <div className="services-showcase__grid">
-        {SERVICES_CONFIG.map((service) => (
-          <ServiceCard
-            key={service.id}
-            service={service}
-            isVisible={visibleCards.has(service.id)}
-            onVisibilityChange={handleVisibilityChange}
-          />
-        ))}
+      <div className="services-showcase__glass-container">
+        <div className="services-showcase__header">
+          <h2 id="services-title" className="services-showcase__title">Our Services</h2>
+          <p className="services-showcase__subtitle">
+            From concept to launch — we design, build, and scale digital experiences that inspire and perform.
+          </p>
+        </div>
+        <div className="services-showcase__grid">
+          {SERVICES_CONFIG.map(service => (
+            <ServiceCard
+              key={service.id}
+              service={service}
+              isVisible={visibleCards.has(service.id)}
+              onVisibilityChange={handleVisibilityChange}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );
