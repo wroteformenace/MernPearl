@@ -103,8 +103,8 @@
   transform: scale(1.18) translateY(-4px);
   background: var(--icon-hover-bg);
   color: var(--icon-hover);
-  box-shadow: 0 0 22px 6px var(--compass-pulse),
-    0 2px 14px rgba(192, 132, 252, 0.35);
+  /* box-shadow: 0 0 22px 6px var(--compass-pulse),
+    0 2px 14px rgba(192, 132, 252, 0.35); */
 }
 .compass-point span {
   position: absolute;

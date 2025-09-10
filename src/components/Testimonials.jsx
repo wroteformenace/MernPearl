@@ -80,6 +80,11 @@ const Testimonials = () => {
       <h2 id="testimonials-title" className="testimonials-title">
         Words of praise from others about our presence.
       </h2>
+       <p className="services-showcase__subtitle">
+            From concept to launch — we design, build, and scale digital experiences that inspire and perform.
+          </p>
+           <p className="services-showcase__subtitle">
+          </p>
       <div className="marquee-row">
         {firstRowTestimonials.map((t) => (
           <TestimonialCard key={t.id} {...t} />
