@@ -153,3 +153,15 @@
   font-weight: 400;
   opacity: 0.76;
 }
+.testimonials-section__subtitle {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  color: var(--color-text-muted);
+  text-align: center;
+  font-size: 1.15rem;
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+  opacity: 0.93;
+}
