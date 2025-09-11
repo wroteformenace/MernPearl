@@ -14,6 +14,7 @@ import Mob from './assets/Mob.png';
 import Footer from './components/Footer';
 import Services from "./components/Services";
 import Testimonials from "./components/Testimonials";
+import ProjectParallaxShowcase from "./components/ProjectParallaxShowcase";
 
 export default function App() {
   return (
@@ -56,6 +57,7 @@ export default function App() {
 
 <Services />
 <Testimonials />
+<ProjectParallaxShowcase />
                 {/* <MagicBento
             textAutoHide={true}
             enableStars={true}
