@@ -1,11 +1,11 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import { motion, useAnimation, useInView } from "framer-motion";
 import "./ProjectParallaxShowcase.css";
 
 const projects = [
   {
     id: 1,
-    image: "/portal1.jpg",
+    image: "/Desktop4.png",
     title: "AI Helper Platform",
     desc: "An intelligent platform leveraging AI to automate customer support for SaaS businesses.",
     tech: ["React", "Node.js", "AI/ML"],
@@ -13,20 +13,60 @@ const projects = [
   },
   {
     id: 2,
-    image: "/portal2.jpg",
+    image: "/Wireframe - 2.png",
     title: "SEO Suite",
     desc: "Glassmorphic dashboard that analyzes and boosts organic traffic using advanced SEO techniques.",
     tech: ["SEO", "Next.js", "Cloud"],
     url: "#"
   },
+  {
+    id: 3,
+    image: "/image 6.png",
+    title: "E-Commerce Analytics",
+    desc: "A comprehensive analytics dashboard for e-commerce stores to track sales and user behavior.",
+    tech: ["React", "D3.js", "GraphQL"],
+    url: "#"
+  },
+  {
+    id: 4,
+    image: "/Desktop - 5.png",
+    title: "Fitness Tracker App",
+    desc: "A mobile-friendly app to track workouts, nutrition, and progress with social sharing features.",
+    tech: ["React Native", "Firebase", "APIs"],
+    url: "#"
+  },
+  {
+    id: 5,
+    image: "/Desktop 9.png",
+    title: "Cryptocurrency Wallet",
+    desc: "Secure wallet app to manage multiple cryptocurrencies with real-time price updates.",
+    tech: ["Vue.js", "Node.js", "Blockchain"],
+    url: "#"
+  },
+  {
+    id: 6,
+    image: "/Desktop1.png",
+    title: "Online Learning Platform",
+    desc: "Interactive platform for hosting and managing online courses with gamification elements.",
+    tech: ["Angular", "TypeScript", "REST API"],
+    url: "#"
+  },
+  {
+    id: 7,
+    image: "/Desktop11.png",
+    title: "Smart Home Control",
+    desc: "IoT-based app to control and monitor smart home devices with voice assistant integration.",
+    tech: ["React", "AWS IoT", "Python"],
+    url: "#"
+  }
 ];
 
 const ParallaxProject = ({ project, index }) => {
   const ref = useRef(null);
-  const inView = useInView(ref, { amount: 0.5, once: true });
+  const inView = useInView(ref, { amount: 0.25, once: true });
   const controls = useAnimation();
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (inView) controls.start("visible");
   }, [inView, controls]);
 
@@ -37,131 +77,103 @@ const ParallaxProject = ({ project, index }) => {
       initial="hidden"
       animate={controls}
       variants={{
-        hidden: { opacity: 0, y: 80, rotateY: -20 },
-        visible: {
-          opacity: 1,
-          y: 0,
-          rotateY: 0,
-          transition: { duration: 1, ease: [0.23, 1, 0.32, 1], delay: index * 0.25 }
-        }
+        hidden: { opacity: 0, y: 60, scale: 0.97 },
+        visible: { opacity: 1, y: 0, scale: 1 }
       }}
-      whileHover={{
-        scale: 1.04,
-        rotateX: 3,
-        rotateY: -3,
-        filter: "drop-shadow(0px 0px 24px #a86bff88)",
-        zIndex: 2
+      transition={{
+        duration: 0.9,
+        ease: [0.25, 0.1, 0.25, 1],
+        delay: index * 0.14
       }}
-      tabIndex={0}
-      aria-labelledby={`project-name-${project.id}`}
       role="group"
+      aria-labelledby={`project-title-${project.id}`}
     >
-      {/* Animated Image */}
       <motion.div
-        className="parallax-project__image-wrap"
-        initial={{ clipPath: "inset(0 50% 0 50%)", opacity: 0 }}
-        animate={{ clipPath: "inset(0 0% 0 0%)", opacity: 1 }}
-        transition={{ duration: 1, delay: index * 0.22, ease: "easeOut" }}
-      >
-        <img
-          src={project.image}
-          alt={project.title}
-          className="parallax-project__image"
-          draggable={false}
-        />
-        {/* Particle glow overlay (decorative) */}
-        <div className="parallax-project__img-glow" aria-hidden="true" />
-      </motion.div>
-
-      {/* Glass Info Card */}
-      <motion.div
-        className="parallax-project__info glassmorphic"
-        initial={{ opacity: 0, scale: 0.85, rotateX: -8 }}
-        animate={{ opacity: 1, scale: 1, rotateX: 0 }}
-        transition={{ duration: 1, delay: 0.26 + index * 0.18, ease: [0.68, -0.55, 0.265, 1.55] }}
-        whileHover={{
-          scale: 1.06,
-          boxShadow: "0 0 38px #a86bff80",
-          borderColor: "#a86bff"
+        className="project-container"
+        animate={{
+          y: [0, -8, 0], // gentle float
         }}
-        tabIndex={0}
-        aria-label={`About ${project.title}`}
+        transition={{
+          duration: 5,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
       >
-        <motion.h3
-          id={`project-name-${project.id}`}
-          className="parallax-project__name"
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.34 + index * 0.16 }}
+        {/* Image Section */}
+        <motion.div
+          className="project-image-container"
+          aria-hidden="true"
+          whileHover={{ scale: 1.05, rotate: 1 }}
+          transition={{ type: "spring", stiffness: 180, damping: 14 }}
         >
-          {project.title}
-        </motion.h3>
+          <img
+            src={project.image}
+            alt={project.title}
+            className="project-image"
+            draggable={false}
+          />
+        </motion.div>
 
-        <motion.p
-          className="parallax-project__desc"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.41 + index * 0.15 }}
-        >
-          {project.desc}
-        </motion.p>
-
-        <div className="parallax-project__tech">
-          {project.tech.map((t, i2) => (
-            <motion.span
-              key={t}
-              className="parallax-tech-pill"
-              initial={{ opacity: 0, y: 11 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.48 + i2 * 0.09 + index * 0.12 }}
-              whileHover={{
-                background: "linear-gradient(90deg, #a86bff 30%, #c9a7ff 70%)",
-                color: "#fff",
-              }}
-            >
-              {t}
-            </motion.span>
-          ))}
-        </div>
-
-        <motion.a
-          href={project.url}
-          className="parallax-project__cta"
-          target="_blank"
-          rel="noopener noreferrer"
-          whileHover={{
-            scale: 1.13,
-            textShadow: "0 0 18px #a86bff",
-            color: "#fff"
+        {/* Info Section */}
+        <motion.div
+          className="project-info glassmorphic"
+          aria-label={`Details about ${project.title}`}
+          initial={{ opacity: 0, x: 50 }}
+          animate={controls}
+          variants={{
+            visible: { opacity: 1, x: 0 }
+          }}
+          transition={{
+            duration: 0.7,
+            delay: index * 0.2 + 0.2,
+            ease: [0.25, 0.1, 0.25, 1]
           }}
         >
-          View Project →
-        </motion.a>
+          <h3 id={`project-title-${project.id}`} className="project-title">
+            {project.title}
+          </h3>
+          <p className="project-desc">{project.desc}</p>
+          <div
+            className="project-tech"
+            aria-label="Technologies used (decorative only)"
+          >
+            {project.tech.map((tech, idx) => (
+              <span key={tech + idx} className="tech-pill" aria-hidden="true">
+                {tech}
+              </span>
+            ))}
+          </div>
+          <a
+            href={project.url}
+            className="project-cta"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`View project: ${project.title}`}
+          >
+            View Project →
+          </a>
+        </motion.div>
       </motion.div>
     </motion.div>
   );
 };
 
-const ProjectParallaxShowcase = () => {
-  return (
-    <section className="parallax-section">
-      {/* Cosmic background and headline */}
-      <motion.h2
-        className="parallax-section__title"
-        initial={{ scale: 0.91, opacity: 0, y: -32 }}
-        animate={{ scale: 1, opacity: 1, y: 0 }}
-        transition={{ duration: 1, ease: [0.68, -0.55, 0.265, 1.55] }}
-      >
-       Projects
-      </motion.h2>
-
-      <div className="parallax-section__content">
-        {projects.map((project, i) => (
-          <ParallaxProject key={project.id} project={project} index={i} />
-        ))}
-      </div>
-    </section>
-  );
-};
+const ProjectParallaxShowcase = () => (
+  <section className="parallax-section" aria-label="Projects Showcase Section">
+    <motion.h2
+      className="parallax-section__title"
+      initial={{ scale: 0.95, opacity: 0, y: -28 }}
+      animate={{ scale: 1, opacity: 1, y: 0 }}
+      transition={{ duration: 0.9, ease: [0.44, 0.09, 0.41, 0.99] }}
+    >
+      Projects
+    </motion.h2>
+    <div className="parallax-section__content">
+      {projects.map((project, i) => (
+        <ParallaxProject key={project.id} project={project} index={i} />
+      ))}
+    </div>
+  </section>
+);
 
 export default ProjectParallaxShowcase;

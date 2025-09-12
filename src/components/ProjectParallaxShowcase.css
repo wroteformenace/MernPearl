@@ -4,244 +4,161 @@
   --color-accent-light: #c9a7ff;
   --color-white: #fff;
   --color-text-muted: #e0cfff;
-  --glass-bg: rgba(18, 16, 36, 0.70);
-  --glass-blur: 18px;
-  --glass-border: rgba(168, 107, 255, 0.25);
+  --glass-bg: rgba(18, 16, 36, 0.78);
+  --glass-blur: 22px;
+  --glass-border: rgba(168, 107, 255, 0.28);
   --border-radius: 20px;
+  --transition-speed: 0.35s;
+  --title-font: 'Inter', 'Segoe UI', Arial, sans-serif;
 }
 
-/* Section cosmic background (fallback to gradient if image fails) */
-.parallax-section {
-  position: relative;
-  background: radial-gradient(
-      ellipse at 65% 35%,
-      rgba(168, 107, 255, 0.20) 0%,
-      rgba(81, 5, 179, 0.13) 52%,
-      rgba(18, 16, 36, 1) 100%
-    );
-  padding: 7rem 0 6.5rem 0;
-  overflow-x: hidden;
-}
-/* Optional sparkles effect */
-.parallax-section::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: url("") repeat;
-  opacity: 0.18;
-  animation: drift 120s linear infinite;
-  z-index: 0;
-}
-/* Fallback: Remove above .parallax-section::before if not using image */
-
-/* Big cosmic headline */
 .parallax-section__title {
-  text-align: center;
-  font-size: 3.6rem;
+  font-family: var(--title-font);
+  font-size: clamp(2.5rem, 5.5vw, 6.6rem);
+  letter-spacing: -0.015em;
   font-weight: 800;
-  color: var(--color-white);
-  margin-bottom: 5rem;
-  letter-spacing: -1px;
-  text-shadow: 0 0 22px #a86bff66;
-  position: relative;
-  z-index: 2;
+  margin: 0 0 42px 0;
+  text-align: center;
+  background: white;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-/* Container for project rows */
 .parallax-section__content {
-  width: 100%;
-  max-width: 1300px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 6rem;
-  position: relative;
-  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 42px 36px;
+  padding: 8px 16px 36px;
 }
 
-/* Project row with ambient blur for depth */
 .parallax-project-row {
-  display: flex;
-  align-items: center;
-  min-height: 420px;
-  gap: 5vw;
-  width: 100%;
-  justify-content: center;
-  perspective: 1200px;
-  position: relative;
-}
-.parallax-project-row::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  margin: auto;
-  width: 72%;
-  height: 88%;
-  background: radial-gradient(circle at center, #a86bff22, transparent 75%);
-  filter: blur(80px);
-  z-index: 0;
+  opacity: 0;
+  transform: translateY(48px);
 }
 
-/* Image wrap */
-.parallax-project__image-wrap {
-  flex: 0 0 480px;
-  display: flex;
-  justify-content: flex-end;
-  transform-style: preserve-3d;
-  position: relative;
-}
-.parallax-project__image {
-  width: 360px;
-  height: 280px;
-  object-fit: cover;
-  border-radius: var(--border-radius);
-  border: 2.6px solid var(--glass-border);
-  background: #1e093a;
-  box-shadow: none;
-  transition: transform 0.5s cubic-bezier(0.23,1,0.32,1);
-  animation: floaty 7s ease-in-out infinite;
-}
-@keyframes floaty {
-  0%, 100% { transform: translateY(0px) rotateX(0deg) rotateY(0deg);}
-  50% { transform: translateY(-14px) rotateX(3deg) rotateY(-2deg);}
-}
-.parallax-project__image:hover {
-  transform: scale(1.07) rotateX(7deg) rotateY(-7deg);
-  filter: drop-shadow(0 0 28px #a86bffcc);
+.parallax-project-row:nth-child(even) {
+  margin-top: 32px;
 }
 
-/* Glassmorphic info card with animated shimmer & soft glow */
-.glassmorphic {
-  background: var(--glass-bg);
-  backdrop-filter: blur(var(--glass-blur)) saturate(188%);
-  border-radius: var(--border-radius);
-  border: 1.6px solid var(--glass-border);
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-  transition: transform 0.37s;
-}
-.glassmorphic:hover {
-  transform: translateY(-7px) scale(1.025);
-}
-/* Shimmer sweep */
-.glassmorphic::before {
-  content: "";
-  position: absolute;
-  top: -48%;
-  left: -48%;
-  width: 210%;
-  height: 210%;
-  background: linear-gradient(120deg, transparent 42%, rgba(255,255,255,0.10) 54%, transparent 58%);
-  transform: rotate(24deg);
-  animation: shimmer 7s infinite;
-  pointer-events: none;
-}
-@keyframes shimmer {
-  0% { transform: translateX(-110%) rotate(24deg);}
-  100% { transform: translateX(105%) rotate(24deg);}
-}
-/* Glass glow overlays */
-.glassmorphic::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: var(--border-radius);
-  background: radial-gradient(ellipse at 83% 14%, rgba(168,107,255,0.13) 0%, transparent 73%),
-    radial-gradient(ellipse at 16% 87%, rgba(199,167,255,0.10) 0%, transparent 76%);
-  pointer-events: none;
-  z-index: 1;
-}
-
-/* Info panel layout */
-.parallax-project__info {
-  flex: 1;
-  min-width: 280px;
-  max-width: 462px;
-  margin-right: 3vw;
-  padding: 2.4rem 2.35rem;
+.project-container {
   display: flex;
   flex-direction: column;
-  gap: 1.45rem;
+  background: var(--glass-bg);
+  border-radius: var(--border-radius);
+  border: 1.5px solid var(--glass-border);
+  backdrop-filter: blur(var(--glass-blur));
+  min-height: 240px;
+  transition: transform var(--transition-speed) ease, border-color var(--transition-speed) ease, background var(--transition-speed) ease;
   color: var(--color-white);
-  z-index: 2;
+}
+
+.parallax-project-row:hover .project-container,
+.parallax-project-row:focus-within .project-container {
+  background: rgba(18, 16, 36, 0.88);
+  border-color: var(--color-accent);
+  transform: translateY(-4px) scale(1.015);
+}
+
+.project-image-container {
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 ratio */
   position: relative;
+  background: var(--color-accent-light);
+  overflow: hidden;
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
 }
 
-/* Headline and text */
-.parallax-project__name {
-  font-size: 1.7rem;
+.project-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  user-select: none;
+  pointer-events: none;
+  transition: transform 0.55s ease, filter var(--transition-speed);
+}
+
+/* .project-image-container:hover .project-image {
+  transform: scale(1.04);
+  filter: brightness(0.97) saturate(1.12);
+} */
+
+.project-info {
+  padding: 1.25rem 1.6rem 1.15rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.project-title {
+  font-family: var(--title-font);
+  font-size: 1.28rem;
   font-weight: 700;
-  margin: 0 0 0.7rem 0;
-}
-.parallax-project__desc {
-  font-size: 1.15rem;
-  color: var(--color-text-muted);
-  opacity: 0.95;
+  line-height: 1.25;
+  margin: 0 0 0.55rem 0;
+  color: var(--color-white);
+  letter-spacing: -0.01em;
+  transition: color var(--transition-speed);
 }
 
-/* Tech tags */
-.parallax-project__tech {
+.project-desc {
+  margin: 0 0 1.15rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+  font-weight: 400;
+}
+
+.project-tech {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.6rem 0.7rem;
+  margin-bottom: 1.05rem;
 }
-.parallax-tech-pill {
-  padding: 0.38rem 1.05rem;
-  border-radius: 999px;
-  background: linear-gradient(90deg, #a86bff33 0%, #7b2cbf66 90%);
+
+.tech-pill {
+  padding: 0.3rem 0.9rem;
+  border: 1.4px solid var(--color-accent);
+  border-radius: 16px;
   color: var(--color-accent-light);
-  font-size: 0.95rem;
   font-weight: 600;
-  box-shadow: 0 2px 8px #a86bff44;
-  transition: transform 0.26s, background 0.22s;
-}
-.parallax-tech-pill:hover, .parallax-tech-pill:focus-visible {
-  transform: scale(1.14);
-  background: linear-gradient(90deg, #a86bff 30%, #c9a7ff 80%);
-  color: #fff;
+  font-size: 0.9rem;
+  background: transparent;
+  user-select: none;
+  pointer-events: none;
 }
 
-/* CTA Button */
-.parallax-project__cta {
-  margin-top: 1rem;
-  padding: 0.6rem 1.35rem;
-  background: #a86bff24;
-  color: var(--color-accent-light);
-  border-radius: 999px;
+.project-cta {
+  align-self: flex-start;
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 1.05rem;
+  color: var(--color-accent);
   text-decoration: none;
-  box-shadow: 0 2px 10px #6726b144;
-  border: none;
-  cursor: pointer;
-  /* transition: all 0.22s cubic-bezier(0.23,1,0.32,1); */
-}
-.parallax-project__cta:hover, .parallax-project__cta:focus-visible {
-  background: #a86bff91;
-  color: #fff;
-  /* box-shadow: 0 2px 24px #a86bffc7; */
-  outline: none;
-  transform: scale(1.09);
+  letter-spacing: 0.025em;
+  padding: 0.2rem 0.5rem;
+  border-radius: 10px;
+  transition: color var(--transition-speed), background var(--transition-speed);
 }
 
-/* Mobile tweaks */
-@media (max-width: 900px) {
-  .parallax-section__title {
-    font-size: 2.4rem;
+.project-cta:hover,
+.project-cta:focus {
+  color: var(--color-white);
+  background: var(--color-accent);
+}
+
+.parallax-project-row:focus-within,
+.project-cta:focus {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+@media (max-width: 820px) {
+  .parallax-section__content {
+    grid-template-columns: 1fr;
+    gap: 32px;
   }
-  .parallax-project-row {
-    flex-direction: column;
-    min-height: auto;
-    gap: 2.5rem;
-  }
-  .parallax-project__image {
-    width: 95vw;
-    max-width: 310px;
-    height: 188px;
-  }
-  .parallax-project__info {
-    padding: 1.7rem 1.2rem;
-    max-width: unset;
+  .parallax-project-row:nth-child(even) {
+    margin-top: 0;
   }
 }
