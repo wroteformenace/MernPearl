@@ -144,7 +144,7 @@
 .project-cta:hover,
 .project-cta:focus {
   color: var(--color-white);
-  background: var(--color-accent);
+  /* background: var(--color-accent); */
 }
 
 .parallax-project-row:focus-within,
