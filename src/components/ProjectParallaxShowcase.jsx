@@ -159,6 +159,7 @@ const ParallaxProject = ({ project, index }) => {
 };
 
 const ProjectParallaxShowcase = () => (
+  <div className="services-showcase__glass-container">
   <section className="parallax-section" aria-label="Projects Showcase Section">
     <motion.h2
       className="parallax-section__title"
@@ -174,6 +175,7 @@ const ProjectParallaxShowcase = () => (
       ))}
     </div>
   </section>
+  </div>
 );
 
 export default ProjectParallaxShowcase;
