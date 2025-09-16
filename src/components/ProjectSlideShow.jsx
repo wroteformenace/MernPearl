@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "framer-motion";
-import "./ProjectParallaxShowcase.css";
+import "./ProjectSlideShow.css";
 
 const projects = [
   {
@@ -14,7 +14,7 @@ const projects = [
   },
   {
     id: 2,
-    image: "/Wireframe - 2.png",
+    image: "/sick.png",
     title: "SEO Suite",
     desc: "Glassmorphic dashboard that analyzes and boosts organic traffic using advanced SEO techniques.",
     tech: ["SEO", "Next.js", "Cloud"],
@@ -74,7 +74,12 @@ const slideshowCategories = [
 
 const variants = {
   initial: { opacity: 0, y: 60, scale: 0.97 },
-  animate: { opacity: 1, y: 0, scale: 1, transition: { type: "spring", stiffness: 70, damping: 18 } },
+  animate: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { type: "spring", stiffness: 70, damping: 18 }
+  },
   exit: { opacity: 0, y: -40, scale: 0.96, transition: { duration: 0.32 } }
 };
 
@@ -83,9 +88,35 @@ const ProjectSlideshow = () => {
   const containerRef = React.useRef(null);
   const inView = useInView(containerRef, { once: true, amount: 0.20 });
 
-  const goTo = idx => setCurrent(idx);
-  const prevSlide = () => setCurrent((prev) => prev === 0 ? projects.length - 1 : prev - 1);
-  const nextSlide = () => setCurrent((prev) => prev === projects.length - 1 ? 0 : prev + 1);
+  // Auto-play interval reference for cleanup
+  const autoPlayRef = useRef();
+
+  const goTo = idx => {
+    setCurrent(idx);
+  };
+
+  const prevSlide = () => {
+    setCurrent(prev => (prev === 0 ? projects.length - 1 : prev - 1));
+  };
+
+  const nextSlide = () => {
+    setCurrent(prev => (prev === projects.length - 1 ? 0 : prev + 1));
+  };
+
+  // Auto-play useEffect
+  useEffect(() => {
+    autoPlayRef.current = nextSlide;
+  });
+
+  useEffect(() => {
+    function play() {
+      autoPlayRef.current();
+    }
+    const interval = setInterval(play, 3500); // 3.5 seconds
+
+    return () => clearInterval(interval); // cleanup on unmount
+  }, []);
+
   const project = projects[current];
 
   return (
@@ -96,7 +127,11 @@ const ProjectSlideshow = () => {
         animate={inView ? "animate" : "initial"}
         variants={{
           initial: { opacity: 0, y: 60 },
-          animate: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.32,0.72,0.1,1] } }
+          animate: {
+            opacity: 1,
+            y: 0,
+            transition: { duration: 0.8, ease: [0.32, 0.72, 0.1, 1] }
+          }
         }}
       >
         {/* Dynamic Category/Title */}
@@ -107,8 +142,9 @@ const ProjectSlideshow = () => {
           animate={{ opacity: 1, x: 0, transition: { delay: 0.1 } }}
           exit={{ opacity: 0, x: -40 }}
         >
-          {slideshowCategories[current] || project.title}
+         <div className="project-title">{slideshowCategories[current] || project.title}</div>
         </motion.div>
+
         <div className="project-slideshow__slide">
           {/* Animate on slide switch */}
           <AnimatePresence mode="wait">
@@ -124,14 +160,22 @@ const ProjectSlideshow = () => {
               <p className="project-desc">{project.desc}</p>
               <div className="project-tech">
                 {project.tech.map((t, i) => (
-                  <span className="tech-pill" key={t + i}>{t}</span>
+                  <span className="tech-pill" key={t + i}>
+                    {t}
+                  </span>
                 ))}
               </div>
-              <a href={project.url} className="project-cta" target="_blank" rel="noopener noreferrer">
+              <a
+                href={project.url}
+                className="project-cta"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 View Project →
               </a>
             </motion.div>
           </AnimatePresence>
+
           <AnimatePresence mode="wait">
             <motion.div
               className="project-slideshow__imgwrap"
@@ -151,18 +195,21 @@ const ProjectSlideshow = () => {
           {projects.map((_, idx) => (
             <button
               key={idx}
-              className={
-                "project-slideshow__bullet" + (idx === current ? " active" : "")
-              }
+              className={"project-slideshow__bullet" + (idx === current ? " active" : "")}
               onClick={() => goTo(idx)}
               aria-label={`Go to slide ${idx + 1}`}
               tabIndex={0}
             />
           ))}
         </div>
+
         {/* Prev/next arrows */}
-        <button onClick={prevSlide} className="project-slideshow__arrow left" aria-label="Previous slide">‹</button>
-        <button onClick={nextSlide} className="project-slideshow__arrow right" aria-label="Next slide">›</button>
+        <button onClick={prevSlide} className="project-slideshow__arrow left" aria-label="Previous slide">
+          ‹
+        </button>
+        <button onClick={nextSlide} className="project-slideshow__arrow right" aria-label="Next slide">
+          ›
+        </button>
       </motion.div>
     </div>
   );
