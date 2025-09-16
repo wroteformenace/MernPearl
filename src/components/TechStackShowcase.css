@@ -1,0 +1,408 @@
+:root {
+  --color-primary: #5105B3;
+  --color-accent: #a86bff;
+  --color-accent-light: #aa79f8;
+  --color-white: #fff;
+  --color-text-muted: #e0cfff;
+  --glass-bg: rgba(18, 16, 36, 0.78);
+  --glass-blur: 22px;
+  --glass-border: rgba(168, 107, 255, 0.28);
+  --border-radius: 20px;
+  --transition-speed: 0.35s;
+}
+
+/* Title */
+.tech-showcase__title {
+  font-family: var(--title-font);
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  font-weight: 900;
+  text-align: center;
+  margin-bottom: 2.5rem;
+  /* background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text; */
+}
+
+/* Tech Stack Grid */
+.tech-stack-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem 0;
+  margin-bottom: 2rem;
+}
+
+/* Tech Cards */
+.tech-card {
+  background: var(--glass-bg);
+  border: 1.5px solid var(--glass-border);
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  cursor: pointer;
+  position: relative;
+  backdrop-filter: blur(var(--glass-blur));
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.tech-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--tech-gradient);
+  opacity: 0.8;
+}
+
+.tech-card:hover {
+  border-color: var(--tech-color);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.tech-card__inner {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.tech-icon {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  color: var(--tech-color);
+  filter: drop-shadow(0 0 10px var(--tech-color)33);
+}
+
+.tech-name {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--color-white);
+  margin: 0 0 0.5rem 0;
+}
+
+.tech-category {
+  color: var(--color-accent-light);
+  font-size: 0.9rem;
+  margin: 0 0 1rem 0;
+  opacity: 0.8;
+}
+
+.tech-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.tech-description {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: auto;
+  flex-grow: 1;
+}
+
+/* Hire Button */
+.hire-btn {
+  background: transparent;
+  border: 2px solid var(--tech-color);
+  color: var(--tech-color);
+  padding: 0.7rem 1.5rem;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1.5rem;
+}
+
+.hire-btn:hover {
+  background: var(--tech-color);
+  color: rgb(0, 0, 0);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px var(--tech-color)40;
+}
+
+/* Pagination Styles */
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 50px;
+  padding: 0.5rem;
+  backdrop-filter: blur(var(--glass-blur));
+}
+
+.pagination-btn {
+  background: transparent;
+  border: none;
+  color: var(--color-text-muted);
+  padding: 0.5rem 0.8rem;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  min-width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pagination-btn:hover:not(:disabled) {
+  background: var(--color-accent);
+  color: var(--color-white);
+  transform: translateY(-1px);
+}
+
+.pagination-btn.active {
+  background: var(--color-accent);
+  color: var(--color-white);
+  box-shadow: 0 0 20px var(--color-accent)40;
+}
+
+.pagination-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.pagination-btn.prev,
+.pagination-btn.next {
+  font-size: 1.2rem;
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(8px);
+  padding: 1rem;
+}
+
+.hire-modal {
+  background: var(--glass-bg);
+  border: 1.5px solid var(--glass-border);
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  max-width: 550px;
+  width: 100%;
+  max-height: 105vh;
+  overflow-y: auto;
+  backdrop-filter: blur(var(--glass-blur));
+    scrollbar-width: thin;
+  scrollbar-color: var(--color-accent-light) var(--glass-bg);
+}
+/* Chrome, Edge, Safari */
+.hire-modal::-webkit-scrollbar {
+  width: 9px;
+}
+
+.hire-modal::-webkit-scrollbar-track {
+  background: var(--glass-bg);
+  border-radius: 10px;
+}
+
+.hire-modal::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, var(--purple-medium) 60%, var(--color-accent-light) 100%);
+  border-radius: 10px;
+  min-height: 40px;
+  box-shadow: 0 1px 6px 0 rgba(133, 52, 180, 0.20);
+  border: 2px solid var(--glass-bg);
+  transition: background 0.3s;
+}
+
+.hire-modal::-webkit-scrollbar-thumb:hover,
+.hire-modal::-webkit-scrollbar-thumb:active {
+  background: linear-gradient(135deg, var(--color-accent) 60%, var(--color-accent-light) 100%);
+}
+
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.selected-tech-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.tech-icon-modal {
+  font-size: 2.5rem;
+}
+
+.selected-tech-info h3 {
+  color: var(--color-white);
+  font-size: 1.4rem;
+  margin: 0;
+}
+
+.selected-tech-info p {
+  color: var(--color-accent-light);
+  font-size: 0.9rem;
+  margin: 0.3rem 0 0 0;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: var(--color-accent);
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.close-btn:hover {
+  background: rgba(168, 107, 255, 0.1);
+  transform: scale(1.1);
+}
+
+/* Form Styles */
+.hire-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.hire-form input,
+.hire-form textarea {
+  background: rgba(168, 107, 255, 0.1);
+  border: 1.5px solid var(--glass-border);
+  border-radius: 10px;
+  padding: 1rem;
+  color: var(--color-white);
+  font-size: 0.9rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.hire-form input::placeholder,
+.hire-form textarea::placeholder {
+  color: var(--color-text-muted);
+  opacity: 0.7;
+}
+
+.hire-form input:focus,
+.hire-form textarea:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(168, 107, 255, 0.2);
+}
+
+/* Custom Select Styles */
+.custom-select {
+  position: relative;
+}
+
+.custom-select select {
+  width: 100%;
+  background: rgba(168, 107, 255, 0.1);
+  border: 1.5px solid var(--glass-border);
+  border-radius: 10px;
+  padding: 1rem;
+  padding-right: 3rem;
+  color: var(--color-white);
+  font-size: 0.9rem;
+  outline: none;
+  appearance: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.custom-select select:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(168, 107, 255, 0.2);
+}
+
+.custom-select option {
+  background: var(--glass-bg);
+  color: var(--color-white);
+  padding: 0.5rem;
+}
+
+.select-icon {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-accent-light);
+  pointer-events: none;
+  font-size: 0.8rem;
+}
+
+.submit-btn {
+  background: var(--color-accent);
+  border: none;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+  .tech-stack-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .pagination {
+    padding: 0.3rem;
+    gap: 0.3rem;
+  }
+  .pagination-btn {
+    padding: 0.4rem 0.6rem;
+    min-width: 35px;
+    height: 35px;
+    font-size: 0.8rem;
+  }
+  .hire-btn {
+    width: 100%;
+  }
+}

@@ -3,9 +3,6 @@ import HeroSection from "./components/HeroSection";
 import CompassDock from "./components/Compass";
 import Navbar from "./components/Navbar";
 // import UniverseCards from "./components/UniverseCards";
-import MagicBento from "./components/MagicBento";
-import ScrollStack, { ScrollStackItem } from './components/ScrollStack'
-import ProfileCard from "./components/ProfileCard";
 import "./App.css";
 import Ui from './assets/Ui.png'; 
 import AI from './assets/Ai.png';
@@ -15,6 +12,7 @@ import Footer from './components/Footer';
 import Services from "./components/Services";
 import Testimonials from "./components/Testimonials";
 import ProjectParallaxShowcase from "./components/ProjectParallaxShowcase";
+import TechStackShowcase from "./components/TechStackShowcase";
 
 export default function App() {
   return (
@@ -57,6 +55,7 @@ export default function App() {
 
 <Services />
 <ProjectParallaxShowcase />
+<TechStackShowcase />
 <Testimonials />
                 {/* <MagicBento
             textAutoHide={true}
