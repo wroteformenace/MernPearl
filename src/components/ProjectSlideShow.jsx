@@ -73,104 +73,85 @@ const slideshowCategories = [
 ];
 
 const variants = {
-  initial: { opacity: 0, y: 60, scale: 0.97 },
-  animate: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: { type: "spring", stiffness: 70, damping: 18 }
-  },
-  exit: { opacity: 0, y: -40, scale: 0.96, transition: { duration: 0.32 } }
+  enter: { opacity: 0, x: 100 },
+  center: { opacity: 1, x: 0 },
+  exit: { opacity: 0, x: -100 },
 };
 
-const ProjectSlideshow = () => {
+const transition = {
+  duration: 1.2, // slower, smoother transition
+  ease: "easeInOut",
+};
+
+const ProjectSlideShow = () => {
   const [current, setCurrent] = useState(0);
-  const containerRef = React.useRef(null);
-  const inView = useInView(containerRef, { once: true, amount: 0.20 });
+  const containerRef = useRef(null);
+  const inView = useInView(containerRef, { once: true, amount: 0.25 });
 
-  // Auto-play interval reference for cleanup
-  const autoPlayRef = useRef();
+  const timeoutRef = useRef(null);
 
-  const goTo = idx => {
+  const resetTimeout = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+  };
+
+  useEffect(() => {
+    resetTimeout();
+    timeoutRef.current = setTimeout(() => {
+      setCurrent((prevIndex) => (prevIndex === projects.length - 1 ? 0 : prevIndex + 1));
+    }, 5000); // 5 seconds
+
+    return () => {
+      resetTimeout();
+    };
+  }, [current]);
+
+  const goTo = (idx) => {
     setCurrent(idx);
   };
 
   const prevSlide = () => {
-    setCurrent(prev => (prev === 0 ? projects.length - 1 : prev - 1));
+    setCurrent((prev) => (prev === 0 ? projects.length - 1 : prev - 1));
   };
 
   const nextSlide = () => {
-    setCurrent(prev => (prev === projects.length - 1 ? 0 : prev + 1));
+    setCurrent((prev) => (prev === projects.length - 1 ? 0 : prev + 1));
   };
 
-  // Auto-play useEffect
-  useEffect(() => {
-    autoPlayRef.current = nextSlide;
-  });
-
-  useEffect(() => {
-    function play() {
-      autoPlayRef.current();
-    }
-    const interval = setInterval(play, 3500); // 3.5 seconds
-
-    return () => clearInterval(interval); // cleanup on unmount
-  }, []);
-
-  const project = projects[current];
-
   return (
-    <div className="services-showcase__glass-container" ref={containerRef}>
+    <div className="services__glass-container" ref={containerRef}>
       <motion.div
         className="project-slideshow__container"
-        initial="initial"
-        animate={inView ? "animate" : "initial"}
-        variants={{
-          initial: { opacity: 0, y: 60 },
-          animate: {
-            opacity: 1,
-            y: 0,
-            transition: { duration: 0.8, ease: [0.32, 0.72, 0.1, 1] }
-          }
-        }}
+        initial="enter"
+        animate={inView ? "center" : "enter"}
+        exit="exit"
+        transition={{ duration: 1, ease: "easeOut" }}
       >
-        {/* Dynamic Category/Title */}
-        <motion.div
-          className="project-slideshow__category"
-          key={current}
-          initial={{ opacity: 0, x: 40 }}
-          animate={{ opacity: 1, x: 0, transition: { delay: 0.1 } }}
-          exit={{ opacity: 0, x: -40 }}
-        >
-         <div className="project-title">{slideshowCategories[current] || project.title}</div>
+        <motion.div className="project-slideshow__category" key={current} initial={{ opacity: 0, x: 60 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -60 }} transition={{ duration: 0.7 }}>
+          <div className="project-title">{slideshowCategories[current] || projects[current].title}</div>
         </motion.div>
 
         <div className="project-slideshow__slide">
-          {/* Animate on slide switch */}
           <AnimatePresence mode="wait">
             <motion.div
+              key={projects[current].id}
               className="project-slideshow__desc"
-              key={project.id}
-              initial={variants.initial}
-              animate={variants.animate}
-              exit={variants.exit}
-              transition={{ type: "spring", duration: 0.5 }}
+              variants={variants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={transition}
+              style={{ position: "absolute", width: "50%", left: 0 }}
             >
-              <h3 className="project-title">{project.title}</h3>
-              <p className="project-desc">{project.desc}</p>
+              <h3 className="project-title">{projects[current].title}</h3>
+              <p className="project-desc">{projects[current].desc}</p>
               <div className="project-tech">
-                {project.tech.map((t, i) => (
-                  <span className="tech-pill" key={t + i}>
-                    {t}
-                  </span>
+                {projects[current].tech.map((t, i) => (
+                  <span className="tech-pill" key={t + i}>{t}</span>
                 ))}
               </div>
-              <a
-                href={project.url}
-                className="project-cta"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href={projects[current].url} className="project-cta" target="_blank" rel="noopener noreferrer">
                 View Project →
               </a>
             </motion.div>
@@ -178,19 +159,20 @@ const ProjectSlideshow = () => {
 
           <AnimatePresence mode="wait">
             <motion.div
+              key={projects[current].id + "-img"}
               className="project-slideshow__imgwrap"
-              key={project.id + "-img"}
-              initial={{ opacity: 0, scale: 0.93, x: 60 }}
-              animate={{ opacity: 1, scale: 1, x: 0, transition: { delay: 0.11 } }}
-              exit={{ opacity: 0, scale: 0.96, x: -40, transition: { duration: 0.28 } }}
-              transition={{ type: "spring", duration: 0.6 }}
+              variants={variants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{ ...transition, delay: 0.2 }}
+              style={{ position: "absolute", width: "50%", right: 0 }}
             >
-              <img src={project.image} alt={project.title} className="project-image" />
+              <img src={projects[current].image} alt={projects[current].title} className="project-image" />
             </motion.div>
           </AnimatePresence>
         </div>
 
-        {/* Bullets/Navigation */}
         <div className="project-slideshow__bullets">
           {projects.map((_, idx) => (
             <button
@@ -203,16 +185,11 @@ const ProjectSlideshow = () => {
           ))}
         </div>
 
-        {/* Prev/next arrows */}
-        <button onClick={prevSlide} className="project-slideshow__arrow left" aria-label="Previous slide">
-          ‹
-        </button>
-        <button onClick={nextSlide} className="project-slideshow__arrow right" aria-label="Next slide">
-          ›
-        </button>
+        <button onClick={prevSlide} className="project-slideshow__arrow left" aria-label="Previous slide">‹</button>
+        <button onClick={nextSlide} className="project-slideshow__arrow right" aria-label="Next slide">›</button>
       </motion.div>
     </div>
   );
 };
 
-export default ProjectSlideshow;
+export default ProjectSlideShow;
