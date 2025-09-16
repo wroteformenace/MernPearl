@@ -43,7 +43,7 @@ const techStack = [
     experience: "6+ years",
     projects: 52,
     color: "#3776AB",
-    gradient: "linear-gradient(135deg, #3776AB 0%, #FFD43B 100%)",
+    gradient: "linear-gradient(135deg, #aedbffff 0%, #007be0ff 100%)",
     description: "AI/ML, data analysis, Django/Flask web development"
   },
   {
