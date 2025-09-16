@@ -11,7 +11,7 @@ import Mob from './assets/Mob.png';
 import Footer from './components/Footer';
 import Services from "./components/Services";
 import Testimonials from "./components/Testimonials";
-import ProjectParallaxShowcase from "./components/ProjectParallaxShowcase";
+import ProjectParallaxShowcase from "./components/ProjectSlideShow";
 import TechStackShowcase from "./components/TechStackShowcase";
 
 export default function App() {
