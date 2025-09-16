@@ -1,10 +1,18 @@
 .project-slideshow__container {
   position: relative;
   width: 100%;
-  max-width: 940px; /* increased from 820px */
+  max-width: min(94vw, 940px);
   margin: 0 auto;
-  padding: 40px 0 60px; /* more padding for prominence */
+  padding-inline: 0;
+  padding-top: 2.5rem;
+  padding-bottom: 3rem;
+  background: transparent;
+  /* Or add a glass background: */
+  /* background: rgba(70, 40, 140, 0.06); */
+  border-radius: 36px;
+  box-shadow: none;
 }
+
 
 /* Title enlarged and bold, bigger with a subtle gradient */
 .project-slideshow__category {
@@ -26,7 +34,7 @@
   border-radius: calc(var(--border-radius) * 1.2);
   border: 1.5px solid var(--glass-border);
   overflow: hidden;
-  box-shadow: 0 8px 24px rgba(80,32,150,0.15);
+  /* box-shadow: 0 8px 24px rgba(80,32,150,0.15); */
 }
 
 /* Description area, larger font and spacing */
@@ -119,6 +127,18 @@
   border-radius: calc(var(--border-radius) * 0.9);
   box-shadow: 0 4px 22px rgba(80, 32, 150, 0.18);
 }
+.project-slideshow__imgwrap {
+  position: relative;
+}
+.project-slideshow__imgwrap::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(90deg, rgba(81,5,179,0.09) 0%, transparent 65%);
+  opacity: 0.55;
+}
 
 /* Bullets: bigger, more visible, tapable (pointer) */
 .project-slideshow__bullets {
@@ -178,11 +198,18 @@
 }
 
 /* Responsive adjustments */
-@media(max-width: 900px){
-  .project-slideshow__container { max-width: 98vw; }
-  .project-slideshow__slide { flex-direction: column; }
-  .project-slideshow__imgwrap { max-width: 100%; }
-  .project-image { max-width: 95vw; }
-  .project-slideshow__arrow.left { left: -9px; }
-  .project-slideshow__arrow.right { right: -9px; }
+@media (max-width: 900px) {
+  .project-slideshow__bullets {
+    gap: 1.1rem;
+  }
+  .project-slideshow__bullet {
+    width: 20px;
+    height: 20px;
+  }
+  .project-title {
+    font-size: 1.7rem;
+  }
+  .project-cta {
+    font-size: 1.1rem;
+  }
 }
