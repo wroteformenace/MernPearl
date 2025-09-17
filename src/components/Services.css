@@ -6,20 +6,35 @@
   --color-white: #ffffff;
   --color-text-muted: #e0cfff;
 
+  /* New Secondary Color - Dark Teal */
+  --color-secondary: #008080;
+  --color-secondary-light: #20B2AA;
+  --color-secondary-dark: #006666;
+  --color-secondary-muted: rgba(0, 128, 128, 0.7);
+
   --color-glass-bg: rgba(18, 16, 36, 0.7);
   --color-glass-border: rgba(255, 255, 255, 0.15);
   --color-glass-border-hover: rgba(118, 20, 255, 0.55);
+  /* Teal glass variations */
+  --color-glass-border-teal: rgba(0, 128, 128, 0.35);
+  --color-glass-border-teal-hover: rgba(32, 178, 170, 0.55);
 
   --border-radius: 18px;
   --border-radius-sm: 12px;
 
   --transition-smooth: cubic-bezier(0.23, 1, 0.32, 1);
   --transition-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+  /* Professional Typography System */
+  --font-primary: 'Inter', system-ui, sans-serif;
+  --font-headings: 'Manrope', system-ui, sans-serif;
+  --font-body: 'Source Sans Pro', system-ui, sans-serif;
+  --font-ui: 'Rubik', system-ui, sans-serif;
 }
 
 /* Container with strong glassmorphic style and subtle glow */
 .services-showcase__glass-container {
-  background: var(--color-glass-bg);
+  background: rgba(0, 128, 128, 0.7); /* dark teal glass background */
   border-radius: 24px;
   padding: 3.5rem 3.5rem 3rem;
   max-width: 1600px;
@@ -27,9 +42,9 @@
   backdrop-filter: blur(24px) saturate(180%);
   -webkit-backdrop-filter: blur(24px) saturate(180%);
   box-shadow:
-    0 0 45px rgba(81, 5, 179, 0.35),
-    inset 0 0 50px rgba(168, 107, 255, 0.28);
-  border: 1.5px solid rgba(255, 255, 255, 0.15);
+    0 0 45px rgba(0, 128, 128, 0.35), /* teal glow shadow */
+    inset 0 0 50px rgba(32, 178, 170, 0.28); /* lighter teal inset glow */
+  border: 1.5px solid rgba(32, 178, 170, 0.35); /* teal tinted border */
   color: var(--color-white);
   transition: box-shadow 0.4s ease;
 }
@@ -47,8 +62,10 @@
   color: var(--color-white);
   margin: 0;
   line-height: 1.15;
-  font-family: 'Segoe UI', system-ui, sans-serif;
-  /* text-shadow: 0 0 8px #a86bffcc; */
+  font-family: var(--font-primary); /* Inter for main titles */
+  letter-spacing: -0.02em; /* Improved letter spacing for large text */
+  /* Optional: Add teal glow for title emphasis */
+  /* text-shadow: 0 0 12px var(--color-secondary-muted); */
 }
 
 .services-showcase__subtitle {
@@ -60,6 +77,8 @@
   margin-right: auto;
   line-height: 1.65;
   opacity: 0.9;
+  font-family: var(--font-body); /* Source Sans Pro for subtitles */
+  font-weight: 400;
 }
 
 /* Grid with two columns and responsive fallback */
@@ -112,6 +131,20 @@
   position: relative;
 }
 
+/* Teal variant for special service cards */
+.service-card--teal {
+  border-color: var(--color-glass-border-teal);
+}
+
+.service-card--teal:hover,
+.service-card--teal.is-hovered {
+  border-color: var(--color-glass-border-teal-hover);
+  box-shadow:
+    0 10px 40px rgba(0, 0, 0, 0.45),
+    0 0 30px rgba(0, 128, 128, 0.45),
+    inset 0 0 14px rgba(32, 178, 170, 0.1);
+}
+
 /* Animate visible cards */
 .service-card.is-visible {
   opacity: 1;
@@ -133,15 +166,21 @@
 .service-card__icon {
   width: 64px;
   height: 64px;
-  border: 2.5px solid var(--color-accent);
+  border: 2.5px solid white;
   border-radius: var(--border-radius-sm);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-accent-light);
+  color: white;
   flex-shrink: 0;
 
   transition: transform 0.32s var(--transition-bounce), box-shadow 0.32s ease;
+}
+
+/* Teal icon variant */
+.service-card--teal .service-card__icon {
+  border-color: var(--color-secondary);
+  color: var(--color-secondary-light);
 }
 
 .service-card.is-hovered .service-card__icon {
@@ -149,6 +188,12 @@
   /* box-shadow: 
     0 0 20px rgba(168, 107, 255, 0.9),
     0 0 48px rgba(123, 44, 191, 0.55); */
+}
+
+.service-card--teal.is-hovered .service-card__icon {
+  box-shadow: 
+    0 0 20px rgba(0, 128, 128, 0.9),
+    0 0 48px rgba(32, 178, 170, 0.55);
 }
 
 /* Title and description text */
@@ -159,6 +204,7 @@
   margin: 0;
   line-height: 1.25;
   user-select: none;
+  font-family: var(--font-headings); /* Manrope for card titles */
 }
 
 .service-card__description {
@@ -167,6 +213,8 @@
   line-height: 1.6;
   margin: 0;
   user-select: none;
+  font-family: var(--font-body); /* Source Sans Pro for descriptions */
+  font-weight: 400;
 }
 
 /* Call to action link */
@@ -174,20 +222,32 @@
   display: inline-flex;
   align-items: center;
   gap: 0.62rem;
-  color: var(--color-accent);
+  color: white;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 500; /* Adjusted weight for UI font */
   font-size: 0.95rem;
   margin-top: auto;
   padding: 0.52rem 0;
   transition: all 0.32s ease;
   user-select: none;
+  font-family: var(--font-ui); /* Rubik for CTAs */
+  letter-spacing: 0.01em; /* Subtle letter spacing for UI elements */
+}
+
+/* Teal CTA variant */
+.service-card--teal .service-card__cta {
+  color: var(--color-secondary);
 }
 
 .service-card__cta:hover {
   color: var(--color-accent-light);
   text-shadow: 0 0 8px var(--color-accent-light);
   transform: translateX(5px);
+}
+
+.service-card--teal .service-card__cta:hover {
+  color: var(--color-secondary-light);
+  text-shadow: 0 0 8px var(--color-secondary-light);
 }
 
 .service-card__cta svg {
