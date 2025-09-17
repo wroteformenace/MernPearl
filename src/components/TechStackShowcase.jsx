@@ -35,7 +35,7 @@ const techStack = [
     name: "React",
     icon: <FaReact />,
     category: "Frontend",
-    color: "#61DAFB",
+    color: "white",
     gradient: "linear-gradient(135deg, #61DAFB 0%, #21D4FD 100%)",
     description:
       "Modern React development with hooks, context, and performance optimization",
@@ -45,7 +45,7 @@ const techStack = [
     name: "Node.js",
     icon: <FaNodeJs />,
     category: "Backend",
-    color: "#339933",
+    color: "white",
     gradient: "linear-gradient(135deg, #339933 0%, #66BB6A 100%)",
     description: "Scalable server-side applications with Express and microservices",
   },
@@ -54,7 +54,7 @@ const techStack = [
     name: "Python",
     icon: <FaPython />,
     category: "Backend",
-    color: "#3776AB",
+    color: "white",
     gradient: "linear-gradient(135deg, #aedbffff 0%, #007be0ff 100%)",
     description: "AI/ML, data analysis, Django/Flask web development",
   },
@@ -63,7 +63,7 @@ const techStack = [
     name: "AWS",
     icon: <FaAws />,
     category: "Cloud",
-    color: "#FF9900",
+    color: "white",
     gradient: "linear-gradient(135deg, #FF9900 0%, #FFAD33 100%)",
     description: "Cloud architecture, serverless, containerization",
   },
@@ -72,7 +72,7 @@ const techStack = [
     name: "TypeScript",
     icon: <SiTypescript />,
     category: "Language",
-    color: "#3176C6",
+    color: "white",
     gradient: "linear-gradient(135deg, #3176C6 0%, #5B9BD5 100%)",
     description: "Type-safe development for large-scale applications",
   },
@@ -81,7 +81,7 @@ const techStack = [
     name: "Next.js",
     icon: <SiNextdotjs />,
     category: "Framework",
-    color: "#ffffff",
+    color: "white",
     gradient: "linear-gradient(135deg, #a1a1a1 0%, #fafafa 100%)",
     description: "Full stack modern React framework with SSR",
   },
@@ -90,7 +90,7 @@ const techStack = [
     name: "MongoDB",
     icon: <SiMongodb />,
     category: "Database",
-    color: "#47A248",
+    color: "white",
     gradient: "linear-gradient(135deg, #47A248 0%, #68C952 100%)",
     description: "NoSQL database design and optimization",
   },
@@ -99,7 +99,7 @@ const techStack = [
     name: "GraphQL",
     icon: <SiGraphql />,
     category: "API",
-    color: "#E10098",
+    color: "white",
     gradient: "linear-gradient(135deg, #E10098 0%, #F037A5 100%)",
     description: "Modern API development with efficient data fetching",
   },
@@ -115,7 +115,7 @@ const TechStackShowcase = () => {
   };
 
   return (
-          <div className="services-showcase__glass-container">
+          <div className="services-showcas__glass-container">
     <div className="services__glass-container">
       <motion.h2
         className="tech-showcase__title"

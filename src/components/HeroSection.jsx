@@ -113,16 +113,6 @@ export default function HeroSection() {
 <div className="loader-fullscreen-wrapper">
   <div className="loader-wrapper">
     <div className="loader"></div>
-    {/* <span className="loader-letter">L</span>
-    <span className="loader-letter">o</span>
-    <span className="loader-letter">a</span>
-    <span className="loader-letter">d</span>
-    <span className="loader-letter">i</span>
-    <span className="loader-letter">n</span>
-    <span className="loader-letter">g</span>
-    <span className="loader-letter">.</span>
-    <span className="loader-letter">.</span>
-    <span className="loader-letter">.</span> */}
   </div>
 </div>
 
@@ -137,7 +127,7 @@ export default function HeroSection() {
         <ParticleTextReveal text="Creating Thoughtful Digital Products" />
 
 
-        {/* <motion.p
+        <motion.p
           initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.6 }}
@@ -145,17 +135,17 @@ export default function HeroSection() {
           className="hero-sub"
         >
           Designing and building scalable, user‑centered solutions for the modern tech stack.
-        </motion.p> */}
+        </motion.p>
 
 
 
-       <TextType 
+       {/* <TextType 
   text={[" Designing and building scalable", " user‑centered solutions for the modern tech stack."]}
   typingSpeed={75}
   pauseDuration={1500}
   showCursor={true}
   cursorCharacter="|"
-/>
+/> */}
 
         <motion.a
           href="#contact"

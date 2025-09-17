@@ -4,14 +4,13 @@
   position: relative;
   overflow: visible;
 
-  /* Ultra dark cosmic gradient with extra depth at bottom */
+  /* Cream to teal gradient inspired by hero background */
   background: linear-gradient(
-    180deg,
-    #12011a 0%,
-    #1E0732 15%,
-    #310a54 50%,
-    #21073c 70%,
-    #110026 100%
+    120deg,
+    #f5ecdf 0%,
+    #d6e4df 40%,
+    #abd7d6 70%,
+    #61b4bb 100%
   );
 }
 
@@ -21,9 +20,9 @@
   inset: 0;
   pointer-events: none;
   z-index: 0;
+  /* Gentle overlay glows from original cosmic logic, optional for this palette */
   background:
-    radial-gradient(circle at 55% 78%, rgba(160, 60, 230, 0.096), transparent 75%),
-    radial-gradient(circle at 25% 12%, rgba(95, 30, 120, 0.12), transparent 70%);
-  /* Subtle cosmic glow overlays */
+    radial-gradient(circle at 55% 78%, rgba(170, 230, 230, 0.08), transparent 75%),
+    radial-gradient(circle at 25% 12%, rgba(118, 180, 180, 0.10), transparent 70%);
   opacity: 1;
 }

@@ -28,6 +28,33 @@ body {
   background-color: #0e041a;
   overflow-x: hidden;
 }
+/* Center all hero text and content by default */
+.hero-inner,
+.hero-title{
+  text-align: center;
+  align-items: center; /* For flex containers */
+  justify-content: center;
+}
+
+/* Center CTA buttons and links */
+.cta,
+.glass-cta,
+.hero-sub {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* To un-center an element, override its alignment explicitly, e.g.: */
+/*
+.my-left-aligned-element {
+  text-align: left !important;
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+  margin-left: 0 !important;
+  margin-right: auto !important;
+}
+*/
 
 .star-particles {
   position: fixed;
@@ -102,7 +129,7 @@ body {
   align-items: center;
   padding: clamp(20px, 4vw, 24px);
   overflow: hidden;
-  background: url('/sick.png') center/cover no-repeat fixed;
+  background: url('/generate-image.png') center/cover no-repeat fixed;
 }
 
 /* This wrapper is what we nudge upwards */
@@ -129,7 +156,7 @@ body {
   position: absolute;
   width: 5px;
   height: 5px;
-  background: #fff;
+  background: #000000;
   border-radius: 50%;
 }
 
@@ -147,7 +174,7 @@ body {
 
 /* 📝 Headline styles */
 .hero-title {
-  color: var(--text-high);
+  color: black;
   font-weight: 900;
   line-height: 1.1;
   letter-spacing: -0.3px;
@@ -162,14 +189,19 @@ body {
   margin-top: clamp(12px, 1.8vw, 20px);
   max-width: 58ch;
   font-size: clamp(1rem, 1.2vw + .6rem, 1.3rem);
-  color: var(--text-dim);
+  color: black;
   line-height: 1.6;
   pointer-events: none;
+  align-items: center;
 }
 /* Full screen loader container to center loader */
 .loader-fullscreen-wrapper {
   position: fixed;
-  inset: 0;             /* top:0; bottom:0; left:0; right:0; */
+  inset: 0;  
+  top:1rem;
+  left: 5rem;
+
+             /* top:0; bottom:0; left:0; right:0; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -188,7 +220,7 @@ body {
   font-family: "Inter", sans-serif;
   font-size: 1.2em;
   font-weight: 300;
-  color: white;
+  color: rgb(20, 20, 20);
   border-radius: 50%;
   background-color: transparent;
   user-select: none;
@@ -210,80 +242,23 @@ body {
   0% {
     transform: rotate(90deg);
     box-shadow:
-      0 10px 20px 0 #fff inset,
-      0 20px 30px 0 #ad5fff inset,
-      0 60px 60px 0 #471eec inset;
+      0 10px 20px 0 #1d1d1d inset,
+      0 20px 30px 0 #125544 inset,
+      0 60px 60px 0 #023028 inset;
   }
   50% {
     transform: rotate(270deg);
     box-shadow:
-      0 10px 20px 0 #fff inset,
-      0 20px 10px 0 #d60a47 inset,
-      0 40px 60px 0 #311e80 inset;
+      0 10px 20px 0 #1d1d1d inset,
+      0 20px 10px 0 #125544 inset,
+      0 40px 60px 0 #074938 inset;
   }
   100% {
     transform: rotate(450deg);
     box-shadow:
-      0 10px 20px 0 #fff inset,
-      0 20px 30px 0 #ad5fff inset,
-      0 50px 30px 0 #471eec inset;
-  }
-}
-
-.loader-letter {
-  display: inline-block;
-  opacity: 0.4;
-  transform: translateY(0);
-  animation: loader-letter-anim 2s infinite;
-  z-index: 1;
-  border-radius: 50ch;
-  border: none;
-}
-
-.loader-letter:nth-child(1) {
-  animation-delay: 0s;
-}
-.loader-letter:nth-child(2) {
-  animation-delay: 0.1s;
-}
-.loader-letter:nth-child(3) {
-  animation-delay: 0.2s;
-}
-.loader-letter:nth-child(4) {
-  animation-delay: 0.3s;
-}
-.loader-letter:nth-child(5) {
-  animation-delay: 0.4s;
-}
-.loader-letter:nth-child(6) {
-  animation-delay: 0.5s;
-}
-.loader-letter:nth-child(7) {
-  animation-delay: 0.6s;
-}
-.loader-letter:nth-child(8) {
-  animation-delay: 0.7s;
-}
-.loader-letter:nth-child(9) {
-  animation-delay: 0.8s;
-}
-.loader-letter:nth-child(10) {
-  animation-delay: 0.9s;
-}
-
-@keyframes loader-letter-anim {
-  0%,
-  100% {
-    opacity: 0.4;
-    transform: translateY(0);
-  }
-  20% {
-    opacity: 1;
-    transform: scale(1.15);
-  }
-  40% {
-    opacity: 0.7;
-    transform: translateY(0);
+      0 10px 20px 0 #1d1d1d inset,
+      0 20px 30px 0 #158f70 inset,
+      0 50px 30px 0 #045c4d inset;
   }
 }
 
@@ -300,7 +275,7 @@ body {
   font-weight: 700;
   font-size: 1rem;
   text-decoration: none;
-  color: #fff;
+  color: whitesmoke;
   cursor: pointer;
   white-space: nowrap;
   isolation: isolate;
@@ -308,7 +283,9 @@ body {
 }
 
 .glass-cta {
-  background: linear-gradient(90deg, var(--cta-grad-1), var(--cta-grad-2));
+  background: black;
+  
+  /* background: linear-gradient(90deg, var(--cta-grad-1), var(--cta-grad-2)); */
   box-shadow: 0 8px 20px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.15);
   border: 1px solid rgba(var(--glass-border), .16);
   backdrop-filter: blur(12px) saturate(120%);
@@ -317,8 +294,8 @@ body {
 /* 🌟 Bouncy hover effect */
 .glass-cta:hover {
   animation: jumpHover 0.6s ease-out;
-  box-shadow: 0 12px 26px rgba(157,78,221,0.55), 0 0 15px rgba(123,44,191,0.4);
-  background: linear-gradient(90deg, var(--cta-grad-2), var(--cta-grad-1));
+  box-shadow: #001e27;
+  background:#001e27;
 }
 
 @keyframes jumpHover {

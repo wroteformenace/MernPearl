@@ -156,7 +156,7 @@ const ServicesShowcase = () => {
 
   return (
     <section className="services-showcase" aria-labelledby="services-title">
-      <div className="services-showcase__glass-container">
+      <div className="services-showcae__glass-container">
         <div className="services-showcase__header">
           <h2 id="services-title" className="services-showcase__title">Our Services</h2>
           <p className="services-showcase__subtitle">

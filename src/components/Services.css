@@ -34,7 +34,7 @@
 
 /* Container with strong glassmorphic style and subtle glow */
 .services-showcase__glass-container {
-  background: rgba(0, 128, 128, 0.7); /* dark teal glass background */
+  background: #001e27; /* dark teal glass background */
   border-radius: 24px;
   padding: 3.5rem 3.5rem 3rem;
   max-width: 1600px;
@@ -47,6 +47,7 @@
   border: 1.5px solid rgba(32, 178, 170, 0.35); /* teal tinted border */
   color: var(--color-white);
   transition: box-shadow 0.4s ease;
+  margin-top: 7rem;
 }
 
 .services-showcase__header {
@@ -59,8 +60,8 @@
 .services-showcase__title {
   font-size: 2.9rem;
   font-weight: 700;
-  color: var(--color-white);
-  margin: 0;
+  color: #001e27;
+  margin-top: 5rem;
   line-height: 1.15;
   font-family: var(--font-primary); /* Inter for main titles */
   letter-spacing: -0.02em; /* Improved letter spacing for large text */
@@ -70,7 +71,7 @@
 
 .services-showcase__subtitle {
   margin-top: 1.2rem;
-  color: var(--color-text-muted);
+  color: #001e27;
   font-size: 1.18rem;
   max-width: 670px;
   margin-left: auto;
@@ -78,14 +79,14 @@
   line-height: 1.65;
   opacity: 0.9;
   font-family: var(--font-body); /* Source Sans Pro for subtitles */
-  font-weight: 400;
+  font-weight: 600;
 }
 
 /* Grid with two columns and responsive fallback */
 .services-showcase__grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 2.5rem 2.2rem;
+  gap: 2rem;
   position: relative;
   z-index: 2;
 }
@@ -111,14 +112,15 @@
 
 /* Individual service cards */
 .service-card {
-  background: var(--color-glass-bg);
+  background: #001e27;
   border: 1.3px solid var(--color-glass-border);
   border-radius: var(--border-radius);
   padding: 2rem 2.2rem;
   display: flex;
   flex-direction: column;
-  gap: 1.15rem;
-
+  gap: 1rem;
+  margin-left: 2.5rem;
+  margin-right: 2.5rem;
   opacity: 0;
   transform: translateY(40px) scale(0.95);
   transition:

@@ -120,7 +120,7 @@ const ProjectSlideShow = () => {
   };
 
   return (
-    <div className="services__glass-container" ref={containerRef}>
+    <div className="services-showcase__glass-container" ref={containerRef}>
       <motion.div
         className="project-slideshow__container"
         initial="enter"

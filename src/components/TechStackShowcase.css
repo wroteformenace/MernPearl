@@ -9,7 +9,7 @@
   --glass-border: rgba(168, 107, 238, 0.28);
   --border-radius: 20px;
   --transition: 0.3s ease;
-  --font-family: 'Inter', sans-serif;
+  --font-family: 'Roboto', sans-serif;
 }
 
 /* Container & Title */
@@ -24,8 +24,9 @@
   font-weight: 900;
   font-size: clamp(1.8rem, 5vw, 2.8rem);
   text-align: center;
-  color: var(--color-white);
+  color: #001e27;
   margin-bottom: 2.5rem;
+  margin-top: 5rem;
 }
 
 /* Grid: 3 columns in desktop, stacked on mobile */
@@ -38,13 +39,13 @@
 
 /* Tech Card: subtle, clean, no hover glow/shadow */
 .tech-card {
-  background: var(--glass-bg);
-  border: 1.5px solid var(--glass-border);
+  background: #001e27;
+  border: 1.5px solid #001e27;
   border-radius: var(--border-radius);
   padding: 1.8rem 2rem;
   cursor: pointer;
   transition: border-color var(--transition), box-shadow var(--transition);
-  backdrop-filter: var(--glass-blur);
+  backdrop-filter: #001e27;
   position: relative;
   overflow: hidden;
   display: flex;
@@ -52,7 +53,7 @@
 }
 
 .tech-card:hover {
-  border-color: var(--color-accent);
+  border-color: #00526b;
 }
 
 .tech-card::before {
@@ -92,7 +93,7 @@
 
 .tech-category {
   font-size: 1rem;
-  color: var(--color-accent-light);
+  color: white;
   margin-bottom: 1rem;
   opacity: 0.8;
 }
@@ -108,7 +109,7 @@
 .tech-description {
   flex-grow: 1;
   font-size: 1rem;
-  color: var(--color-text-muted);
+  color: white;
   margin-bottom: 1rem;
 }
 
@@ -129,7 +130,7 @@
 .hire-btn:hover,
 .hire-btn:focus {
   background: var(--tech-color);
-  color: var(--color-white);
+  color: black;
 }
 
 /* Modal overlay */

@@ -1,35 +1,37 @@
 :root {
-  --testimonial-bg: rgba(86, 47, 165, 0.24);
-  --testimonial-glass-dark: rgba(32, 8, 67, 0.09);
-  --testimonial-border: rgba(141, 99, 246, 0.28);
-  --testimonial-shadow: 0 6px 24px rgba(106, 54, 196, 0.10);
-  --testimonial-accent: #a86bff;
-  --testimonial-accent-2: #c9a7ff;
-  --testimonial-avatar-ring: linear-gradient(90deg, #a86bff 20%, #7b2cbf 100%);
+  --testimonial-bg: rgba(30, 210, 255, 0.13);
+  --testimonial-glass-dark: rgba(13, 78, 121, 0.08);
+  --testimonial-border: rgba(11, 201, 234, 0.23);
+  --testimonial-shadow: 0 6px 24px rgba(11, 201, 234, 0.12);
+  --testimonial-accent: #001e27;
+  --testimonial-accent-2:#001e27;
+  --testimonial-avatar-ring: linear-gradient(90deg, #19e5ff 20%, #7ae2ff 100%);
+  --testimonial-author: #001e27
 }
 
 .testimonials-section {
   position: relative;
-  /* background: radial-gradient(ellipse at 70% 30%, var(--testimonial-bg) 0%, transparent 85%),
-              linear-gradient(120deg, var(--testimonial-glass-dark), transparent 80%); */
+  /* Blue glass glowing background, subtle light overlays */
+  /* background: 
+    radial-gradient(ellipse at 70% 30%, var(--testimonial-bg) 0%, transparent 85%),
+    linear-gradient(120deg, var(--testimonial-glass-dark), transparent 80%); */
   border-radius: 24px;
   padding: 4rem 1.5rem 2.5rem 1.5rem;
   max-width: 1380px;
-  margin: 0rem auto; /* Center the section */
+  margin: 0rem auto;
   overflow: hidden;
-  box-shadow: 0 4px 32px rgba(86, 47, 165, 0.08);
+  box-shadow: 0 4px 32px rgba(19, 204, 255, 0.11);
 }
 
 .testimonials-title {
   text-align: center;
-  color: #fff;
+  color: #001e27;
   font-size: 2.2rem;
   font-weight: 700;
   letter-spacing: -0.5px;
-  /* margin-bottom: 2.3rem; */
-  text-shadow: 0 2px 24px #7b2cbf66;
 }
 
+/* Marquee rows */
 .marquee-row {
   display: flex;
   flex-wrap: nowrap;
@@ -37,17 +39,14 @@
   margin-bottom: 1.6rem;
   animation: scroll-marquee-x 35s linear infinite;
 }
-
 .marquee-row.reverse {
   animation-direction: reverse;
   animation-duration: 28s;
 }
-
 @keyframes scroll-marquee-x {
   0% { transform: translateX(0); }
   100% { transform: translateX(-55%); }
 }
-
 @media (max-width: 900px) {
   .marquee-row,
   .marquee-row.reverse {
@@ -55,7 +54,6 @@
     gap: 1.2rem;
   }
 }
-
 @media (max-width: 600px) {
   .testimonials-section {
     padding: 2.2rem 0.5rem;
@@ -75,7 +73,7 @@
   backdrop-filter: blur(16px) saturate(130%);
   -webkit-backdrop-filter: blur(16px) saturate(130%);
   background: var(--testimonial-bg);
-  border: 1.3px solid var(--testimonial-border);
+  border: 1.5px solid #001e27;
   box-shadow: var(--testimonial-shadow);
   border-radius: 18px;
   padding: 1.25rem 1.3rem 1.2rem 1.3rem;
@@ -90,11 +88,12 @@
   outline: none;
 }
 
+/* Hover effect: subtle blue shadow pop */
 .testimonial-card:hover,
 .testimonial-card:focus-visible {
   border-color: var(--testimonial-accent-2);
-  background: rgba(139, 79, 234, 0.18);
-  box-shadow: 0 7px 35px #a86bff55;
+  background: rgba(80, 245, 255, 0.17);
+  box-shadow: 0 7px 35px #19e5ff44;
   z-index: 1;
 }
 
@@ -104,15 +103,15 @@
   color: var(--testimonial-accent);
 }
 
-/* Quote text */
+/* Main quote text */
 .testimonial-content {
-  color: #fff;
+  color: #0e4968;
   font-size: 1.06rem;
   font-weight: 500;
   line-height: 1.56;
   letter-spacing: 0.01em;
   margin-bottom: 0.4rem;
-  text-shadow: 0 1px 8px #34046533;
+  text-shadow: 0 1px 8px #17b9e933;
 }
 
 /* Profile info */
@@ -141,27 +140,29 @@
 .testimonial-author-meta {
   display: flex;
   flex-direction: column;
-  color: #fff;
+  color: var(--testimonial-author);
   font-size: 0.92rem;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: -0.01em;
-  opacity: 0.86;
+  opacity: 0.92;
 }
 .testimonial-job {
-  color: var(--color-text-muted);
+  color: #001e27;
   font-size: 0.8rem;
   font-weight: 400;
-  opacity: 0.76;
+  opacity: 0.70;
 }
+
+/* Subtitle text and spacing */
 .testimonials-section__subtitle {
   margin-top: 1rem;
   margin-bottom: 2rem;
-  color: var(--color-text-muted);
+  color: #001e27;
   text-align: center;
   font-size: 1.15rem;
   max-width: 650px;
   margin-left: auto;
   margin-right: auto;
   line-height: 1.6;
-  opacity: 0.93;
+  opacity: 0.92;
 }
