@@ -76,6 +76,7 @@ const Testimonials = () => {
   const secondRowTestimonials = [...testimonials.slice(3), ...testimonials.slice(0, 3)];
 
   return (
+    <div className="services-showcase__glass-container">
     <section className="testimonials-section" aria-labelledby="testimonials-title">
       <h2 id="testimonials-title" className="testimonials-title">
         Words of praise from others about our presence.
@@ -94,6 +95,7 @@ const Testimonials = () => {
         ))}
       </div>
     </section>
+    </div>
   );
 };
 

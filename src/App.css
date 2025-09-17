@@ -6,11 +6,11 @@
 
   /* Cream to teal gradient inspired by hero background */
   background: linear-gradient(
-    120deg,
+    100deg,
     #f5ecdf 0%,
     #d6e4df 40%,
-    #abd7d6 70%,
-    #61b4bb 100%
+    #a5dfde 70%,
+    #54acb4 100%
   );
 }
 
