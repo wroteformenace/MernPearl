@@ -15,11 +15,11 @@
   /* background: 
     radial-gradient(ellipse at 70% 30%, var(--testimonial-bg) 0%, transparent 85%),
     linear-gradient(120deg, var(--testimonial-glass-dark), transparent 80%); */
-  /* border-radius: 24px;
+  border-radius: 24px;
   padding: 4rem 1.5rem 2.5rem 1.5rem;
   max-width: 1380px;
   margin: 0rem auto;
-  overflow: hidden; */
+  overflow: hidden;
   /* box-shadow: 0 4px 32px rgba(19, 204, 255, 0.11); */
 }
 
