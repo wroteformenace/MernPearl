@@ -54,8 +54,11 @@ export default function App() {
 </h2> */}
 
 <Services />
+
 <ProjectParallaxShowcase />
+
 <TechStackShowcase />
+
 <Testimonials />
                 {/* <MagicBento
             textAutoHide={true}
