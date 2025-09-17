@@ -17,6 +17,7 @@
   border-radius: 0 0 var(--border-radius) var(--border-radius);
   box-shadow: 0 -2px 20px 0 rgba(11, 201, 234, 0.25);
   user-select: none;
+}
 
 /* Main container flex layout */
 .footer-dark__container {

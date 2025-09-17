@@ -129,7 +129,7 @@ body {
   align-items: center;
   padding: clamp(20px, 4vw, 24px);
   overflow: hidden;
-  background: url('/generate-image.png') center/cover no-repeat fixed;
+  /* background: url('/generated-image.png') center/cover no-repeat fixed; */
 }
 
 /* This wrapper is what we nudge upwards */
