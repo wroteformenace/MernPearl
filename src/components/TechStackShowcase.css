@@ -1,12 +1,12 @@
 :root {
-  --color-primary: #5105B3;
-  --color-accent: #a86fff;
-  --color-accent-light: #aa79a8;
-  --color-white: #fff;
-  --color-text-muted: #e0cfff;
-  --glass-bg: rgba(18, 16, 36, 0.78);
+  --color-primary: #069494; /* Teal green */
+  --color-accent: #00434e; /* Slightly lighter green accent */
+  --color-accent-light: #7ad3b2; /* Soft light teal accent */
+  --color-white: #ffffff; /* Keep white for text and highlights */
+  --color-text-muted: #63dac6; /* Muted tealish text */
+  --glass-bg: rgba(6, 148, 148, 0.85); /* Translucent teal glass background */
   --glass-blur: 22px;
-  --glass-border: rgba(168, 107, 238, 0.28);
+  --glass-border: rgba(2, 85, 59, 0.4); /* Border using darker teal */
   --border-radius: 20px;
   --transition: 0.3s ease;
   --font-family: 'Roboto', sans-serif;
@@ -300,7 +300,6 @@
 .submit-btn:hover,
 .submit-btn:focus {
   background: var(--color-accent-light);
-  box-shadow: 0 0 20px var(--color-accent-light);
   outline: none;
 }
 

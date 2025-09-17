@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import Draggable from "react-draggable";
-import { FaGithub, FaLinkedin, FaInstagram, FaCompass } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaInstagram, FaTwitter, FaCompass } from "react-icons/fa";
 import "./Compass.css";
 
 export default function CompassDock() {
@@ -26,6 +26,12 @@ export default function CompassDock() {
       url: "https://instagram.com/yourprofile",
       className: "instagram",
     },
+    {
+      icon: <FaTwitter />,
+      label: "Twitter/X",
+      url: "https://twitter.com/yourprofile",
+      className: "twitter",
+    }
   ];
 
   return (

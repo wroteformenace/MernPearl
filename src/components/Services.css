@@ -1,11 +1,4 @@
 :root {
-  --color-primary: #5105B3;
-  --color-primary-light: #7b2cbf;
-  --color-accent: #a86bff;
-  --color-accent-light: #c9a7ff;
-  --color-white: #ffffff;
-  --color-text-muted: #e0cfff;
-
   /* New Secondary Color - Dark Teal */
   --color-secondary: #008080;
   --color-secondary-light: #20B2AA;
@@ -155,7 +148,7 @@
 
 /* Hover effect with glow and subtle pop */
 .service-card.is-hovered {
-  border-color: var(--color-glass-border-hover);
+  border-color: var(--color-secondary-light);
   /* box-shadow:
     0 10px 40px rgba(0, 0, 0, 0.45),
     0 0 30px rgba(168, 107, 255, 0.45),
@@ -210,7 +203,7 @@
 }
 
 .service-card__description {
-  color: var(--color-text-muted);
+  color: var(--color-secondary-light);
   font-size: 0.97rem;
   line-height: 1.6;
   margin: 0;
@@ -238,12 +231,12 @@
 
 /* Teal CTA variant */
 .service-card--teal .service-card__cta {
-  color: var(--color-secondary);
+  color: var(--color-secondary-light);
 }
 
 .service-card__cta:hover {
-  color: var(--color-accent-light);
-  text-shadow: 0 0 8px var(--color-accent-light);
+  color: var(--color-secondary-light);
+  text-shadow: 0 0 8px var(--color-secondary-light);
   transform: translateX(5px);
 }
 

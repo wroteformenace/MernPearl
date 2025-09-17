@@ -12,7 +12,7 @@ const NAV_LINKS = [
 
 const SOCIAL_LINKS = [
   { icon: "fa-facebook-f", label: "Facebook", href: "https://facebook.com" },
-  { icon: "fa-x-twitter", label: "Twitter/X", href: "https://twitter.com" },
+  { icon: "fa-twitter", label: "Twitter/X", href: "https://twitter.com" },
   { icon: "fa-instagram", label: "Instagram", href: "https://instagram.com" },
   { icon: "fa-linkedin-in", label: "LinkedIn", href: "https://linkedin.com" },
 ];

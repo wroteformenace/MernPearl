@@ -1,20 +1,22 @@
 :root {
-  --compass-bg: rgba(26, 16, 40, 0.92); /* dark purple cosmic */
-  --compass-glow: #c084fc; /* purple glow */
-  --compass-border: #a855f7aa;
-  --compass-pulse: #d946ef; /* bright magenta pulse */
-  --icon-bg: #2b1840;
-  --icon-hover-bg: #3c1f5f;
-  --icon-color: #e9d5ff;
-  --icon-hover: #f0abfc;
-  --label-bg: rgba(30, 18, 48, 0.92);
+  --color-primary: #006d5b; /* Deep teal green */
+  --color-accent: #25a36f; /* Fresh greenish teal accent */
+  --color-accent-light: #76c9b6; /* Soft, light teal */
+  --color-white: #ffffff; /* White for texts and highlights */
+  --color-text-muted: #a8ccc5; /* Muted teal for secondary text */
+  --glass-bg: rgba(2, 93, 81, 0.85); /* Dark translucent teal glass background */
+  --glass-blur: 22px;
+  --glass-border: rgba(37, 163, 116, 0.45); /* Medium teal border */
+  --border-radius: 20px;
+  --transition: 0.3s ease;
+  --font-family: 'Roboto', sans-serif;
 }
 
 .floating-compass-btn {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background: radial-gradient(circle at 30% 30%, #a855f7, #2b1840 70%);
+  background: radial-gradient(circle at 30% 30%, #25a36f, #083f3f 70%);
   color: white;
   border: none;
   border-radius: 50%;
@@ -22,39 +24,36 @@
   font-size: 25px;
   cursor: pointer;
   z-index: 2000;
-  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  transition: transform 0.2s ease;
+  display: flex;
   align-items: center;
+  justify-content: center;
 }
 .floating-compass-btn:hover {
   transform: scale(1.1);
-  box-shadow: 0 0 22px var(--compass-glow), 0 0 60px rgba(192, 132, 252, 0.6);
 }
 
-/* 🧭 Dock Base */
+/* Dock container */
 .social-compass-dock {
   position: fixed;
-  bottom: 80px; /* above button */
+  bottom: 80px;
   right: 20px;
   z-index: 1500;
   pointer-events: none;
 }
 
-/* 🌀 Compass Circle */
+/* Compass Circle */
 .compass-circle {
   width: 170px;
   height: 170px;
   border-radius: 50%;
   position: relative;
-  overflow: visible;
   pointer-events: auto;
-  border: 2.5px solid var(--compass-border);
-  background: radial-gradient(ellipse at 60% 40%, rgba(192, 132, 252, 0.3) 0%, var(--compass-bg) 90%);
-  box-shadow:
-    0 0 20px var(--compass-glow),
-    0 0 50px rgba(192, 132, 252, 0.4),
-    inset 0 0 30px var(--compass-pulse);
+  border: 2.5px solid #19875e; /* teal border */
+  background: radial-gradient(ellipse at 60% 40%, rgba(37, 163, 116, 0.3), rgba(2, 93, 81, 0.92));
   backdrop-filter: blur(6px) saturate(160%);
   animation: rotateCompass 22s linear infinite;
+  overflow: visible;
 }
 
 /* Decorative aura outside */
@@ -63,56 +62,53 @@
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  box-shadow: 0 0 40px 10px var(--compass-pulse);
-  opacity: 0.14;
+  border: 1.5px dashed rgba(37, 163, 116, 0.15);
+  animation: pulse 5s linear infinite;
+  opacity: 0.15;
 }
 .compass-circle::after {
   content: "";
   position: absolute;
-  top: -20px;
-  left: -20px;
-  width: 200px;
-  height: 200px;
+  top: -18px;
+  left: -18px;
+  width: 206px;
+  height: 206px;
   border-radius: 50%;
-  border: 1.5px dashed var(--compass-pulse);
-  animation: pulse 5s linear infinite;
-  opacity: 0.4;
+  border: 1.5px dashed rgba(37, 163, 116, 0.12);
+  animation: pulse 7s linear infinite;
+  opacity: 0.10;
 }
 
-/* 🚀 Compass Points (icons) */
+/* Compass Points */
 .compass-point {
   position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.52rem;
-  font-size: 2rem;
-  background: var(--icon-bg);
-  color: var(--icon-color);
+  padding: 0.4rem;
+  font-size: 1.8rem;
+  background: #146c54; /* dark teal */
+  color: #a8dac0; /* light teal */
   border-radius: 50%;
-  box-shadow: 0 2px 12px rgba(192, 132, 252, 0.35);
-  z-index: 2;
   cursor: pointer;
-  transition:
-    transform 0.3s cubic-bezier(0.22, 0.68, 0.43, 1.01),
-    background 0.3s,
-    color 0.3s,
-    box-shadow 0.25s;
+  transition: transform 0.3s ease, background 0.3s, color 0.3s;
+  user-select: none;
+  z-index: 2;
 }
+
 .compass-point:hover {
   transform: scale(1.18) translateY(-4px);
-  background: var(--icon-hover-bg);
-  color: var(--icon-hover);
-  /* box-shadow: 0 0 22px 6px var(--compass-pulse),
-    0 2px 14px rgba(192, 132, 252, 0.35); */
+  background: #289c76; /* slightly lighter teal */
+  color: #d1f0db;
 }
+
 .compass-point span {
   position: absolute;
   top: 50%;
   left: 110%;
   transform: translateY(-50%) translateX(-10px);
   opacity: 0;
-  background: var(--label-bg);
+  background: rgba(2, 93, 81, 0.85);
   color: #fff;
   font-size: 0.85rem;
   padding: 0.25em 0.8em;
@@ -120,41 +116,89 @@
   white-space: nowrap;
   transition: opacity 0.3s, transform 0.3s;
 }
+
 .compass-point:hover span {
   opacity: 1;
   transform: translateY(-50%) translateX(0);
 }
 
 /* Icon positioning (4 directions) */
-.github    { top: -18px; left: 50%; transform: translateX(-50%); }
-.linkedin  { left: -18px; top: 50%; transform: translateY(-50%); }
-.instagram { bottom: -18px; left: 50%; transform: translateX(-50%); }
-.twitter   { top: 50%; right: -18px; transform: translateY(-50%); }
+.github {
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.linkedin {
+  left: -18px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.instagram {
+  bottom: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.twitter {
+  top: 50%;
+  right: -18px;
+  transform: translateY(-50%);
+}
 
-/* 🔻 Compass Arrow in center */
+/* Compass Arrow center */
 .compass-arrow {
   position: absolute;
   left: 50%;
   top: 50%;
   width: 4px;
   height: 42px;
-  background: linear-gradient(180deg, var(--compass-glow) 0%, var(--compass-pulse) 100%);
+  background: linear-gradient(180deg, #25a36f 0%, #7ad3b6 100%);
   transform: translate(-50%, -100%) rotate(-15deg);
   border-radius: 2px;
-  box-shadow: 0 0 14px rgba(192, 132, 252, 0.45);
   animation: arrowWobble 3s infinite ease-in-out;
 }
 
-/* ✨ Animations */
+/* Animation keyframes */
 @keyframes rotateCompass {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
+
 @keyframes pulse {
-  0%  { transform: scale(1); opacity: 0.4; }
-  100% { transform: scale(1.15); opacity: 0.05; }
+  0% {
+    transform: scale(1);
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(1.15);
+    opacity: 0.05;
+  }
 }
+
 @keyframes arrowWobble {
-  0%  { transform: translate(-50%, -100%) rotate(-15deg); }
-  100% { transform: translate(-50%, -100%) rotate(15deg); }
+  0% {
+    transform: translate(-50%, -100%) rotate(-15deg);
+  }
+  100% {
+    transform: translate(-50%, -100%) rotate(15deg);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .compass-circle {
+    width: 140px;
+    height: 140px;
+  }
+  .compass-arrow {
+    height: 36px;
+    width: 3px;
+  }
+  .compass-point {
+    font-size: 1.3rem;
+    padding: 0.35rem;
+  }
 }
