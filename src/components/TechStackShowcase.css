@@ -1,191 +1,178 @@
 :root {
-  --color-primary: #069494; /* Teal green */
-  --color-accent: #00434e; /* Slightly lighter green accent */
-  --color-accent-light: #7ad3b2; /* Soft light teal accent */
-  --color-white: #ffffff; /* Keep white for text and highlights */
-  --color-text-muted: #63dac6; /* Muted tealish text */
-  --glass-bg: rgba(6, 148, 148, 0.85); /* Translucent teal glass background */
-  --glass-blur: 22px;
-  --glass-border: rgba(2, 85, 59, 0.4); /* Border using darker teal */
-  --border-radius: 20px;
+  --color-primary: #006d5b;
+  --color-accent: #25a36f;
+  --color-accent-light: #76c9b0;
+  --color-white: #ffffff;
+  --color-muted: #a3c6b8;
+  --glass-bg: rgba(2, 93, 81, 0.8);
+  --glass-border: rgba(37, 163, 113, 0.5);
+  --border-radius: 1rem;
   --transition: 0.3s ease;
   --font-family: 'Roboto', sans-serif;
 }
 
-/* Container & Title */
+/* Container */
 .services__glass-container {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: 2rem 1rem 4rem;
+  font-family: var(--font-family);
+  user-select: none;
 }
 
+/* Title */
 .tech-showcase__title {
-  font-family: var(--font-family);
   font-weight: 900;
   font-size: clamp(1.8rem, 5vw, 2.8rem);
   text-align: center;
-  color: #001e27;
-  margin-bottom: 2.5rem;
+  color: var(--color-primary);
   margin-top: 5rem;
+  margin-bottom: 3rem;
+  user-select: none;
 }
 
-/* Grid: 3 columns in desktop, stacked on mobile */
+/* Grid */
 .tech-stack {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.5rem 2rem;
   width: 100%;
 }
 
-/* Tech Card: subtle, clean, no hover glow/shadow */
+/* Card */
 .tech-card {
-  background: #001e27;
-  border: 1.5px solid #001e27;
+  background: var(--glass-bg);
+  border: 1.8px solid var(--glass-border);
   border-radius: var(--border-radius);
-  padding: 1.8rem 2rem;
+  padding: 1.8rem 3rem 3rem;
   cursor: pointer;
   transition: border-color var(--transition), box-shadow var(--transition);
-  backdrop-filter: #001e27;
-  position: relative;
-  overflow: hidden;
+  backdrop-filter: blur(18px) saturate(120%);
   display: flex;
   flex-direction: column;
+  user-select: none;
 }
 
+/* Card hover */
 .tech-card:hover {
-  border-color: #00526b;
+  border-color: var(--color-accent);
+  box-shadow: 0 8px 15px rgba(37, 163, 113, 0.5);
+  transform: translateY(-5px);
 }
 
-.tech-card::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 4px;
-  background: var(--tech-gradient);
-  opacity: 0.8;
-  border-top-left-radius: var(--border-radius);
-  border-top-right-radius: var(--border-radius);
-  pointer-events: none;
-}
-
-/* Inner content */
+/* Card inner */
 .tech-card__inner {
-  position: relative;
   display: flex;
   flex-direction: column;
   height: 100%;
-  z-index: 1;
 }
 
+/* Icon */
 .tech-icon {
-  font-size: 3.5rem;
+  font-size: 3.7rem;
   margin-bottom: 1rem;
-  color: var(--tech-color);
-  filter: drop-shadow(0 0 10px var(--tech-color)33);
+  color: white;
+  filter: drop-shadow(0 0 8px var(--color-accent));
 }
 
+/* Name */
 .tech-name {
-  font-size: 1.7rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: var(--color-white);
-  margin: 0 0 0.5rem;
+  margin-bottom: 0.25rem;
 }
 
+/* Category */
 .tech-category {
   font-size: 1rem;
-  color: white;
-  margin-bottom: 1rem;
-  opacity: 0.8;
+  color: var(--color-muted);
+  margin-bottom: 0.75rem;
 }
 
-.tech-stats {
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.9rem;
-  color: var(--color-text-muted);
-  margin-bottom: 1.5rem;
-}
-
+/* Description */
 .tech-description {
+  font-size: 1rem;
+  color: var(--color-white);
   flex-grow: 1;
-  font-size: 1rem;
-  color: white;
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
 }
 
-/* Hire Button: minimalistic, no hover glow/shadow */
+/* Buttons wrapper */
+/* Buttons container for side by side */
+.tech-card__actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+/* Shared styles for both buttons */
+.learn-btn,
 .hire-btn {
-  margin-top: auto;
-  padding: 0.75rem 1.8rem;
-  font-size: 1rem;
-  font-weight: 600;
-  border: 2px solid var(--tech-color);
-  border-radius: var(--border-radius);
-  background: transparent;
-  color: var(--tech-color);
+  flex: 1;
+  background: white;
+  border: 1.8px solid var(--color-accent);
+  border-radius: 20px;
+  color: var(--color-accent);
+  font-weight: 800;
+  font-size: 0.85rem;
+  padding: 0.75rem 1.5rem;
+  text-transform: uppercase;
   cursor: pointer;
-  transition: background 0.3s ease, color 0.3s ease;
+  transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  user-select: none;
+  text-align: center;
 }
 
-.hire-btn:hover,
-.hire-btn:focus {
-  background: var(--tech-color);
-  color: black;
+.learn-btn:hover,
+.hire-btn:hover {
+  background: var(--color-accent);
+  color: var(--color-white);
+  transform: translateY(-2px);
 }
 
-/* Modal overlay */
+/* Overlay for modals */
 .modal-overlay {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.75);
-  backdrop-filter: blur(8px);
   display: flex;
-  justify-content: center;
   align-items: center;
-  z-index: 1000;
+  justify-content: center;
+  z-index: 3000;
+  user-select: none;
 }
 
-/* Modal box */
-.modal-hire {
+/* Modal box used for both learn more and hire modal */
+.modal-box {
   background: var(--glass-bg);
-  border: 1.5px solid var(--glass-border);
+  border: 1.8px solid var(--glass-border);
   border-radius: var(--border-radius);
-  padding: 2rem;
-  width: 100%;
+  padding: 2rem 2.8rem;
   max-width: 600px;
+  width: 90%;
   max-height: 90vh;
   overflow-y: auto;
-  backdrop-filter: var(--glass-blur);
-  scrollbar-width: thin;
-  scrollbar-color: transparent transparent; /* hide scrollbar in Firefox for clean look */
+  backdrop-filter: blur(20px);
+  color: var(--color-white);
+  user-select: text;
+  position: relative;
+  box-shadow: 0 10px 25px rgba(37, 163, 113, 0.7);
+  font-family: var(--font-family);
 }
 
-/* Scrollbar styles for WebKit browsers, minimal */
-.hire-modal::-webkit-scrollbar {
-  width: 8px;
-}
-.hire-modal::-webkit-scrollbar-track {
-  background: none;
-}
-.hire-modal::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, var(--color-accent), var(--color-accent-light));
-  border-radius: 8px;
-  transition: background 0.3s ease;
-}
-.hire-modal::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, var(--color-accent-light), var(--color-accent));
-}
-
-/* Modal header */
+/* Shared Modal header */
 .modal-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 2rem;
-  border-bottom: 1px solid var(--glass-border);
+  border-bottom: 1.8px solid var(--glass-border);
   padding-bottom: 1rem;
 }
 
+/* Header info */
 .selected-tech-info {
   display: flex;
   align-items: center;
@@ -194,125 +181,141 @@
 }
 
 .tech-icon-modal {
-  font-size: 3rem;
-  color: var(--tech-color);
+  font-size: 3.5rem;
+  color: var(--color-accent);
 }
 
 .selected-tech-info h2 {
   margin: 0;
-  font-size: 1.8rem;
+  font-size: 1.9rem;
 }
 
 .selected-tech-info p {
-  margin: 0.2rem 0 0;
+  margin: 0.25rem 0 0 0;
   font-size: 1rem;
-  color: var(--color-accent-light);
+  color: var(--color-muted);
 }
 
 /* Modal close button */
 .close-btn {
-  font-size: 2rem;
-  border: none;
   background: transparent;
+  border: none;
   color: var(--color-accent);
+  font-size: 2rem;
   cursor: pointer;
-  padding: 0.5rem;
+  padding: 0.3rem;
   border-radius: 50%;
   transition: color 0.3s ease;
+  user-select: none;
 }
 
-.close-btn:hover {
+.close-btn:hover,
+.close-btn:focus {
   color: var(--color-white);
+  outline: none;
 }
 
-/* Form styles */
+/* Hire Form Styles */
 .hire-form {
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
+  margin-top: 1rem;
 }
 
 .form-row {
   display: flex;
-  flex-wrap: wrap;
   gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.form-row > * {
+  flex: 1 1 150px;
 }
 
 .hire-form input,
 .hire-form select,
 .hire-form textarea {
-  width: 100%;
   padding: 1rem;
-  border: 1.5px solid var(--glass-border);
-  border-radius: 10px;
-  background: rgba(18, 16, 36, 0.85);
+  border-radius: 0.8rem;
+  border: 1.8px solid var(--glass-border);
+  background: rgba(2, 93, 81, 0.85);
   color: var(--color-white);
   font-size: 1rem;
   outline: none;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  font-family: var(--font-family);
 }
+
+.hire-form textarea {
+  min-height: 120px;
+}
+
 .hire-form input::placeholder,
 .hire-form textarea::placeholder {
-  color: var(--color-text-muted);
+  color: var(--color-muted);
   opacity: 0.7;
 }
+
 .hire-form input:focus,
 .hire-form select:focus,
 .hire-form textarea:focus {
   border-color: var(--color-accent);
-  box-shadow: 0 0 8px var(--color-accent);
-}
-
-/* Custom select arrow */
-.custom-select {
-  position: relative;
-}
-.custom-select select {
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  cursor: pointer;
-  padding-right: 2.5rem;
-}
-.select-icon {
-  position: absolute;
-  right: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
-  pointer-events: none;
-  font-size: 1.2rem;
-  color: var(--color-accent-light);
+  box-shadow: 0 0 10px var(--color-accent);
 }
 
 /* Submit button */
 .submit-btn {
-  padding: 1rem 2rem;
-  border-radius: var(--border-radius);
+  padding: 1rem 2.5rem;
+  border-radius: 2rem;
+  font-size: 1.25rem;
+  color: var(--color-white);
   background: var(--color-accent);
   border: none;
-  color: var(--color-white);
-  font-size: 1.25rem;
-  font-weight: 700;
   cursor: pointer;
+  font-weight: 700;
+  user-select: none;
   transition: background 0.3s ease, box-shadow 0.3s ease;
-  align-self: flex-start;
 }
+
 .submit-btn:hover,
 .submit-btn:focus {
   background: var(--color-accent-light);
+  box-shadow: 0 0 20px var(--color-accent-light);
   outline: none;
 }
 
-/* Responsive adjustments */
+/* Learn More Modal Content */
+.tech-details {
+  font-size: 1rem;
+  margin-top: 1rem;
+  color: var(--color-white);
+  line-height: 1.6;
+  max-height: 50vh;
+  overflow-y: auto;
+  user-select: text;
+  padding-right: 1rem;
+}
+
+/* Modal Actions for Learn More */
+.modal-actions {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.modal-actions .hire-btn {
+  padding: 0.9rem 2rem;
+  font-size: 1.15rem;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
   .tech-stack {
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   }
-  .form-row {
+
+  .hire-form .form-row {
     flex-direction: column;
-  }
-  .form-row > * {
-    flex: 1 1 100%;
   }
 }

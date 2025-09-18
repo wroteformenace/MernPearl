@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -107,232 +108,130 @@ const techStack = [
 
 const TechStackShowcase = () => {
   const [selectedTech, setSelectedTech] = useState(null);
-  const [showModal, setShowModal] = useState(false);
+  const [showHireModal, setShowHireModal] = useState(false);
+  const [showLearnModal, setShowLearnModal] = useState(false);
 
   const openHireForm = (tech) => {
     setSelectedTech(tech);
-    setShowModal(true);
+    setShowHireModal(true);
+    setShowLearnModal(false);
+  };
+
+  const openLearnModal = (tech) => {
+    setSelectedTech(tech);
+    setShowLearnModal(true);
+    setShowHireModal(false);
   };
 
   return (
-          <div className="services-showcas__glass-container">
-    <div className="services__glass-container">
-      <motion.h2
-        className="tech-showcase__title"
-        initial={{ opacity: 0, y: -30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-      >
-        Tech Expertise
-      </motion.h2>
+    <div className="services-showcas__glass-container">
+      <div className="services__glass-container">
+        <motion.h2
+          className="tech-showcase__title"
+          initial={{ opacity: 0, y: -30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          Tech Expertise
+        </motion.h2>
 
-      <div className="tech-stack">
-        {techStack.map((tech, i) => (
-          <motion.div
-            key={tech.id}
-            className="tech-card"
-            initial={{ opacity: 0, y: 40, scale: 0.9 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.5, delay: i * 0.1 }}
-            whileHover={{ scale: 1.03 }}
-            onClick={() => openHireForm(tech)}
-            style={{ "--tech-color": tech.color, "--tech-gradient": tech.gradient }}
-          >
-            <div className="tech-card__inner">
-              <motion.div
-                className="tech-icon"
-                whileHover={{ rotate: 10, scale: 1.15 }}
-                transition={{ duration: 0.3 }}
-              >
-                {tech.icon}
-              </motion.div>
-              <h3 className="tech-name">{tech.name}</h3>
-              <p className="tech-category">{tech.category}</p>
-              <p className="tech-description">{tech.description}</p>
-              <button className="hire-btn">Hire Developer</button>
-            </div>
-          </motion.div>
-        ))}
+        <div className="tech-stack">
+          {techStack.map((tech, i) => (
+            <motion.div
+              key={tech.id}
+              className="tech-card"
+              initial={{ opacity: 0, y: 40, scale: 0.9 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              whileHover={{ scale: 1.03 }}
+              style={{ "--tech-color": tech.color, "--tech-gradient": tech.gradient }}
+            >
+              <div className="tech-card__inner">
+                <motion.div
+                  className="tech-icon"
+                  whileHover={{ rotate: 10, scale: 1.15 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {tech.icon}
+                </motion.div>
+                <h3 className="tech-name">{tech.name}</h3>
+                <p className="tech-category">{tech.category}</p>
+                <p className="tech-description">{tech.description}</p>
+                <div className="tech-card-actions">
+                  <button className="learn-btn" onClick={() => openLearnModal(tech)}>
+                    Learn More
+                  </button>
+                  <button className="hire-btn" onClick={() => openHireForm(tech)}>
+                    Hire Developer
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        <AnimatePresence>
+          {showHireModal && selectedTech && (
+            <ModalHireDeveloper tech={selectedTech} closeModal={() => setShowHireModal(false)} />
+          )}
+          {showLearnModal && selectedTech && (
+            <ModalLearnMore
+              tech={selectedTech}
+              closeModal={() => setShowLearnModal(false)}
+              openHireForm={() => openHireForm(selectedTech)}
+            />
+          )}
+        </AnimatePresence>
       </div>
-
-      <AnimatePresence>
-        {showModal && selectedTech && (
-          <ModalHireDeveloper tech={selectedTech} closeModal={() => setShowModal(false)} />
-        )}
-      </AnimatePresence>
-    </div>
     </div>
   );
 };
 
-const ModalHireDeveloper = ({ tech, closeModal }) => {
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    company: "",
-    projectType: "",
-    experienceRange: "",
-    timeline: "",
-    budget: "",
-    message: "",
-  });
-
-  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Hiring request:", { ...form, technology: tech.name });
-    setForm({
-      name: "",
-      email: "",
-      company: "",
-      projectType: "",
-      experienceRange: "",
-      timeline: "",
-      budget: "",
-      message: "",
-    });
-    closeModal();
-  };
-
-  return (
+// Learn More Modal
+const ModalLearnMore = ({ tech, closeModal, openHireForm }) => (
+  <motion.div
+    className="modal-overlay"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+    onClick={closeModal}
+    tabIndex={-1}
+  >
     <motion.div
-      className="modal-overlay"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      onClick={closeModal}
-      tabIndex={-1}
+      className="modal-learn"
+      initial={{ scale: 0.85, opacity: 0 }}
+      animate={{ scale: 1, opacity: 1 }}
+      exit={{ scale: 0.85, opacity: 0 }}
+      onClick={e => e.stopPropagation()}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="learn-modal-title"
     >
-      <motion.div
-        className="modal-hire"
-        initial={{ scale: 0.8, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        exit={{ scale: 0.8, opacity: 0 }}
-        onClick={(e) => e.stopPropagation()}
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="modal-title"
-      >
-        <header className="modal-header">
-          <div className="selected-tech-info">
-            <div className="tech-icon-modal" style={{ color: tech.color }}>
-              {tech.icon}
-            </div>
-            <div>
-              <h2 id="modal-title">Hire {tech.name} Developer</h2>
-              <p>{tech.category}</p>
-            </div>
+      <header className="modal-header">
+        <div className="selected-tech-info">
+          <div className="tech-icon-modal" style={{ color: tech.color }}>
+            {tech.icon}
           </div>
-          <button className="close-btn" onClick={closeModal} aria-label="Close Modal">
-            <FaTimes />
-          </button>
-        </header>
-
-        <form className="hire-form" onSubmit={handleSubmit}>
-          <div className="form-row">
-            <input
-              type="text"
-              name="name"
-              placeholder="Your Name *"
-              value={form.name}
-              onChange={handleChange}
-              required
-              autoComplete="name"
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="Email Address *"
-              value={form.email}
-              onChange={handleChange}
-              required
-              autoComplete="email"
-            />
+          <div>
+            <h2 id="learn-modal-title">{tech.name} Overview</h2>
+            <p>{tech.category} Technology</p>
           </div>
-          <input
-            type="text"
-            name="company"
-            placeholder="Company Name"
-            value={form.company}
-            onChange={handleChange}
-            autoComplete="organization"
-          />
-          <div className="form-row">
-            <select
-              name="projectType"
-              value={form.projectType}
-              onChange={handleChange}
-              required
-              aria-label="Project Type"
-            >
-              <option value="">Select Project Type</option>
-              <option value="web-app">Web Application</option>
-              <option value="mobile-app">Mobile App</option>
-              <option value="ecommerce">E-commerce</option>
-              <option value="dashboard">Dashboard / Analytics</option>
-              <option value="other">Other</option>
-            </select>
-            <select
-              name="experienceRange"
-              value={form.experienceRange}
-              onChange={handleChange}
-              required
-              aria-label="Experience Range"
-            >
-              <option value="">Select Experience</option>
-              <option value="0-2">0 - 2 years</option>
-              <option value="2-4">2 - 4 years</option>
-              <option value="5+">5+ years</option>
-              <option value="10+">10+ years</option>
-            </select>
-          </div>
-          <select
-            name="timeline"
-            value={form.timeline}
-            onChange={handleChange}
-            aria-label="Timeline"
-          >
-            <option value="">Select Timeline</option>
-            <option value="1-2-weeks">1-2 Weeks</option>
-            <option value="1-month">1 Month</option>
-            <option value="2-3-months">2-3 Months</option>
-            <option value="6-months">6+ Months</option>
-          </select>
-          <select
-            name="budget"
-            value={form.budget}
-            onChange={handleChange}
-            aria-label="Budget Range"
-          >
-            <option value="">Select Budget</option>
-            <option value="5k-10k">$5K - $10K</option>
-            <option value="10k-25k">$10K - $25K</option>
-            <option value="25k-50k">$25K - $50K</option>
-            <option value="50k+">$50K+</option>
-          </select>
-
-          <textarea
-            name="message"
-            placeholder="Tell us about your project requirements..."
-            value={form.message}
-            onChange={handleChange}
-            rows={4}
-          />
-
-          <motion.button
-            type="submit"
-            className="submit-btn"
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            style={{ background: tech.gradient }}
-          >
-            Send Hire Request
-          </motion.button>
-        </form>
-      </motion.div>
+        </div>
+        <button className="close-btn" onClick={closeModal} aria-label="Close Modal">
+          <FaTimes />
+        </button>
+      </header>
+      <div className="tech-details">
+        <p><strong>Description:</strong> {tech.description}</p>
+        {/* Insert more info here: use object fields or add tech.specs */}
+        <p><strong>Popular Uses:</strong> Example usages here...</p>
+        <p><strong>Key Features:</strong> Feature list here...</p>
+      </div>
+      <div className="modal-actions">
+        <button className="hire-btn" onClick={openHireForm}>Hire Developer</button>
+      </div>
     </motion.div>
-  );
-};
+  </motion.div>
+);
 
 export default TechStackShowcase;

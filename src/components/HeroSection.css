@@ -130,6 +130,9 @@ body {
   padding: clamp(20px, 4vw, 24px);
   overflow: hidden;
   /* background: url('/generated-image.png') center/cover no-repeat fixed; */
+  /* background: url('/layered-waves-haikei.svg') center/cover no-repeat fixed; */
+  /* background: url('/stacked-peaks-haikei.svg') center/cover no-repeat fixed; */
+
 }
 
 /* This wrapper is what we nudge upwards */
@@ -187,10 +190,11 @@ body {
 .hero-sub {
   margin-top: clamp(12px, 1.8vw, 20px);
   max-width: 58ch;
-  font-weight: 600;
-  font-size: clamp(1.5rem, 1.2vw + .9rem, 1.5rem);
-  color: #001e27;
+  font-weight: 500;
+  font-size: clamp(1.8rem, 1.2vw + .9rem, 1.5rem);
+  color: black;
   line-height: 1.6;
+  margin-bottom: 1rem;
   pointer-events: none;
   align-items: center;
 }
@@ -198,8 +202,8 @@ body {
 .loader-fullscreen-wrapper {
   position: fixed;
   inset: 0;  
-  top:1rem;
-  left: 5rem;
+  top:5rem;
+  left: 1rem;
 
              /* top:0; bottom:0; left:0; right:0; */
   display: flex;
@@ -215,8 +219,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  width:300px;
-  height:300px;
+  width:350px;
+  height:350px;
   font-family: "Inter", sans-serif;
   font-size: 1.2em;
   font-weight: 300;
@@ -272,8 +276,8 @@ body {
   margin-top: clamp(24px, 3.2vw, 36px);
   padding: 18px 36px;
   border-radius: 14px;
-  font-weight: 800;
-  font-size: 1.2rem;
+  font-weight: 700;
+  font-size: 1.3rem;
   text-decoration: none;
   color: whitesmoke;
   cursor: pointer;

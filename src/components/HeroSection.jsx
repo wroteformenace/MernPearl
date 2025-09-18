@@ -127,7 +127,7 @@ export default function HeroSection() {
         <ParticleTextReveal text="Creating Thoughtful Digital Products" />
 
 
-        <motion.p
+        {/* <motion.p
           initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.6 }}
@@ -135,17 +135,18 @@ export default function HeroSection() {
           className="hero-sub"
         >
           Designing and building scalable, user‑centered solutions for the modern tech stack.
-        </motion.p>
+        </motion.p> */}
 
 
 
-       {/* <TextType 
+       <TextType 
   text={[" Designing and building scalable", " user‑centered solutions for the modern tech stack."]}
   typingSpeed={75}
   pauseDuration={1500}
   showCursor={true}
   cursorCharacter="|"
-/> */}
+  className="hero-sub"
+/>
 
         <motion.a
           href="#contact"
@@ -157,7 +158,7 @@ export default function HeroSection() {
           className="cta glass-cta"
         >
           <span className="cta-shimmer" aria-hidden="true" />
-          Let’s connect
+          Let’s connect 
         </motion.a>
       </motion.div></div>
           {/* <Zap /> */}

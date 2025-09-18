@@ -74,7 +74,7 @@ export default function ParticleTextReveal({ text }) {
               stiffness: 120,
               damping: 12,
             }}
-            style={{ top: 0, left: 0 }}
+            style={{ top: 19, left: 0 }}
           />
         );
       })}
