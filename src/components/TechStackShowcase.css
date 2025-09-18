@@ -25,7 +25,7 @@
   font-weight: 900;
   font-size: clamp(1.8rem, 5vw, 2.8rem);
   text-align: center;
-  color: var(--color-primary);
+  color: black;
   margin-top: 5rem;
   margin-bottom: 3rem;
   user-select: none;
@@ -123,6 +123,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   user-select: none;
   text-align: center;
+  margin: 0.1rem;
 }
 
 .learn-btn:hover,
@@ -171,6 +172,35 @@
   border-bottom: 1.8px solid var(--glass-border);
   padding-bottom: 1rem;
 }
+
+/* Wrapper around form content to enable internal scroll */
+.modal-form-container {
+  max-height: 60vh; /* limit max height */
+  overflow-y: auto; /* enable vertical scroll */
+  padding-right: 12px; /* space for scrollbar */
+  box-sizing: content-box;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-accent) transparent;
+}
+
+/* Webkit scrollbar styling */
+.modal-form-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modal-form-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.modal-form-container::-webkit-scrollbar-thumb {
+  background: var(--color-accent);
+  border-radius: 8px;
+}
+
+.modal-form-container::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent-light);
+}
+
 
 /* Header info */
 .selected-tech-info {
