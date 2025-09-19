@@ -7,7 +7,7 @@ const projects = [
   {
     id: 1,
     image: "/Desktop4.png",
-    title: "AI Helper Platform",
+    // title: "AI Helper Platform",
     desc: "An intelligent platform leveraging AI to automate customer support for SaaS businesses.",
     tech: ["React", "Node.js", "AI/ML"],
     url: "#"
@@ -15,7 +15,7 @@ const projects = [
   {
     id: 2,
     image: "/sick.png",
-    title: "SEO Suite",
+    // title: "SEO Suite",
     desc: "Glassmorphic dashboard that analyzes and boosts organic traffic using advanced SEO techniques.",
     tech: ["SEO", "Next.js", "Cloud"],
     url: "#"
@@ -23,7 +23,7 @@ const projects = [
   {
     id: 3,
     image: "/image 6.png",
-    title: "E-Commerce Analytics",
+    // title: "E-Commerce Analytics",
     desc: "A comprehensive analytics dashboard for e-commerce stores to track sales and user behavior.",
     tech: ["React", "D3.js", "GraphQL"],
     url: "#"
@@ -31,7 +31,7 @@ const projects = [
   {
     id: 4,
     image: "/Desktop - 5.png",
-    title: "Fitness Tracker App",
+    // title: "Fitness Tracker App",
     desc: "A mobile-friendly app to track workouts, nutrition, and progress with social sharing features.",
     tech: ["React Native", "Firebase", "APIs"],
     url: "#"
@@ -39,7 +39,7 @@ const projects = [
   {
     id: 5,
     image: "/Desktop 9.png",
-    title: "Cryptocurrency Wallet",
+    // title: "Cryptocurrency Wallet",
     desc: "Secure wallet app to manage multiple cryptocurrencies with real-time price updates.",
     tech: ["Vue.js", "Node.js", "Blockchain"],
     url: "#"
@@ -55,7 +55,7 @@ const projects = [
   {
     id: 7,
     image: "/Desktop11.png",
-    title: "Smart Home Control",
+    // title: "Smart Home Control",
     desc: "IoT-based app to control and monitor smart home devices with voice assistant integration.",
     tech: ["React", "AWS IoT", "Python"],
     url: "#"
@@ -129,8 +129,9 @@ const ProjectSlideShow = () => {
         transition={{ duration: 1, ease: "easeOut" }}
       >
         <motion.div className="project-slideshow__category" key={current} initial={{ opacity: 0, x: 60 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -60 }} transition={{ duration: 0.7 }}>
-          <div className="project-title">{slideshowCategories[current] || projects[current].title}</div>
+          {/* <div className="project-title">{slideshowCategories[current] || projects[current].title}</div> */}
         </motion.div>
+                            <div className="project-title">Work That Speaks for Itself</div>
 
         <div className="project-slideshow__slide">
           <AnimatePresence mode="wait">

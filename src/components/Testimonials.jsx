@@ -79,10 +79,10 @@ const Testimonials = () => {
     <div className="services-showcase__glass-container">
     <section className="testimonials-section" aria-labelledby="testimonials-title">
       <h2 id="testimonials-title" className="testimonials-title">
-        Words of praise from others about our presence.
+        Partnerships That Made a Difference
       </h2>
       <p className="testimonials-section__subtitle">
-        From concept to launch — we design, build, and perfect remarkable client experiences powered by trust and creativity.
+        Because client satisfaction is our biggest achievement.
       </p>
       <div className="marquee-row">
         {firstRowTestimonials.map((t) => (

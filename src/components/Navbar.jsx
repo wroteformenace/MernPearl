@@ -58,7 +58,7 @@ export default function Navbar() {
         {/* Navigation Links */}
         <ul className={`nav-links ${open ? "is-open" : ""}`}>
           <li><a href="#home" onClick={handleNavClick}>Home</a></li>
-          <li><a href="#why" onClick={handleNavClick}>Why Us?</a></li>
+          <li><a href="#why" onClick={handleNavClick}>Product</a></li>
           <li><a href="#services" onClick={handleNavClick}>Services</a></li>
           <li><a href="#contact" onClick={handleNavClick}>Contact</a></li>
         </ul>

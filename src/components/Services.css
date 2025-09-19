@@ -20,8 +20,8 @@
 
   /* Professional Typography System */
   --font-primary: 'Inter', system-ui, sans-serif;
-  --font-headings: 'Manrope', system-ui, sans-serif;
-  --font-body: 'Source Sans Pro', system-ui, sans-serif;
+  --font-headings: 'Manrope', system-ui, sans-serif, Poppins;
+  --font-body: 'Source Sans Pro', system-ui, sans-serif, Roboto
   --font-ui: 'Rubik', system-ui, sans-serif;
 }
 
@@ -56,7 +56,7 @@
   color: #001e27;
   margin-top: 5rem;
   line-height: 1.15;
-  font-family: var(--font-primary); /* Inter for main titles */
+  font-family: Poppins; /* Inter for main titles */
   letter-spacing: -0.02em; /* Improved letter spacing for large text */
   /* Optional: Add teal glow for title emphasis */
   /* text-shadow: 0 0 12px var(--color-secondary-muted); */
@@ -71,7 +71,7 @@
   margin-right: auto;
   line-height: 1.65;
   opacity: 0.9;
-  font-family: var(--font-body); /* Source Sans Pro for subtitles */
+  font-family: Manrope; /* Source Sans Pro for subtitles */
   font-weight: 600;
 }
 

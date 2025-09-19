@@ -1,15 +1,23 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import "./HeroSection.css";
 import TechStack from "./TechStack";
 import ParticleTextReveal from "./Particle";
-// import Zap from "./Zap";
-import TextType from './TextType';
+import TextType from "./TextType";
+import FloatingImg from "./FloatingImg";
+import { Link } from "react-router-dom";
 
 export default function HeroSection() {
   const cosmosRef = useRef(null);
   const starContainerRef = useRef(null);
   const stars = useRef([]);
+  const MotionLink = motion(Link);
+
+  const openBookingPage = () => {
+  window.open('/book', '_blank', 'noopener,noreferrer');
+};
+
+  const [showBooking, setShowBooking] = useState(false);
 
   useEffect(() => {
     let targetX = window.innerWidth / 2;
@@ -20,40 +28,35 @@ export default function HeroSection() {
     const mouseMove = (e) => {
       targetX = e.clientX;
       targetY = e.clientY;
-
-      // Spawn stars near cursor on movement
       spawnStar(e.clientX, e.clientY);
     };
 
     window.addEventListener("mousemove", mouseMove);
 
-    // Spawn a star particle
     function spawnStar(x, y) {
       const star = document.createElement("div");
       star.className = "star-particle";
-
-      // Position star at cursor, random slight offset
       star.style.left = x + (Math.random() * 30 - 15) + "px";
       star.style.top = y + (Math.random() * 30 - 15) + "px";
       star.style.opacity = "1";
       star.style.transform = `scale(${(Math.random() * 0.6) + 0.4})`;
 
-      starContainerRef.current.appendChild(star);
+      if (starContainerRef.current) {
+        starContainerRef.current.appendChild(star);
 
-      stars.current.push({
-        element: star,
-        x: x,
-        y: y,
-        velocityX: (Math.random() * 1 - 0.5) * 0.6,
-        velocityY: - (Math.random() * 1 + 0.5), // float upwards
-        life: 0,
-        maxLife: 80 + Math.random() * 30
-      });
+        stars.current.push({
+          element: star,
+          x: x,
+          y: y,
+          velocityX: (Math.random() * 1 - 0.5) * 0.6,
+          velocityY: -(Math.random() * 1 + 0.5),
+          life: 0,
+          maxLife: 80 + Math.random() * 30,
+        });
+      }
     }
 
-    // Animate loop for smooth cosmic glow + stars
     const animate = () => {
-      // Smooth follow for cosmos glow
       currentX += (targetX - currentX) * 0.1;
       currentY += (targetY - currentY) * 0.1;
       if (cosmosRef.current) {
@@ -61,7 +64,6 @@ export default function HeroSection() {
         cosmosRef.current.style.top = `${currentY}px`;
       }
 
-      // Animate stars
       for (let i = stars.current.length - 1; i >= 0; i--) {
         const star = stars.current[i];
         star.x += star.velocityX;
@@ -75,7 +77,7 @@ export default function HeroSection() {
         star.element.style.opacity = lifeRatio;
         star.element.style.transform = `scale(${lifeRatio * 0.7 + 0.3})`;
 
-        if (star.life >= star.maxLife) {
+        if (star.life >= star.maxLife && starContainerRef.current) {
           starContainerRef.current.removeChild(star.element);
           stars.current.splice(i, 1);
         }
@@ -88,7 +90,6 @@ export default function HeroSection() {
 
     return () => {
       window.removeEventListener("mousemove", mouseMove);
-      // Cleanup stars if any remain on unmount
       stars.current.forEach((star) => {
         if (starContainerRef.current && star.element) {
           starContainerRef.current.removeChild(star.element);
@@ -100,70 +101,71 @@ export default function HeroSection() {
 
   return (
     <>
-    <section id="home" className="hero">
+      <section id="home" className="hero">
+        {/* Cosmic Mouse Glow */}
+        {/* <div className="mouse-cosmos" ref={cosmosRef} /> */}
 
-      {/* Cosmic Mouse Glow */}
-      {/* <div className="mouse-cosmos" ref={cosmosRef} /> */}
+        {/* Star Particles Container */}
+        {/* <div className="star-particles" ref={starContainerRef} /> */}
 
-      {/* Star Particles Container */}
-      {/* <div className="star-particles" ref={starContainerRef} /> */}
+        {/* Liquid overlay */}
+        <div className="liquid-overlay" aria-hidden="true" />
 
-      {/* Liquid overlay */}
-      <div className="liquid-overlay" aria-hidden="true" />
-<div className="loader-fullscreen-wrapper">
-  <div className="loader-wrapper">
-    <div className="loader"></div>
-  </div>
-</div>
+        <div className="loader-fullscreen-wrapper">
+          <div className="loader-wrapper">
+            <div className="loader"></div>
+          </div>
+        </div>
+                <FloatingImg />
 
-      <div className="hero-content">
-      {/* Hero Content */}
-      <motion.div
-        initial={{ opacity: 0, y: 18 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
-        className="hero-inner"
-      >
-        <ParticleTextReveal text="Creating Thoughtful Digital Products" />
+        <div className="hero-content">
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
+            className="hero-inner"
+          >
+            <ParticleTextReveal text="Creating Thoughtful Digital Products" />
 
+            <TextType
+              text={[
+                " Designing and building scalable",
+                " user‑centered solutions for the modern tech stack.",
+              ]}
+              typingSpeed={75}
+              pauseDuration={1500}
+              showCursor={true}
+              cursorCharacter="|"
+              className="hero-sub"
+            />
 
-        {/* <motion.p
-          initial={{ opacity: 0, y: 8 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.6 }}
-          transition={{ duration: 0.6, ease: "easeOut", delay: 0.05 }}
-          className="hero-sub"
-        >
-          Designing and building scalable, user‑centered solutions for the modern tech stack.
-        </motion.p> */}
+<MotionLink
+  to="/book"
+  aria-label="Navigate to book meeting page"
+  className="cta glass-cta"
+  initial={{ opacity: 0, y: 8 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true, amount: 0.6 }}
+  transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
+>
+  Let’s connect
+  <span className="cta-shimmer" aria-hidden="true" />
+</MotionLink>
+        {/* {showBooking && (
+          <div style={{ width: "100%", maxWidth: 600, height: 650, marginTop: 20 }}>
+            <Cal
+              namespace="intro-call"
+              calLink="richard-feynman-t59amh/intro-call"
+              config={{ layout: "month_view", theme: "light" }}
+              style={{ width: "100%", height: "100%" }}
+            />
+          </div>
+        )} */}
+          </motion.div>
+        </div>
 
-
-
-       <TextType 
-  text={[" Designing and building scalable", " user‑centered solutions for the modern tech stack."]}
-  typingSpeed={75}
-  pauseDuration={1500}
-  showCursor={true}
-  cursorCharacter="|"
-  className="hero-sub"
-/>
-
-        <motion.a
-          href="#contact"
-          aria-label="Contact us"
-          initial={{ opacity: 0, y: 8 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.6 }}
-          transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
-          className="cta glass-cta"
-        >
-          <span className="cta-shimmer" aria-hidden="true" />
-          Let’s connect 
-        </motion.a>
-      </motion.div></div>
-          {/* <Zap /> */}
-      <TechStack />
-    </section>
+        <TechStack />
+      </section>
     </>
   );
 }

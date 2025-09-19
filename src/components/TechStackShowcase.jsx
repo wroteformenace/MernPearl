@@ -132,7 +132,7 @@ const TechStackShowcase = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          Tech Expertise
+The Tech We Trust
         </motion.h2>
 
         <div className="tech-stack">
