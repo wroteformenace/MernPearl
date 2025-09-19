@@ -13,7 +13,7 @@ export default function BookingPage() {
             namespace="intro-call"
             calLink="richard-feynman-t59amh/intro-call"
             config={{ layout: "month_view", theme: "light" }}
-            style={{ width: "100%", height: "100%" }}
+            style={{ width: "100%", height: "570px" }}
           />
         </div>
       </div>

@@ -1,12 +1,13 @@
 /* Container wrapper for booking page */
 .booking-page-container {
-  min-height: 100vh;
+    width: 100%;
+    min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 2rem;
-  background: linear-gradient(135deg, #E0F7FA 0%, #F7FFFE 100%);
+  background: linear-gradient(135deg, #E0F7FA 0%, #b7fff7 70%);
   transition: background 0.3s ease;
 }
 
@@ -17,11 +18,13 @@ body.dark-theme .booking-page-container {
 
 /* Inner container with box style */
 .booking-box {
-  width: 90%;
-  max-width: 750px;
-  background: #fff;
+  width: 100%;
+  max-width: 1600px;
+  max-height: 1500px;
+  background: #004d3d;
   border-radius: 16px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  border: #00ffcc 1.8px solid;
   padding: 2rem;
   transition: background 0.3s ease, box-shadow 0.3s ease;
 }
@@ -37,13 +40,14 @@ body.dark-theme .booking-box {
 .booking-box h2 {
   text-align: center;
   margin-bottom: 24px;
+  color: white;
 }
 
 /* Cal.com iframe container: responsive and max height */
 .cal-container {
   width: 100%;
   height: 0;
-  padding-bottom: 100%; /* Maintain aspect ratio 4:3 */
+  padding-bottom: 43%; /* Maintain aspect ratio 4:3 */
   position: relative;
 }
 
@@ -58,15 +62,20 @@ body.dark-theme .booking-box {
 
 /* Back link styling */
 .booking-back-link {
-  margin-top: 20px;
+  margin-top: 10px;
   text-align: center;
-  color: #007660;
+  color: white;
+  padding: 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 12px;
   text-decoration: none;
   transition: color 0.3s ease;
+  background-color: #004d3d;
 }
 
 .booking-back-link:hover {
-  color: #004d3d;
+  color: #00ffcc;
 }
 
 /* Dark theme back link */
