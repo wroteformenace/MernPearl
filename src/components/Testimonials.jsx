@@ -71,30 +71,43 @@ const TestimonialCard = ({ quote, author, role, avatarUrl }) => {
 };
 
 const Testimonials = () => {
-  // Duplicate the arrays for seamless looping
   const firstRowTestimonials = testimonials;
   const secondRowTestimonials = [...testimonials.slice(3), ...testimonials.slice(0, 3)];
 
+  const containerRef = useRef(null);
+  const isInView = useInView(containerRef, { once: true, amount: 0.3 });
+
+  const containerVariants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
+  };
+
   return (
-    <div className="services-showcase__glass-container">
-    <section className="testimonials-section" aria-labelledby="testimonials-title">
-      <h2 id="testimonials-title" className="testimonials-title">
-        Partnerships That Made a Difference
-      </h2>
-      <p className="testimonials-section__subtitle">
-        Because client satisfaction is our biggest achievement.
-      </p>
-      <div className="marquee-row">
-        {firstRowTestimonials.map((t) => (
-          <TestimonialCard key={t.id} {...t} />
-        ))}
-      </div>
-      <div className="marquee-row reverse">
-        {secondRowTestimonials.map((t) => (
-          <TestimonialCard key={`rev-${t.id}`} {...t} />
-        ))}
-      </div>
-    </section>
+    <div className="services-showcase__glass-container" ref={containerRef}>
+      <motion.section
+        className="testimonials-section"
+        aria-labelledby="testimonials-title"
+        initial="hidden"
+        animate={isInView ? "visible" : "hidden"}
+        variants={containerVariants}
+      >
+        <h2 id="testimonials-title" className="testimonials-title">
+          Partnerships That Made a Difference
+        </h2>
+        <p className="testimonials-section__subtitle">
+          Because client satisfaction is our biggest achievement.
+        </p>
+        <div className="marquee-row">
+          {firstRowTestimonials.map((t) => (
+            <TestimonialCard key={t.id} {...t} />
+          ))}
+        </div>
+        <div className="marquee-row reverse">
+          {secondRowTestimonials.map((t) => (
+            <TestimonialCard key={`rev-${t.id}`} {...t} />
+          ))}
+        </div>
+      </motion.section>
     </div>
   );
 };

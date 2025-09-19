@@ -91,47 +91,38 @@ const ProjectSlideShow = () => {
   const timeoutRef = useRef(null);
 
   const resetTimeout = () => {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-    }
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
   };
 
   useEffect(() => {
     resetTimeout();
     timeoutRef.current = setTimeout(() => {
       setCurrent((prevIndex) => (prevIndex === projects.length - 1 ? 0 : prevIndex + 1));
-    }, 5000); // 5 seconds
-
-    return () => {
-      resetTimeout();
-    };
+    }, 5000);
+    return () => resetTimeout();
   }, [current]);
 
-  const goTo = (idx) => {
-    setCurrent(idx);
-  };
-
-  const prevSlide = () => {
-    setCurrent((prev) => (prev === 0 ? projects.length - 1 : prev - 1));
-  };
-
-  const nextSlide = () => {
-    setCurrent((prev) => (prev === projects.length - 1 ? 0 : prev + 1));
-  };
-
+  // Only animate if inView
   return (
     <div className="services-showcase__glass-container" ref={containerRef}>
       <motion.div
         className="project-slideshow__container"
-        initial="enter"
-        animate={inView ? "center" : "enter"}
-        exit="exit"
+        initial={{ opacity: 0, y: 50 }}
+        animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 1, ease: "easeOut" }}
       >
-        <motion.div className="project-slideshow__category" key={current} initial={{ opacity: 0, x: 60 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -60 }} transition={{ duration: 0.7 }}>
-          {/* <div className="project-title">{slideshowCategories[current] || projects[current].title}</div> */}
+        <motion.div
+          className="project-slideshow__category"
+          key={current}
+          initial={{ opacity: 0, x: 60 }}
+          animate={inView ? { opacity: 1, x: 0 } : {}}
+          exit={{ opacity: 0, x: -60 }}
+          transition={{ duration: 0.7 }}
+        >
+          {/* Possibly category title if needed */}
         </motion.div>
-                            <div className="project-title">Work That Speaks for Itself</div>
+
+        <div className="project-title">Work That Speaks for Itself</div>
 
         <div className="project-slideshow__slide">
           <AnimatePresence mode="wait">
@@ -140,7 +131,7 @@ const ProjectSlideShow = () => {
               className="project-slideshow__desc"
               variants={variants}
               initial="enter"
-              animate="center"
+              animate={inView ? "center" : "enter"}
               exit="exit"
               transition={transition}
               style={{ position: "absolute", width: "50%", left: 0 }}
@@ -164,7 +155,7 @@ const ProjectSlideShow = () => {
               className="project-slideshow__imgwrap"
               variants={variants}
               initial="enter"
-              animate="center"
+              animate={inView ? "center" : "enter"}
               exit="exit"
               transition={{ ...transition, delay: 0.2 }}
               style={{ position: "absolute", width: "50%", right: 0 }}
@@ -179,15 +170,18 @@ const ProjectSlideShow = () => {
             <button
               key={idx}
               className={"project-slideshow__bullet" + (idx === current ? " active" : "")}
-              onClick={() => goTo(idx)}
+              onClick={() => setCurrent(idx)}
               aria-label={`Go to slide ${idx + 1}`}
               tabIndex={0}
             />
           ))}
         </div>
 
-        <button onClick={prevSlide} className="project-slideshow__arrow left" aria-label="Previous slide">‹</button>
-        <button onClick={nextSlide} className="project-slideshow__arrow right" aria-label="Next slide">›</button>
+        <button onClick={() => setCurrent(current === 0 ? projects.length - 1 : current - 1)} 
+          className="project-slideshow__arrow left" aria-label="Previous slide">‹</button>
+        <button onClick={() => setCurrent(current === projects.length -1 ? 0 : current + 1)} 
+          className="project-slideshow__arrow right" aria-label="Next slide">›</button>
+
       </motion.div>
     </div>
   );
