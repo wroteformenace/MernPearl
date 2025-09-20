@@ -116,7 +116,7 @@ export default function HeroSection() {
             <div className="loader"></div>
           </div>
         </div>
-                <FloatingImg />
+                {/* <FloatingImg /> */}
 
         <div className="hero-content">
           <motion.div

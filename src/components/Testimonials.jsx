@@ -1,5 +1,8 @@
-import React from "react";
+
 import "./Testimonials.css";
+import React, { useRef } from "react";
+import { motion, useInView } from "framer-motion";
+
 
 const testimonials = [
   {

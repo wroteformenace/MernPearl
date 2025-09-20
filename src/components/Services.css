@@ -44,10 +44,20 @@
 }
 
 .services-showcase__header {
-  text-align: center;
-  margin-bottom: 3.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px; /* spacing between title and svg */
+  text-align: center; /* fallback text centering */
+  margin-bottom: 3rem;
   position: relative;
   z-index: 2;
+}
+
+.services-showcase__header img {
+  width: 100px;
+  height: 100px;
+  flex-shrink: 0;
 }
 
 .services-showcase__title {
@@ -73,6 +83,7 @@
   opacity: 0.9;
   font-family: Manrope; /* Source Sans Pro for subtitles */
   font-weight: 600;
+  justify-content: center;
 }
 
 /* Grid with two columns and responsive fallback */
@@ -80,6 +91,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
+  margin-bottom: 1rem;
   position: relative;
   z-index: 2;
 }

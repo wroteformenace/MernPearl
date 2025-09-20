@@ -155,26 +155,27 @@ const ServicesShowcase = () => {
   }, []);
 
   return (
-    <section className="services-showcase" aria-labelledby="services-title">
-      <div className="services-showcae__glass-container">
-        <div className="services-showcase__header">
-          <h2 id="services-title" className="services-showcase__title">Solution We Offer</h2>
-          <p className="services-showcase__subtitle">
-           Scalable apps that match your business needs.
-          </p>
-        </div>
-        <div className="services-showcase__grid">
-          {SERVICES_CONFIG.map(service => (
-            <ServiceCard
-              key={service.id}
-              service={service}
-              isVisible={visibleCards.has(service.id)}
-              onVisibilityChange={handleVisibilityChange}
-            />
-          ))}
-        </div>
-      </div>
-    </section>
+<section className="services-showcase" aria-labelledby="services-title">
+  <div className="services-showcae__glass-container">
+    <div className="services-showcase__header">
+  <h2 id="services-title" className="services-showcase__title">Solution We Offer</h2>
+  <img src="/undraw_web-design.svg" alt="Web Design Illustration" />
+</div>
+<p className="services-showcase__subtitle">
+  Scalable apps that match your business needs.
+</p>
+    <div className="services-showcase__grid">
+      {SERVICES_CONFIG.map(service => (
+        <ServiceCard
+          key={service.id}
+          service={service}
+          isVisible={visibleCards.has(service.id)}
+          onVisibilityChange={handleVisibilityChange}
+        />
+      ))}
+    </div>
+  </div>
+</section>
   );
 };
 
